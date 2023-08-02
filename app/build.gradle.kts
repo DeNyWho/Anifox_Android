@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
@@ -52,6 +53,25 @@ android {
 
 dependencies {
 
+    // Ktor client
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.apache)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.json)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.client.logging.jvm)
+
+    implementation(libs.navigation)
+    implementation(libs.serialization.json)
+    implementation(libs.shimmer.compose)
+    implementation(libs.coil)
+    implementation(libs.coroutines)
+    implementation(libs.datastore)
+    implementation(libs.datastore.preferences)
+    implementation(libs.koin)
+    implementation(libs.koin.compose)
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
