@@ -63,6 +63,9 @@ dependencies {
     implementation(libs.ktor.client.logging)
     implementation(libs.ktor.client.logging.jvm)
 
+    // Aaccompanist
+    implementation(libs.accompanist.systemuicontroller)
+
     implementation(libs.navigation)
     implementation(libs.serialization.json)
     implementation(libs.shimmer.compose)
