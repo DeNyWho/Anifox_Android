@@ -71,8 +71,7 @@ fun Navigation(window: Window) {
                 navigationBarColor = Color.Transparent,
                 statusBarColor = Color.Transparent,
                 drawOverStatusBar = true,
-                window = window,
-                portrait = true
+                window = window
             )
             DetailScreen(
                 navController = navController,

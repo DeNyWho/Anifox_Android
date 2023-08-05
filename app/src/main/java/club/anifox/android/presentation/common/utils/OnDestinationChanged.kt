@@ -12,6 +12,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowCompat
+import club.anifox.android.domain.enums.ScreenOrientation
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -24,8 +25,7 @@ fun OnDestinationChanged(
     drawOverStatusBar: Boolean = false,
     window: Window,
     hideSystemBar: Boolean = false,
-    landscape: Boolean = false,
-    portrait: Boolean = false
+    screenOrientation: ScreenOrientation? = null,
 ) {
     val context = LocalContext.current
     val activity = context as Activity
@@ -52,10 +52,18 @@ fun OnDestinationChanged(
                 )
             }
         }
-        if(landscape)
-            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        if(portrait)
-            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+
+        when(screenOrientation) {
+            ScreenOrientation.Portrait -> {
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            }
+            ScreenOrientation.LandScape -> {
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            }
+            else -> {
+
+            }
+        }
 
     }
 }

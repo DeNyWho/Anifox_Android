@@ -1,4 +1,4 @@
-package club.anifox.android.domain.model.common
+package club.anifox.android.domain.enums
 
 enum class ScreenOrientation {
     Portrait,

@@ -1,4 +1,4 @@
-package club.anifox.android
+package club.anifox.android.presentation.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
