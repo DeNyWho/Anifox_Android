@@ -15,7 +15,7 @@ import io.ktor.http.HttpStatusCode
 suspend inline fun <reified T : Any, reified U : Any> safeApiCall(
     client: HttpClient,
     request: HttpRequestBuilder
-): Resource {
+): Resource<T> {
     return try {
         val response: HttpResponse = client.request(request)
 
@@ -44,6 +44,7 @@ suspend inline fun <reified T : Any, reified U : Any> safeApiCall(
                 Resource.Error(ApiError(response.status.value, response.bodyAsText()))
             }
         }
+
     } catch (e: Exception) {
         when (e) {
             is ClientRequestException -> {
