@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">Anifox_Android</string>
+
+    // Authorization
     <string name="sign_in">Вход</string>
+    <string name="sign_in_button_auth">Войти</string>
+    <string name="sign_up_button_auth">Зарегистрироваться</string>
+    <string name="sign_in_start">С возвращением!</string>
+    <string name="sign_up_start">Зарегистрируйтесь сейчас и узнайте, что мы приготовили для вас!</string>
+    <string name="chose_or_sing_in">или</string>
+    <string name="have_not_account">У вас нет аккаунта?</string>
+    <string name="have_account">У вас есть аккаунт?</string>
+    <string name="sign_up_navigate">Зарегистрироваться</string>
+    <string name="hintPassword">Введите пароль</string>
+    <string name="hintLogin">Введите логин</string>
+    <string name="hintEmail">Введите почту</string>
+    <string name="hintLoginOrEmail">Введите логин или почту</string>
     <string name="sign_up">Регистрация</string>
+    <string name="shikimori_auth">Продолжить с Shikimori</string>
+    <string name="skip_auth">Пропустить</string>
 </resources>

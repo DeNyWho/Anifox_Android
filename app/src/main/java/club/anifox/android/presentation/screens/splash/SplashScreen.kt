@@ -15,11 +15,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import club.anifox.android.R
+import club.anifox.android.navigation.Screens
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
     SplashUI()
+    navController.navigate(Screens.SignIn.route)
 }
 
 
