@@ -18,4 +18,9 @@
     <string name="sign_up">Регистрация</string>
     <string name="shikimori_auth">Продолжить с Shikimori</string>
     <string name="skip_auth">Пропустить</string>
+
+    <string name="in_plan_screen_profile">Здесь будет профиль</string>
+    <string name="in_plan_screen_home">Здесь будет главная</string>
+    <string name="in_plan_screen_browse">Здесь будет поиск</string>
+    <string name="in_plan_screen_favourite">Здесь будет избранное</string>
 </resources>

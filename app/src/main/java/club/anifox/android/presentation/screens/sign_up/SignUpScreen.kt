@@ -40,10 +40,36 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import club.anifox.android.R
+import club.anifox.android.navigation.Screens
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun SignUpScreen(navController: NavHostController) {
+fun SignUpScreen(
+    navController: NavHostController,
+    viewModel: SignUpViewModel = getViewModel()
+) {
+    Content(
+        onEmailChanged = { newEmail ->
+            viewModel.onEmailChanged(newEmail)
+        },
+        onLoginChanged = { newLogin ->
+            viewModel.onLoginChanged(newLogin)
+        },
+        onPasswordChanged = { newPassword ->
+            viewModel.onPasswordChanged(newPassword)
+        },
+        onPasswordConfirmChanged = { newPassword ->
+            viewModel.onPasswordConfirmChanged(newPassword)
+        },
+        emailState = viewModel.email.value,
+        loginState = viewModel.login.value,
+        passwordState = viewModel.password.value,
+        passwordConfirmState = viewModel.confirmPassword.value,
+        navigateToSignIn = {
+            navController.navigate(Screens.SignIn.route)
+        },
+    )
 
 }
 
@@ -57,7 +83,7 @@ private fun Content(
     emailState: String,
     passwordState: String,
     passwordConfirmState: String,
-    navigateToSignIn: () -> Unit,
+    navigateToSignIn: () -> Unit
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
     var passwordConfirmVisible by remember { mutableStateOf(false) }
@@ -235,7 +261,7 @@ private fun LightPreview() {
             loginState = "",
             passwordState = "",
             passwordConfirmState = "",
-            navigateToSignIn = {},
+            navigateToSignIn = {}
         )
     }
 }
@@ -253,7 +279,7 @@ private fun DarkPreview() {
             loginState = "",
             passwordState = "",
             passwordConfirmState = "",
-            navigateToSignIn = {},
+            navigateToSignIn = {}
         )
     }
 }

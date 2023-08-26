@@ -1,4 +1,4 @@
-package club.anifox.android.presentation.screens.home
+package club.anifox.android.presentation.screens.favourite
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,10 +17,10 @@ import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun HomeScreen(
+fun FavouriteScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    viewModel: HomeViewModel = getViewModel()
+    viewModel: FavouriteViewModel = getViewModel()
 ) {
     Content(modifier)
 }
@@ -35,7 +35,7 @@ private fun Content(modifier: Modifier) {
     ) {
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            text = stringResource(R.string.in_plan_screen_home),
+            text = stringResource(R.string.in_plan_screen_favourite),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onBackground
         )

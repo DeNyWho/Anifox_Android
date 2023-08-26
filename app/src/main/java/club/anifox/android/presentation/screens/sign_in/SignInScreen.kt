@@ -66,6 +66,9 @@ fun SignInScreen(
         navigateToSignUp = {
             navController.navigate(Screens.SignUp.route)
         },
+        navigateToHome = {
+            navController.navigate(Screens.Home.route)
+        },
     )
 }
 
@@ -77,6 +80,7 @@ private fun Content(
     onPasswordChanged: (String) -> Unit,
     passwordState: String,
     navigateToSignUp: () -> Unit,
+    navigateToHome: () -> Unit
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
 
@@ -218,6 +222,7 @@ private fun Content(
                 }
                 Button(
                     onClick = {
+                        navigateToHome.invoke()
                     },
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.textButtonColors(
@@ -283,6 +288,7 @@ private fun LightPreview() {
             onPasswordChanged = {},
             passwordState = "",
             navigateToSignUp = {},
+            navigateToHome = {},
         )
     }
 }
@@ -297,6 +303,7 @@ private fun DarkPreview() {
             onPasswordChanged = {},
             passwordState = "",
             navigateToSignUp = {},
+            navigateToHome = {},
         )
     }
 }
