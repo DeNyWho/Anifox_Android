@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Anifox_Android</string>
+    <string name="app_name">Anifox</string>
 
     // Authorization
     <string name="sign_in">Вход</string>
@@ -19,8 +19,13 @@
     <string name="shikimori_auth">Продолжить с Shikimori</string>
     <string name="skip_auth">Пропустить</string>
 
+    <string name="search_placeholder">Попробуйте "One Piece"</string>
     <string name="in_plan_screen_profile">Здесь будет профиль</string>
     <string name="in_plan_screen_home">Здесь будет главная</string>
     <string name="in_plan_screen_browse">Здесь будет поиск</string>
     <string name="in_plan_screen_favourite">Здесь будет избранное</string>
+
+    // Statuses
+    <string name="status_ongoing">Онгоинг</string>
+    <string name="status_release">Выпущены</string>
 </resources>

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -17,14 +18,16 @@ import androidx.navigation.NavHostController
 import club.anifox.android.R
 import club.anifox.android.navigation.Screens
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
+import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
     SplashUI()
-    navController.navigate(Screens.SignIn.route)
+    LaunchedEffect(Unit) {
+        delay(2000)
+        navController.navigate(Screens.SignIn.route)
+    }
 }
-
-
 
 @Composable
 fun SplashUI(){
@@ -40,6 +43,7 @@ fun SplashUI(){
         )
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 private fun LightPreview() {

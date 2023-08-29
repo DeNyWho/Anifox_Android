@@ -12,7 +12,7 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
 
 
-suspend inline fun <reified T : Any, reified U : Any> safeApiCall(
+suspend inline fun <reified T : Any> safeApiCall(
     client: HttpClient,
     request: HttpRequestBuilder
 ): Resource<T> {

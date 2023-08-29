@@ -3,7 +3,6 @@ package club.anifox.android.domain.model.common
 sealed class Resource<out T> {
     object Loading : Resource<Nothing>()
 
-
     data class Success<out T>(val data: T) : Resource<T>()
 
     data class Error(
@@ -13,6 +12,6 @@ sealed class Resource<out T> {
 }
 
 data class ApiError(
-    val statusCode: Int,
-    val message: String
+    val statusCode: Int = 200,
+    val message: String = ""
 )

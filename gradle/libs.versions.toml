@@ -17,6 +17,7 @@ navigation = "2.7.1"
 serialization-json = "1.5.1"
 ktor-client = "2.3.3"
 accompanist-systemuicontroller = "0.30.1"
+slf4j-simple = "2.0.7"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -52,8 +53,7 @@ ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serializati
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor-client" }
 ktor-client-apache = { group = "io.ktor", name = "ktor-client-apache5", version.ref = "ktor-client" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist-systemuicontroller"}
-
-
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j-simple"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

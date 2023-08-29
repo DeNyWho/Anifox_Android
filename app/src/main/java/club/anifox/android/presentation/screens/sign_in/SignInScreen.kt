@@ -105,7 +105,7 @@ private fun Content(
                 OutlinedTextField(
                     value = loginState,
                     onValueChange = { newLogin -> onLoginChanged(newLogin)},
-                    shape = RoundedCornerShape(10.dp),
+                    shape = MaterialTheme.shapes.small,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.CenterHorizontally)
@@ -118,7 +118,7 @@ private fun Content(
                 OutlinedTextField(
                     value = passwordState,
                     onValueChange = { newPassword -> onPasswordChanged(newPassword)},
-                    shape = RoundedCornerShape(10.dp),
+                    shape = MaterialTheme.shapes.small,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.CenterHorizontally)
@@ -144,7 +144,7 @@ private fun Content(
                 Button(
                     onClick = {
                     },
-                    shape = RoundedCornerShape(10.dp),
+                    shape = MaterialTheme.shapes.small,
                     colors = ButtonDefaults.textButtonColors(
                         containerColor = MaterialTheme.colorScheme.primary,
                         contentColor = MaterialTheme.colorScheme.onBackground
@@ -199,7 +199,7 @@ private fun Content(
                 Button(
                     onClick = {
                     },
-                    shape = RoundedCornerShape(10.dp),
+                    shape = MaterialTheme.shapes.small,
                     colors = ButtonDefaults.textButtonColors(
                         containerColor = Color.Transparent,
                         contentColor = MaterialTheme.colorScheme.onBackground
@@ -224,7 +224,7 @@ private fun Content(
                     onClick = {
                         navigateToHome.invoke()
                     },
-                    shape = RoundedCornerShape(10.dp),
+                    shape = MaterialTheme.shapes.small,
                     colors = ButtonDefaults.textButtonColors(
                         containerColor = Color.Transparent,
                         contentColor = MaterialTheme.colorScheme.onBackground

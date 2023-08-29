@@ -17,7 +17,7 @@ internal val viewModelModule = module {
     viewModel { SignUpViewModel() }
     viewModel { HomeViewModel() }
     viewModel { DetailViewModel() }
-    viewModel { BrowseViewModel() }
+    viewModel { BrowseViewModel(get()) }
     viewModel { FavouriteViewModel() }
     viewModel { ProfileViewModel() }
 }

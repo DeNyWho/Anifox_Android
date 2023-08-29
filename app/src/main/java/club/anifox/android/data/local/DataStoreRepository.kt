@@ -6,8 +6,8 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import club.anifox.android.common.Constants.ACCESS_TOKEN_KEY
-import club.anifox.android.common.Constants.REFRESH_TOKEN_KEY
+import club.anifox.android.core.DataStoreConstants.ACCESS_TOKEN_KEY
+import club.anifox.android.core.DataStoreConstants.REFRESH_TOKEN_KEY
 import club.anifox.android.data.repository.IDataStoreRepository
 import kotlinx.coroutines.flow.first
 

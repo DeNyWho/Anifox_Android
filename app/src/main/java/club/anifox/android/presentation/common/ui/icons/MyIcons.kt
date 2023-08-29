@@ -9,6 +9,10 @@ object MyIcons {
         val play = R.drawable.play
         val shikimori = R.drawable.shikimori
         val profile = R.drawable.browse
+        val popular = R.drawable.popular
+        val calendar = R.drawable.calendar
+        val random = R.drawable.random
+        val filter = R.drawable.filter
     }
 
     object TwoTone {
