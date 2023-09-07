@@ -26,7 +26,7 @@ fun HorizontalContentHeader(
 ) {
     Row(
         modifier = modifier
-            .heightIn(min = 32.dp),
+            .heightIn(min = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {

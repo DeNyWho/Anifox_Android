@@ -1,8 +1,8 @@
 package club.anifox.android.data.remote
 
 import club.anifox.android.core.Endpoints
-import club.anifox.android.domain.model.anime.ContentLight
 import club.anifox.android.domain.model.common.Resource
+import club.anifox.android.domain.model.dto.anime.AnimeLightDto
 import club.anifox.android.domain.model.response.ServiceResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
@@ -28,7 +28,7 @@ class AnimeService(
         minimalAge: String?,
         type: String?,
         year: Int?
-    ): Resource<ServiceResponse<ContentLight>> {
+    ): Resource<ServiceResponse<AnimeLightDto>> {
         val request = HttpRequestBuilder().apply {
             method = HttpMethod.Get
             url {
@@ -49,7 +49,7 @@ class AnimeService(
             }
         }
 
-        return safeApiCall<ServiceResponse<ContentLight>>(client, request)
+        return safeApiCall<ServiceResponse<AnimeLightDto>>(client, request)
     }
 
 }

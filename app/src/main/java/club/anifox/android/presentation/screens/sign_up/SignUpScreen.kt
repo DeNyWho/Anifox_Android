@@ -2,6 +2,7 @@ package club.anifox.android.presentation.screens.sign_up
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,8 +31,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -73,6 +77,7 @@ fun SignUpScreen(
 
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun Content(
     onEmailChanged: (String) -> Unit,
@@ -87,8 +92,19 @@ private fun Content(
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
     var passwordConfirmVisible by remember { mutableStateOf(false) }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
+    val interactionSource = remember { MutableInteractionSource() }
 
-    Box {
+    Box(
+        modifier = Modifier.clickable(
+            interactionSource = interactionSource,
+            indication = null    // this gets rid of the ripple effect
+        ) {
+            keyboardController?.hide()
+            focusManager.clearFocus(true)
+        }
+    ) {
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.background)

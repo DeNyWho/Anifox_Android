@@ -25,12 +25,12 @@ import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
 @Composable
 fun SearchBoxField(
     modifier: Modifier = Modifier,
-    isEnabled: Boolean = true,
+    isEnabled: Boolean = false,
     searchQuery: String = "",
     placeHolder: String = "",
     focusRequest: FocusRequester = FocusRequester(),
     onSearchQueryChanged: (String) -> Unit = { },
-    onSearchQueryCleared: () -> Unit = { }
+    onSearchQueryCleared: () -> Unit = { },
 ) {
     TextField(
         modifier = modifier
@@ -41,6 +41,7 @@ fun SearchBoxField(
                 shape = MaterialTheme.shapes.small,
             )
             .focusRequester(focusRequest),
+        enabled = isEnabled,
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,

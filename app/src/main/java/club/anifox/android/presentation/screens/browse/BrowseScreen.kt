@@ -33,8 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import club.anifox.android.R
 import club.anifox.android.domain.enums.BrowseStateGrid
-import club.anifox.android.domain.model.anime.ContentLight
+import club.anifox.android.domain.model.anime.AnimeLight
 import club.anifox.android.domain.state.StateListWrapper
+import club.anifox.android.navigation.Screens
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
 import club.anifox.android.presentation.components.fields.SearchBoxField
 import club.anifox.android.presentation.components.horizontalContent.HorizontalContentHeaderConfig
@@ -55,7 +56,10 @@ fun BrowseScreen(
 
     Content(
         modifier = modifier,
-        onGoingAnimeState = viewModel.onGoingAnime.value
+        onGoingAnimeState = viewModel.onGoingAnime.value,
+        onSearchClick = {
+            navController.navigate(Screens.Search.route)
+        }
     )
 }
 
@@ -67,7 +71,8 @@ private object ContentScreenSections {
 private fun Content(
     modifier: Modifier,
     lazyColumnState: LazyListState = rememberLazyListState(),
-    onGoingAnimeState: StateListWrapper<ContentLight>
+    onGoingAnimeState: StateListWrapper<AnimeLight>,
+    onSearchClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -80,20 +85,27 @@ private fun Content(
                 .padding(top = 20.dp)
                 .fillMaxWidth()
         ) {
-            SearchBoxField()
+            SearchBoxField(
+                modifier = Modifier
+                    .clickable(
+                        onClick = { onSearchClick.invoke() }
+                    ),
+                isEnabled = false,
+                onSearchEvent = onSearchEvent,
+                navigateBack = navigateBack
+            )
         }
 
         LazyVerticalGrid(
             modifier = Modifier.padding(top = 16.dp),
             columns = GridCells.Fixed(2),
             userScrollEnabled = false,
-            verticalArrangement = Arrangement.Center,
-            horizontalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(BrowseStateGrid.values()) { state ->
                 Card(
                     modifier = Modifier
-                        .padding(4.dp)
                         .fillMaxWidth()
                         .clickable {
                             state.onClick
@@ -149,7 +161,6 @@ private fun Content(
                     onItemClick = {}
                 )
             }
-
         }
 
     }
@@ -161,7 +172,8 @@ private fun LightPreview() {
     Anifox_AndroidTheme(useDarkTheme = false) {
         Content(
             modifier = Modifier,
-            onGoingAnimeState = StateListWrapper()
+            onGoingAnimeState = StateListWrapper(),
+            onSearchClick = {}
         )
     }
 }
@@ -172,7 +184,8 @@ private fun DarkPreview() {
     Anifox_AndroidTheme(useDarkTheme = true) {
         Content(
             modifier = Modifier,
-            onGoingAnimeState = StateListWrapper()
+            onGoingAnimeState = StateListWrapper(),
+            onSearchClick = {}
         )
     }
 }

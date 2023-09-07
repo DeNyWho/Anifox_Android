@@ -3,6 +3,7 @@ package club.anifox.android.presentation.screens.sign_in
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
@@ -32,10 +34,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -73,6 +79,7 @@ fun SignInScreen(
 }
 
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun Content(
     onLoginChanged: (String) -> Unit,
@@ -83,8 +90,19 @@ private fun Content(
     navigateToHome: () -> Unit
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
+    val interactionSource = remember { MutableInteractionSource() }
 
-    Box {
+    Box(
+        modifier = Modifier.clickable(
+            interactionSource = interactionSource,
+            indication = null    // this gets rid of the ripple effect
+        ) {
+            keyboardController?.hide()
+            focusManager.clearFocus(true)
+        }
+    ) {
         Column (
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.background)
@@ -112,7 +130,15 @@ private fun Content(
                         .height(60.dp),
                     singleLine = true,
                     label = { Text(stringResource(R.string.hintLoginOrEmail), style = MaterialTheme.typography.titleMedium) },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Done,
+                        keyboardType = KeyboardType.Text
+                    ),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            keyboardController?.hide()
+                        }
+                    )
                 )
 
                 OutlinedTextField(

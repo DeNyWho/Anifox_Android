@@ -5,6 +5,7 @@ import club.anifox.android.presentation.screens.detail.DetailViewModel
 import club.anifox.android.presentation.screens.favourite.FavouriteViewModel
 import club.anifox.android.presentation.screens.home.HomeViewModel
 import club.anifox.android.presentation.screens.profile.ProfileViewModel
+import club.anifox.android.presentation.screens.search.SearchViewModel
 import club.anifox.android.presentation.screens.sign_in.SignInViewModel
 import club.anifox.android.presentation.screens.sign_up.SignUpViewModel
 import club.anifox.android.presentation.screens.splash.SplashViewModel
@@ -17,6 +18,7 @@ internal val viewModelModule = module {
     viewModel { SignUpViewModel() }
     viewModel { HomeViewModel() }
     viewModel { DetailViewModel() }
+    viewModel { SearchViewModel(get()) }
     viewModel { BrowseViewModel(get()) }
     viewModel { FavouriteViewModel() }
     viewModel { ProfileViewModel() }

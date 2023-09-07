@@ -1,6 +1,7 @@
 package club.anifox.android.di
 
 import android.content.Context
+import club.anifox.android.preferences.PreferencesDataStore
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache5.Apache5
 import io.ktor.client.plugins.HttpTimeout
@@ -26,8 +27,8 @@ import javax.net.ssl.TrustManagerFactory
 fun commonModule(enableNetworkLogging: Boolean, applicationContext: Context) = module {
     single { createJson() }
     single { createHttpClient(get(), enableNetworkLogging, applicationContext) }
-
     single { CoroutineScope(Dispatchers.Default + SupervisorJob() ) }
+    single { PreferencesDataStore(applicationContext) }
 }
 
 fun createJson() = Json {

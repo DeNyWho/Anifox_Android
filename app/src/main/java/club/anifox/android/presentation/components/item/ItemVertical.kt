@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import club.anifox.android.R
-import club.anifox.android.domain.model.anime.ContentLight
+import club.anifox.android.domain.model.anime.AnimeLight
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
 import club.anifox.android.presentation.components.indicator.CenterCircularProgressIndicator
 import coil.ImageLoader
@@ -37,7 +37,7 @@ import coil.size.Scale
 fun ItemVertical(
     modifier: Modifier = Modifier,
     thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault,
-    data: ContentLight = ContentLight(),
+    data: AnimeLight = AnimeLight(),
     textAlign: TextAlign = TextAlign.Start,
     onClick: (String) -> Unit = {},
     preview: Boolean = false
@@ -65,7 +65,7 @@ fun ItemVertical(
             }
         } else {
             val request = ImageRequest.Builder(LocalContext.current)
-                .data(data.image.medium)
+                .data(data.image)
                 .scale(Scale.FILL)
                 .build()
 

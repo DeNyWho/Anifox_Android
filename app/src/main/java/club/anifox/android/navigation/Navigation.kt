@@ -14,6 +14,7 @@ import androidx.navigation.navArgument
 import club.anifox.android.domain.enums.BottomNavTabs
 import club.anifox.android.presentation.common.utils.OnDestinationChanged
 import club.anifox.android.presentation.screens.detail.DetailScreen
+import club.anifox.android.presentation.screens.search.SearchScreen
 import club.anifox.android.presentation.screens.sign_in.SignInScreen
 import club.anifox.android.presentation.screens.sign_up.SignUpScreen
 import club.anifox.android.presentation.screens.splash.SplashScreen
@@ -61,6 +62,18 @@ fun Navigation(window: Window) {
             )
 
             SignUpScreen(navController = navController)
+        }
+
+        composable(Screens.Search.route) {
+            OnDestinationChanged(
+                systemUiController = systemUiController,
+                navigationBarColor = MaterialTheme.colorScheme.background,
+                statusBarColor = MaterialTheme.colorScheme.background,
+                drawOverStatusBar = false,
+                window = window
+            )
+
+            SearchScreen(navController = navController)
         }
 
         composable(

@@ -1,4 +1,4 @@
-package club.anifox.android.data.repository
+package club.anifox.android.domain.repository
 
 interface IDataStoreRepository {
     suspend fun getToken(): String?

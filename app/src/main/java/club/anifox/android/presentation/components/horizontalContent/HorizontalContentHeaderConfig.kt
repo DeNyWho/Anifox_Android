@@ -8,7 +8,6 @@ import androidx.compose.ui.unit.dp
 object HorizontalContentHeaderConfig {
     val Default = Modifier
         .fillMaxWidth()
-        .padding(start = 16.dp, end = 12.dp, bottom = 4.dp)
     val NullableStart = Modifier
         .fillMaxWidth()
         .padding(start = 0.dp, end = 12.dp, bottom = 4.dp)

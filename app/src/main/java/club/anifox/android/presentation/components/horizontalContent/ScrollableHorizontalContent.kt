@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
-import club.anifox.android.domain.model.anime.ContentLight
+import club.anifox.android.domain.model.anime.AnimeLight
 import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.presentation.components.item.ItemVertical
 import club.anifox.android.presentation.components.item.ItemVerticalModifier
@@ -28,7 +28,7 @@ fun ScrollableHorizontalContent(
     shimmer: Shimmer = rememberShimmer(ShimmerBounds.Custom),
     thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault,
     headerTitle: String,
-    contentState: StateListWrapper<ContentLight>,
+    contentState: StateListWrapper<AnimeLight>,
     contentPadding: PaddingValues,
     contentArrangement: Arrangement.Horizontal,
     textAlign: TextAlign = TextAlign.Start,

@@ -4,17 +4,17 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ContentLight(
+data class AnimeLight(
     @SerialName("url")
     val url: String = "",
     @SerialName("title")
     val title: String = "",
     @SerialName("image")
-    val image: AnimeImage = AnimeImage()
+    val image: String = ""
 )
 
-fun ContentLight.toContentLight(): ContentLight {
-    return ContentLight(
+fun AnimeLight.toAnimeLight(): AnimeLight {
+    return AnimeLight(
         url = url,
         title = title,
         image = image
