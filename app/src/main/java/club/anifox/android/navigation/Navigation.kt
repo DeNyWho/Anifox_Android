@@ -6,11 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import club.anifox.android.domain.enums.BottomNavTabs
 import club.anifox.android.presentation.common.utils.OnDestinationChanged
 import club.anifox.android.presentation.screens.detail.DetailScreen
@@ -26,7 +24,7 @@ fun Navigation(window: Window) {
     val systemUiController = rememberSystemUiController()
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screens.Splash.route) {
+    NavHost(navController = navController, startDestination = Screens.Browse.route) {
 
         composable(Screens.Splash.route) {
             OnDestinationChanged(
@@ -77,8 +75,7 @@ fun Navigation(window: Window) {
         }
 
         composable(
-            "${Screens.Detail.route}/{id}",
-            arguments = detailsScreenArgs
+            "${Screens.Detail.route}/{url}"
         ) { backStack ->
             OnDestinationChanged(
                 systemUiController = systemUiController,
@@ -88,10 +85,8 @@ fun Navigation(window: Window) {
                 window = window
             )
             DetailScreen(
-                navController = navController,
-                navArgs = NavArgs.DetailsNavArgs(
-                    url = backStack.arguments?.getString("url")!!
-                )
+                url = backStack.arguments?.getString("url")!!,
+                navigateBack = { navController.popBackStack() }
             )
         }
 
@@ -148,10 +143,3 @@ fun Navigation(window: Window) {
 
 
 }
-
-private val detailsScreenArgs = listOf(
-    navArgument(name = "url") {
-        type = NavType.StringType
-        nullable = false
-    }
-)

@@ -1,11 +1,15 @@
 package club.anifox.android.di
 
-import club.anifox.android.domain.usecase.anime.GetAnimeUseCase
+import club.anifox.android.domain.usecase.anime.GetAnimeDetailsUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimePagingUseCase
+import club.anifox.android.domain.usecase.anime.GetAnimeScreenShots
+import club.anifox.android.domain.usecase.anime.GetAnimeUseCase
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 internal val useCaseModule = module {
     singleOf(::GetAnimeUseCase)
     singleOf(::GetAnimePagingUseCase)
+    singleOf(::GetAnimeDetailsUseCase)
+    singleOf(::GetAnimeScreenShots)
 }

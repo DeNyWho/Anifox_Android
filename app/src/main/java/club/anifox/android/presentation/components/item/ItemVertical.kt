@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import club.anifox.android.R
-import club.anifox.android.domain.model.anime.AnimeLight
+import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
 import club.anifox.android.presentation.components.indicator.CenterCircularProgressIndicator
 import coil.ImageLoader
@@ -46,7 +46,9 @@ fun ItemVertical(
         modifier = modifier
             .height(thumbnailHeight + 50.dp)
             .clip(MaterialTheme.shapes.small)
-            .clickable { }
+            .clickable {
+                onClick.invoke(data.url)
+            }
     ) {
         if(LocalInspectionMode.current) {
             Card (

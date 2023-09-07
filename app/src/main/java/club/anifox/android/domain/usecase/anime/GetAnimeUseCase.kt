@@ -2,7 +2,7 @@ package club.anifox.android.domain.usecase.anime
 
 import club.anifox.android.data.local.mappers.toAnimeLight
 import club.anifox.android.data.remote.AnimeService
-import club.anifox.android.domain.model.anime.AnimeLight
+import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.state.StateListWrapper
 import kotlinx.coroutines.Dispatchers

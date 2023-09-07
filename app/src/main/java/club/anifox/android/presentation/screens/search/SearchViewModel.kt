@@ -8,7 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import club.anifox.android.data.local.mappers.toAnimeLight
-import club.anifox.android.domain.model.anime.AnimeLight
+import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.usecase.anime.GetAnimePagingUseCase
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow

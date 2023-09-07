@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "club.anifox.android"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -43,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -77,6 +77,8 @@ dependencies {
 
     implementation(libs.paging)
 
+    implementation(libs.toolbar.compose)
+
     implementation(libs.navigation)
     implementation(libs.serialization.json)
     implementation(libs.shimmer.compose)
@@ -84,7 +86,6 @@ dependencies {
     implementation(libs.coroutines)
     implementation(libs.datastore)
     implementation(libs.datastore.preferences)
-    implementation(libs.koin)
     implementation(libs.koin.compose)
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

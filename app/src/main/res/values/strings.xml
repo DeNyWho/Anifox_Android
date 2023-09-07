@@ -19,6 +19,11 @@
     <string name="shikimori_auth">Продолжить с Shikimori</string>
     <string name="skip_auth">Пропустить</string>
 
+    // Detail
+    <string name="watch_button_title">Смотреть</string>
+    <string name="information_title">Информация</string>
+    <string name="description_title">Описание</string>
+
     <string name="search_placeholder">Попробуйте "One Piece"</string>
     <string name="in_plan_screen_profile">Здесь будет профиль</string>
     <string name="in_plan_screen_home">Здесь будет главная</string>

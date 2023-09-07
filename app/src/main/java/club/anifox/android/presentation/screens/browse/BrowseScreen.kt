@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import club.anifox.android.R
 import club.anifox.android.domain.enums.BrowseStateGrid
-import club.anifox.android.domain.model.anime.AnimeLight
+import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.navigation.Screens
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
@@ -59,6 +59,9 @@ fun BrowseScreen(
         onGoingAnimeState = viewModel.onGoingAnime.value,
         onSearchClick = {
             navController.navigate(Screens.Search.route)
+        },
+        onItemClick = { url ->
+            navController.navigate("${Screens.Detail.route}/$url")
         }
     )
 }
@@ -72,7 +75,8 @@ private fun Content(
     modifier: Modifier,
     lazyColumnState: LazyListState = rememberLazyListState(),
     onGoingAnimeState: StateListWrapper<AnimeLight>,
-    onSearchClick: () -> Unit
+    onSearchClick: () -> Unit,
+    onItemClick: (String) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -91,8 +95,6 @@ private fun Content(
                         onClick = { onSearchClick.invoke() }
                     ),
                 isEnabled = false,
-                onSearchEvent = onSearchEvent,
-                navigateBack = navigateBack
             )
         }
 
@@ -158,7 +160,9 @@ private fun Content(
                     headerModifier = HorizontalContentHeaderConfig.NullableStart,
                     onIconClick = {
                     },
-                    onItemClick = {}
+                    onItemClick = { url ->
+                        onItemClick.invoke(url)
+                    }
                 )
             }
         }
@@ -173,7 +177,9 @@ private fun LightPreview() {
         Content(
             modifier = Modifier,
             onGoingAnimeState = StateListWrapper(),
-            onSearchClick = {}
+            onSearchClick = {},
+            onItemClick = { url ->
+            }
         )
     }
 }
@@ -185,7 +191,9 @@ private fun DarkPreview() {
         Content(
             modifier = Modifier,
             onGoingAnimeState = StateListWrapper(),
-            onSearchClick = {}
+            onSearchClick = {},
+            onItemClick = { url ->
+            }
         )
     }
 }

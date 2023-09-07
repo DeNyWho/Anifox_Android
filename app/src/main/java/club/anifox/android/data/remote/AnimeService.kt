@@ -2,7 +2,8 @@ package club.anifox.android.data.remote
 
 import club.anifox.android.core.Endpoints
 import club.anifox.android.domain.model.common.Resource
-import club.anifox.android.domain.model.dto.anime.AnimeLightDto
+import club.anifox.android.domain.model.dto.anime.detail.AnimeDetailDto
+import club.anifox.android.domain.model.dto.anime.light.AnimeLightDto
 import club.anifox.android.domain.model.response.ServiceResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
@@ -50,6 +51,32 @@ class AnimeService(
         }
 
         return safeApiCall<ServiceResponse<AnimeLightDto>>(client, request)
+    }
+
+    suspend fun getAnimeScreenshots(url: String): Resource<String> {
+        val request = HttpRequestBuilder().apply {
+            method = HttpMethod.Get
+            url {
+                protocol = URLProtocol.HTTPS
+                host = Endpoints.domain
+                encodedPath = "${Endpoints.api}${Endpoints.anime}${url}${Endpoints.screenShots}"
+            }
+        }
+
+        return safeApiCall<String>(client, request)
+    }
+
+    suspend fun getAnimeDetails(url: String): Resource<AnimeDetailDto> {
+        val request = HttpRequestBuilder().apply {
+            method = HttpMethod.Get
+            url {
+                protocol = URLProtocol.HTTPS
+                host = Endpoints.domain
+                encodedPath = "${Endpoints.api}${Endpoints.anime}${url}"
+            }
+        }
+
+        return safeApiCall<AnimeDetailDto>(client, request)
     }
 
 }

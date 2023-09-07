@@ -4,7 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import club.anifox.android.domain.model.anime.AnimeLight
+import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.domain.usecase.anime.GetAnimeUseCase
 import kotlinx.coroutines.flow.launchIn

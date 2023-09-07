@@ -8,5 +8,5 @@ data class AnimeStudio(
     @SerialName("id")
     val id: String,
     @SerialName("studio")
-    val studio: String,
+    val studio: String
 )

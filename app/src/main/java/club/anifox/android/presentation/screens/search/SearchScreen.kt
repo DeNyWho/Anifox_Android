@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import club.anifox.android.domain.model.anime.AnimeLight
+import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.presentation.components.fields.SearchBoxField
 import club.anifox.android.presentation.components.grid.ScrollableGridContent
 import club.anifox.android.presentation.components.shimmer.rememberShimmerCustomBounds

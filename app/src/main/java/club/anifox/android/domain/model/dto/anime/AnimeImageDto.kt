@@ -1,10 +1,10 @@
-package club.anifox.android.domain.model.anime
+package club.anifox.android.domain.model.dto.anime
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AnimeImage(
+data class AnimeImageDto(
     @SerialName("large")
     val large: String = "",
     @SerialName("medium")

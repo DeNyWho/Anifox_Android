@@ -1,8 +1,8 @@
 package club.anifox.android.data.local.mappers
 
 import club.anifox.android.data.local.cache.entity.content.AnimeLightEntity
-import club.anifox.android.domain.model.anime.AnimeLight
-import club.anifox.android.domain.model.dto.anime.AnimeLightDto
+import club.anifox.android.domain.model.anime.light.AnimeLight
+import club.anifox.android.domain.model.dto.anime.light.AnimeLightDto
 import java.util.UUID
 
 
