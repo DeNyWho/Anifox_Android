@@ -1,25 +1,29 @@
 package club.anifox.android.domain.usecase.anime
 
 import club.anifox.android.data.remote.AnimeService
+import club.anifox.android.domain.model.anime.related.AnimeRelated
 import club.anifox.android.domain.model.common.Resource
+import club.anifox.android.domain.model.dto.anime.related.toAnimeRelated
 import club.anifox.android.domain.state.StateListWrapper
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
-
-class GetAnimeScreenShots(private val animeService: AnimeService) {
-
-    operator fun invoke(url: String): Flow<StateListWrapper<String>> {
+class GetAnimeRelatedUseCase(private val service: AnimeService){
+    operator fun invoke(
+        url: String
+    ): Flow<StateListWrapper<AnimeRelated>> {
         return flow {
             emit(StateListWrapper.loading())
 
-            val state = when(val result = animeService.getAnimeScreenshots(url)) {
+            val state = when (val animeResult = service.getAnimeRelated(url)) {
                 is Resource.Success -> {
-                    val data = result.data
+                    val data = animeResult.data.data?.map { it.toAnimeRelated() }
                     StateListWrapper(data)
                 }
                 is Resource.Error -> {
-                    StateListWrapper(error = result.error)
+                    StateListWrapper(error = animeResult.error)
                 }
                 is Resource.Loading -> {
                     StateListWrapper.loading()
@@ -27,6 +31,7 @@ class GetAnimeScreenShots(private val animeService: AnimeService) {
             }
 
             emit(state)
-        }
+
+        }.flowOn(Dispatchers.IO)
     }
 }

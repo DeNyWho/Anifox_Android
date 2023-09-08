@@ -34,7 +34,7 @@ fun ScrollableHorizontalContent(
     textAlign: TextAlign = TextAlign.Start,
     onIconClick: () -> Unit,
     onItemClick: (String) -> Unit,
-    limit: Int = 11
+    limit: Int = 11,
 ) {
     if (contentState.isLoading) {
         ItemVerticalHeaderShimmer(modifier = headerModifier, shimmerInstance = shimmer)

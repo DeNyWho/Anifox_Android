@@ -5,4 +5,6 @@ object Endpoints {
     const val api = "/api"
     const val anime = "/anime/"
     const val screenShots = "/screenshots"
+    const val related = "/related"
+    const val similar = "/similar"
 }

@@ -4,6 +4,7 @@ import club.anifox.android.core.Endpoints
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.model.dto.anime.detail.AnimeDetailDto
 import club.anifox.android.domain.model.dto.anime.light.AnimeLightDto
+import club.anifox.android.domain.model.dto.anime.related.AnimeRelatedDto
 import club.anifox.android.domain.model.response.ServiceResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
@@ -53,7 +54,7 @@ class AnimeService(
         return safeApiCall<ServiceResponse<AnimeLightDto>>(client, request)
     }
 
-    suspend fun getAnimeScreenshots(url: String): Resource<String> {
+    suspend fun getAnimeScreenshots(url: String): Resource<List<String>> {
         val request = HttpRequestBuilder().apply {
             method = HttpMethod.Get
             url {
@@ -63,7 +64,33 @@ class AnimeService(
             }
         }
 
-        return safeApiCall<String>(client, request)
+        return safeApiCall<List<String>>(client, request)
+    }
+
+    suspend fun getAnimeRelated(url: String): Resource<ServiceResponse<AnimeRelatedDto>> {
+        val request = HttpRequestBuilder().apply {
+            method = HttpMethod.Get
+            url {
+                protocol = URLProtocol.HTTPS
+                host = Endpoints.domain
+                encodedPath = "${Endpoints.api}${Endpoints.anime}${url}${Endpoints.related}"
+            }
+        }
+
+        return safeApiCall<ServiceResponse<AnimeRelatedDto>>(client, request)
+    }
+
+    suspend fun getAnimeSimilar(url: String): Resource<ServiceResponse<AnimeLightDto>> {
+        val request = HttpRequestBuilder().apply {
+            method = HttpMethod.Get
+            url {
+                protocol = URLProtocol.HTTPS
+                host = Endpoints.domain
+                encodedPath = "${Endpoints.api}${Endpoints.anime}${url}${Endpoints.similar}"
+            }
+        }
+
+        return safeApiCall<ServiceResponse<AnimeLightDto>>(client, request)
     }
 
     suspend fun getAnimeDetails(url: String): Resource<AnimeDetailDto> {

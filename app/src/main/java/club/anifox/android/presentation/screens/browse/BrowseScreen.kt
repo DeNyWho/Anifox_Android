@@ -152,12 +152,12 @@ private fun Content(
             item(ContentScreenSections.ContentOngoing) {
                 ScrollableHorizontalContent(
                     modifier = Modifier,
+                    headerModifier = HorizontalContentHeaderConfig.NullableStart,
                     shimmer = rememberShimmerCustomBounds(),
                     headerTitle = stringResource(R.string.status_ongoing),
                     contentState = onGoingAnimeState,
                     contentPadding = PaddingValues(horizontal = 0.dp),
                     contentArrangement = ItemVerticalModifier.HorizontalArrangement.Default,
-                    headerModifier = HorizontalContentHeaderConfig.NullableStart,
                     onIconClick = {
                     },
                     onItemClick = { url ->

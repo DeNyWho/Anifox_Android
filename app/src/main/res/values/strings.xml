@@ -23,6 +23,8 @@
     <string name="watch_button_title">Смотреть</string>
     <string name="information_title">Информация</string>
     <string name="description_title">Описание</string>
+    <string name="related_section">Связанное</string>
+    <string name="similar_section">Похожие</string>
 
     <string name="search_placeholder">Попробуйте "One Piece"</string>
     <string name="in_plan_screen_profile">Здесь будет профиль</string>

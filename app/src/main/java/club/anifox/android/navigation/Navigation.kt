@@ -86,7 +86,10 @@ fun Navigation(window: Window) {
             )
             DetailScreen(
                 url = backStack.arguments?.getString("url")!!,
-                navigateBack = { navController.popBackStack() }
+                navigateBack = { navController.popBackStack() },
+                onItemClick = { url ->
+                    navController.navigate("${Screens.Detail.route}/$url")
+                }
             )
         }
 
