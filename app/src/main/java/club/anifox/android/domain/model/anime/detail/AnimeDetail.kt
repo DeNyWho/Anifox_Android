@@ -1,32 +1,44 @@
-@file:UseSerializers(LocalDateSerializer::class)
+@file:UseSerializers(LocalDateSerializer::class, LocalDateTimeSerializer::class)
 package club.anifox.android.domain.model.anime.detail
 
+import club.anifox.android.domain.model.anime.enums.AnimeSeason
+import club.anifox.android.domain.model.anime.enums.AnimeStatus
+import club.anifox.android.domain.model.anime.enums.AnimeType
 import club.anifox.android.domain.model.anime.AnimeGenres
 import club.anifox.android.domain.model.anime.AnimeStudio
+import club.anifox.android.domain.model.anime.AnimeTranslation
 import club.anifox.android.serialization.LocalDateSerializer
+import club.anifox.android.serialization.LocalDateTimeSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @Serializable
 data class AnimeDetail(
-    val url: String = "",
     val title: String = "",
     val largeImage: String = "",
     val posterImage: String = "",
-    val studio: List<AnimeStudio> = listOf(),
-    val season: String = "",
-    val description: String = "",
-    val otherTitles: List<String> = listOf(),
-    val rating: Double = 0.0,
+    val url: String = "",
+    val type: AnimeType = AnimeType.Tv,
+    val ratingMpa: String? = null,
+    val minimalAge: Int? = null,
+    val rating: Double? = null,
+    val shikimoriRating: Double = 0.0,
     val year: Int = 0,
-    val releasedAt: LocalDate = LocalDate.now(),
-    val airedAt: LocalDate = LocalDate.now(),
-    val type: String = "",
-    val episodesCount: Int = 0,
-    val episodesCountAired: Int = 0,
+    val status: AnimeStatus = AnimeStatus.Ongoing,
+    val season: AnimeSeason = AnimeSeason.Summer,
+    val episodes: Int = 0,
+    val episodesAired: Int = 0,
+    val nextEpisode: LocalDateTime? = null,
+    val releasedOn: LocalDate = LocalDate.now(),
+    val airedOn: LocalDate = LocalDate.now(),
+    val description: String = "",
+    val titleOther: List<String>? = null,
+    val titleEnglish: List<String>? = null,
+    val titleJapan: List<String>? = null,
+    val synonyms: List<String>? = null,
+    val studio: List<AnimeStudio> = listOf(),
     val genres: List<AnimeGenres> = listOf(),
-    val status: String = "",
-    val ratingMpa: String = "",
-    val minimalAge: Int = 0,
+    val translations: List<AnimeTranslation> = listOf(),
 )

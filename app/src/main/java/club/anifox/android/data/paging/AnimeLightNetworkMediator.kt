@@ -10,7 +10,7 @@ import club.anifox.android.data.local.cache.entity.content.AnimeLightRemoteKeyEn
 import club.anifox.android.data.local.database.AniFoxDataBase
 import club.anifox.android.data.local.mappers.toAnimeLight
 import club.anifox.android.data.local.mappers.toAnimeLightEntity
-import club.anifox.android.data.remote.AnimeService
+import club.anifox.android.data.remote.anime.AnimeService
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.state.StateListWrapper
 
@@ -79,7 +79,7 @@ class AnimeLightNetworkMediator (
 
             val animeResult = when (animeResponse) {
                 is Resource.Success -> {
-                    val data = animeResponse.data.data?.map { it.toAnimeLight() }
+                    val data = animeResponse.data.map { it.toAnimeLight() }
                     StateListWrapper(data)
                 }
 

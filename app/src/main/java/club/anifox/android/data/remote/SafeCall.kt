@@ -1,16 +1,17 @@
 package club.anifox.android.data.remote
 
+import club.anifox.android.core.Endpoints
 import club.anifox.android.domain.model.common.ApiError
 import club.anifox.android.domain.model.common.Resource
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.cookies.cookies
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.request
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
-
 
 suspend inline fun <reified T : Any> safeApiCall(
     client: HttpClient,
@@ -18,10 +19,11 @@ suspend inline fun <reified T : Any> safeApiCall(
 ): Resource<T> {
     return try {
         val response: HttpResponse = client.request(request)
+        val cookies = client.cookies(Endpoints.domain)
 
         when (response.status) {
-            HttpStatusCode.Created, HttpStatusCode.OK -> {
-                Resource.Success(data = response.body<T>())
+            HttpStatusCode.OK, HttpStatusCode.Created -> {
+                Resource.Success(data = response.body<T>(), cookies = cookies)
             }
 
             HttpStatusCode.Unauthorized -> {
@@ -33,12 +35,14 @@ suspend inline fun <reified T : Any> safeApiCall(
                 )
             }
 
-            HttpStatusCode.NotFound -> Resource.Error(
-                ApiError(
-                    HttpStatusCode.NotFound.value,
-                    HttpStatusCode.NotFound.description
+            HttpStatusCode.NotFound ->  {
+                Resource.Error(
+                    ApiError(
+                        HttpStatusCode.NotFound.value,
+                        HttpStatusCode.NotFound.description
+                    )
                 )
-            )
+            }
 
             else -> {
                 Resource.Error(ApiError(response.status.value, response.bodyAsText()))

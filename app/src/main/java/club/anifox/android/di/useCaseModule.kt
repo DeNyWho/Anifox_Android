@@ -3,7 +3,8 @@ package club.anifox.android.di
 import club.anifox.android.domain.usecase.anime.GetAnimeDetailsUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimePagingUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimeRelatedUseCase
-import club.anifox.android.domain.usecase.anime.GetAnimeScreenShots
+import club.anifox.android.domain.usecase.anime.GetAnimeUsersStatusUseCase
+import club.anifox.android.domain.usecase.anime.GetAnimeScreenShotsUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimeSimilarUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimeUseCase
 import org.koin.core.module.dsl.singleOf
@@ -15,6 +16,7 @@ internal val useCaseModule = module {
     singleOf(::GetAnimeDetailsUseCase)
     singleOf(::GetAnimeSimilarUseCase)
     singleOf(::GetAnimeRelatedUseCase)
-    singleOf(::GetAnimeScreenShots)
-    singleOf(::GetAnimeScreenShots)
+    singleOf(::GetAnimeUsersStatusUseCase)
+    singleOf(::GetAnimeScreenShotsUseCase)
+    singleOf(::GetAnimeScreenShotsUseCase)
 }

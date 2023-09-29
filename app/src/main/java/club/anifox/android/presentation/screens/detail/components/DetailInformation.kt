@@ -22,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import club.anifox.android.domain.model.anime.AnimeStudio
 import club.anifox.android.domain.model.anime.detail.AnimeDetail
+import club.anifox.android.domain.model.anime.enums.AnimeStatus
+import club.anifox.android.domain.model.anime.enums.AnimeType
 import club.anifox.android.presentation.common.ui.theme.Anifox_AndroidTheme
 import club.anifox.android.presentation.util.formatDateWithMonth
 
@@ -40,16 +42,14 @@ fun DetailInformation(data: AnimeDetail) {
                 imageVector = Icons.Default.Info,
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(end = 8.dp)
+                    .padding(end = 4.dp)
                     .size(24.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )
             Text(
-                text = when(data.type) {
-                    "tv" -> "ТВ сериал"
-                    else -> data.type },
+                text = data.type.getDisplayName(),
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleSmall
             )
         }
 
@@ -60,14 +60,14 @@ fun DetailInformation(data: AnimeDetail) {
                 imageVector = Icons.Default.Movie,
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(end = 8.dp)
+                    .padding(end = 4.dp)
                     .size(24.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )
             Text(
-                text = "${data.episodesCountAired}/${data.episodesCount}",
+                text = "${data.episodesAired}/${data.episodes}",
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleSmall
             )
         }
 
@@ -78,14 +78,14 @@ fun DetailInformation(data: AnimeDetail) {
                 imageVector = Icons.Default.Block,
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(end = 8.dp)
+                    .padding(end = 4.dp)
                     .size(24.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )
             Text(
                 text = "${data.minimalAge}+",
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleSmall
             )
         }
 
@@ -96,19 +96,19 @@ fun DetailInformation(data: AnimeDetail) {
                 imageVector = Icons.Default.CalendarToday,
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(end = 8.dp)
+                    .padding(end = 4.dp)
                     .size(24.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )
             Text(
                 text = buildString {
-                    append("с ${formatDateWithMonth(data.airedAt)}")
-                    if (data.status != "ongoing") {
-                        append(" по ${formatDateWithMonth(data.releasedAt)}")
+                    append("с ${formatDateWithMonth(data.airedOn)}")
+                    if (data.status != AnimeStatus.Ongoing) {
+                        append(" по ${formatDateWithMonth(data.releasedOn)}")
                     }
                 },
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleSmall
             )
         }
 
@@ -119,14 +119,14 @@ fun DetailInformation(data: AnimeDetail) {
                 imageVector = Icons.Outlined.Edit,
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(end = 8.dp)
+                    .padding(end = 4.dp)
                     .size(24.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )
             Text(
                 text = data.studio.joinToString(separator = ", ") { it.studio },
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleSmall
             )
         }
     }
@@ -138,11 +138,11 @@ private fun LightPreview() {
     Anifox_AndroidTheme(useDarkTheme = false) {
         DetailInformation(
             AnimeDetail(
-                episodesCount = 12,
-                episodesCountAired = 12,
+                episodes = 12,
+                episodesAired = 12,
                 minimalAge = 18,
-                status = "released",
-                type = "tv",
+                status = AnimeStatus.Ongoing,
+                type = AnimeType.Movie,
                 studio = listOf(
                     AnimeStudio(
                         id = "1",
@@ -164,11 +164,11 @@ private fun DarkPreview() {
     Anifox_AndroidTheme(useDarkTheme = true) {
         DetailInformation(
             AnimeDetail(
-                episodesCount = 12,
-                episodesCountAired = 12,
+                episodes = 12,
+                episodesAired = 12,
                 minimalAge = 18,
-                status = "released",
-                type = "tv",
+                status = AnimeStatus.Released,
+                type = AnimeType.Tv,
                 studio = listOf(
                     AnimeStudio(
                         id = "1",

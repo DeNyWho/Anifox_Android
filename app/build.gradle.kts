@@ -78,7 +78,7 @@ dependencies {
     implementation(libs.paging)
 
     implementation(libs.toolbar.compose)
-
+    implementation(libs.charty)
     implementation(libs.navigation)
     implementation(libs.serialization.json)
     implementation(libs.shimmer.compose)

@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.0-beta02"
+agp = "8.2.0-beta03"
 kotlin = "1.9.0"
 core-ktx = "1.12.0"
 junit = "4.13.2"
@@ -22,6 +22,7 @@ paging = "3.2.1"
 room = "2.5.2"
 ksp = "1.9.0-1.0.13"
 toolbar-compose = "2.2.0"
+charty = "2.0.0-alpha01"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -62,6 +63,7 @@ room = { group = "androidx.room", name = "room-ktx", version.ref = "room"}
 room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room"}
 room-complier = { group = "androidx.room", name = "room-compiler", version.ref = "room"}
 toolbar-compose = { group = "me.onebone", name = "toolbar-compose", version.ref = "toolbar-compose"}
+charty = { group = "com.himanshoe", name = "charty", version.ref = "charty"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

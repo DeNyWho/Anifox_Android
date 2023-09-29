@@ -1,23 +1,23 @@
-package club.anifox.android.domain.usecase.anime
+package club.anifox.android.domain.usecase.auth
 
-import club.anifox.android.data.remote.anime.AnimeService
-import club.anifox.android.domain.model.anime.detail.AnimeDetail
+import club.anifox.android.data.remote.auth.AuthService
 import club.anifox.android.domain.model.common.Resource
-import club.anifox.android.domain.model.dto.anime.detail.toAnimeDetail
 import club.anifox.android.domain.state.StateWrapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetAnimeDetailsUseCase(private val animeService: AnimeService) {
 
-    operator fun invoke(url: String): Flow<StateWrapper<AnimeDetail>> {
+class AuthenticationUseCase(private val authService: AuthService) {
+
+    operator fun invoke(userIdentifier: String, password: String): Flow<StateWrapper<String>> {
         return flow {
             emit(StateWrapper.loading())
 
-            val state = when(val result = animeService.getAnimeDetails(url)) {
+            val state = when(val result = authService.authentication(userIdentifier, password)) {
                 is Resource.Success -> {
-                    val data = result.data.toAnimeDetail()
-                    StateWrapper(data)
+                    val cookie = result.cookies
+                    println(cookie)
+                    StateWrapper("")
                 }
                 is Resource.Error -> {
                     StateWrapper(error = result.error)

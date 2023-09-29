@@ -23,8 +23,17 @@
     <string name="watch_button_title">Смотреть</string>
     <string name="information_title">Информация</string>
     <string name="description_title">Описание</string>
+    <string name="chart_users_status">У других в избранном</string>
     <string name="related_section">Связанное</string>
     <string name="similar_section">Похожие</string>
+
+
+    //User statuses
+    <string name="status_watching">Смотрю</string>
+    <string name="status_in_plan">Запланировано</string>
+    <string name="status_watched">Просмотрено</string>
+    <string name="status_postponed">Отложено</string>
+    <string name="status_zero">Нет в списках</string>
 
     <string name="search_placeholder">Попробуйте "One Piece"</string>
     <string name="in_plan_screen_profile">Здесь будет профиль</string>
@@ -32,7 +41,23 @@
     <string name="in_plan_screen_browse">Здесь будет поиск</string>
     <string name="in_plan_screen_favourite">Здесь будет избранное</string>
 
-    // Statuses
-    <string name="status_ongoing">Онгоинг</string>
-    <string name="status_release">Выпущены</string>
+
+    // enum type
+    <string name="type_movie">фильм</string>
+    <string name="type_ona">она</string>
+    <string name="type_ova">ова</string>
+    <string name="type_music">музыкальный</string>
+    <string name="type_special">специальный</string>
+    <string name="type_tv">тв сериал</string>
+
+    // enum status
+    <string name="status_ongoing">онгоинг</string>
+    <string name="status_release">выпущен</string>
+
+    // enum season
+    <string name="season_winter">зима</string>
+    <string name="season_spring">весна</string>
+    <string name="season_summer">лето</string>
+    <string name="season_fall">осень</string>
+
 </resources>

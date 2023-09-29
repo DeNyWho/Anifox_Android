@@ -7,6 +7,7 @@ import io.ktor.client.engine.apache5.Apache5
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.cache.HttpCache
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.cookies.HttpCookies
 import io.ktor.client.plugins.logging.ANDROID
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
@@ -70,6 +71,7 @@ fun createHttpClient(json: Json, enableNetworkLogging: Boolean, applicationConte
     install(ContentNegotiation) {
         json(json)
     }
+    install(HttpCookies)
     install(HttpCache)
     if(enableNetworkLogging) {
         install(Logging) {

@@ -1,9 +1,11 @@
 package club.anifox.android.domain.model.common
 
-sealed class Resource<out T> {
-    object Loading : Resource<Nothing>()
+import io.ktor.http.Cookie
 
-    data class Success<out T>(val data: T) : Resource<T>()
+sealed class Resource<out T> {
+    data object Loading : Resource<Nothing>()
+
+    data class Success<out T>(val data: T, val cookies: List<Cookie>? = null) : Resource<T>()
 
     data class Error(
         val error: ApiError

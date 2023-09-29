@@ -57,7 +57,8 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
     toolbarScaffoldState: CollapsingToolbarScaffoldState = rememberCollapsingToolbarScaffoldState(),
     navigateBack: () -> Boolean
 ) {
-    val isTitleVisible = toolbarScaffoldState.toolbarState.progress <= 0.4
+    val isTitleVisible = toolbarScaffoldState.toolbarState.progress <= 0.2
+    println("ZZ = ${toolbarScaffoldState.toolbarState.progress}")
     val blockerColorGradients = listOf(
         darkGrey.copy(alpha = 0.8F),
         darkGrey.copy(alpha = 0.9F),

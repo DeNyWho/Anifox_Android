@@ -1,13 +1,13 @@
 package club.anifox.android.domain.usecase.anime
 
-import club.anifox.android.data.remote.AnimeService
+import club.anifox.android.data.remote.anime.AnimeService
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.state.StateListWrapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 
-class GetAnimeScreenShots(private val animeService: AnimeService) {
+class GetAnimeScreenShotsUseCase(private val animeService: AnimeService) {
 
     operator fun invoke(url: String): Flow<StateListWrapper<String>> {
         return flow {

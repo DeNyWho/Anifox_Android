@@ -27,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import club.anifox.android.R
+import club.anifox.android.domain.model.anime.AnimeUsersStatus
 import club.anifox.android.domain.model.anime.detail.AnimeDetail
 import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.model.anime.related.AnimeRelated
@@ -37,6 +38,7 @@ import club.anifox.android.presentation.components.horizontalContent.ScrollableH
 import club.anifox.android.presentation.components.item.ItemVerticalModifier
 import club.anifox.android.presentation.components.shimmer.rememberShimmerCustomBounds
 import club.anifox.android.presentation.screens.detail.components.ContentDetailsScreenToolbar
+import club.anifox.android.presentation.screens.detail.components.DetailChart
 import club.anifox.android.presentation.screens.detail.components.DetailDescription
 import club.anifox.android.presentation.screens.detail.components.DetailInformation
 import kotlinx.coroutines.async
@@ -48,6 +50,7 @@ import org.koin.androidx.compose.getViewModel
 private object ContentDetailsScreenSection {
     const val ContentData = "content_data"
     const val ContentDescription = "content_description"
+    const val ContentChart = "content_chart"
     const val ContentGenre = "content_genre_chips"
     const val ContentScreenshots = "content_screenshots"
     const val ContentMedia = "content_media"
@@ -68,14 +71,14 @@ fun DetailScreen(
         val screenshotsDeferred = async { viewModel.getScreenShots(url) }
         val relatedDeferred = async { viewModel.getRelated(url) }
         val similarDeferred = async { viewModel.getSimilar(url) }
+        val usersStatusDeferred = async { viewModel.getUsersStatus(url) }
 
         val detailResult = detailDeferred.await()
         val screenshotsResult = screenshotsDeferred.await()
         val relatedResult = relatedDeferred.await()
         val similarResult = similarDeferred.await()
+        val usersStatus = usersStatusDeferred.await()
 
-        // Здесь вы можете обработать результаты запросов
-        // Например, передать их во ViewModel или выполнить другие действия.
     }
 
     val toolbarScaffoldState = rememberCollapsingToolbarScaffoldState()
@@ -99,6 +102,7 @@ fun DetailScreen(
             screenshotsState = viewModel.screenShots.value,
             similarState = viewModel.similar.value,
             relatedState = viewModel.related.value,
+            usersStatusState = viewModel.usersStatus.value,
             onItemClick = onItemClick,
         )
     }
@@ -110,6 +114,7 @@ private fun Content(
     screenshotsState: StateListWrapper<String>,
     similarState: StateListWrapper<AnimeLight>,
     relatedState: StateListWrapper<AnimeRelated>,
+    usersStatusState: StateWrapper<AnimeUsersStatus>,
     onItemClick: (String) -> Unit
 ) {
     if(detailState.isLoading || detailState.data == null) {
@@ -173,6 +178,9 @@ private fun Content(
                     isExpanded = isDescriptionExpanded,
                     onExpandedChanged = { isDescriptionExpanded = it }
                 )
+            }
+            item(key = ContentDetailsScreenSection.ContentChart) {
+                DetailChart(data = usersStatusState)
             }
             item(key = ContentDetailsScreenSection.ContentRelated) {
                 ScrollableHorizontalContent(

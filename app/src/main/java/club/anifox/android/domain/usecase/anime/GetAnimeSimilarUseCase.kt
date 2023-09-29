@@ -1,7 +1,7 @@
 package club.anifox.android.domain.usecase.anime
 
 import club.anifox.android.data.local.mappers.toAnimeLight
-import club.anifox.android.data.remote.AnimeService
+import club.anifox.android.data.remote.anime.AnimeService
 import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.state.StateListWrapper
@@ -19,7 +19,7 @@ class GetAnimeSimilarUseCase(private val service: AnimeService){
 
             val state = when (val animeResult = service.getAnimeSimilar(url)) {
                 is Resource.Success -> {
-                    val data = animeResult.data.data?.map { it.toAnimeLight() }
+                    val data = animeResult.data.map { it.toAnimeLight() }
                     StateListWrapper(data)
                 }
                 is Resource.Error -> {

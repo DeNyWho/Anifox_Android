@@ -1,25 +1,25 @@
 package club.anifox.android.domain.usecase.anime
 
 import club.anifox.android.data.remote.anime.AnimeService
-import club.anifox.android.domain.model.anime.related.AnimeRelated
+import club.anifox.android.domain.model.anime.media.AnimeMedia
 import club.anifox.android.domain.model.common.Resource
-import club.anifox.android.domain.model.dto.anime.related.toAnimeRelated
+import club.anifox.android.domain.model.dto.anime.media.toAnimeMedia
 import club.anifox.android.domain.state.StateListWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class GetAnimeRelatedUseCase(private val service: AnimeService){
+class GetAnimeMediaUseCase(private val service: AnimeService){
     operator fun invoke(
         url: String
-    ): Flow<StateListWrapper<AnimeRelated>> {
+    ): Flow<StateListWrapper<AnimeMedia>> {
         return flow {
             emit(StateListWrapper.loading())
 
-            val state = when (val animeResult = service.getAnimeRelated(url)) {
+            val state = when (val animeResult = service.getAnimeMedia(url)) {
                 is Resource.Success -> {
-                    val data = animeResult.data.map { it.toAnimeRelated() }
+                    val data = animeResult.data.map { it.toAnimeMedia() }
                     StateListWrapper(data)
                 }
                 is Resource.Error -> {

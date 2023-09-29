@@ -7,7 +7,7 @@ import androidx.paging.PagingData
 import club.anifox.android.data.local.cache.entity.content.AnimeLightEntity
 import club.anifox.android.data.local.database.AniFoxDataBase
 import club.anifox.android.data.paging.AnimeLightNetworkMediator
-import club.anifox.android.data.remote.AnimeService
+import club.anifox.android.data.remote.anime.AnimeService
 import club.anifox.android.domain.model.common.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
