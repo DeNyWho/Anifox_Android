@@ -21,6 +21,6 @@ fun AnimeUsersStatusDto.toAnimeUsersStatus(): AnimeUsersStatus {
         watching = watching ?: 0,
         inPlan = inPlan ?: 0,
         watched = watched ?: 0,
-        postponed = postponed ?: 0
+        postponed = postponed ?: 0,
     )
 }

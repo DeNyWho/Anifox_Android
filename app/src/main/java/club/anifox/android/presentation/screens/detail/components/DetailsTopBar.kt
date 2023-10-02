@@ -46,26 +46,26 @@ import coil.ImageLoader
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import coil.size.Scale
+import kotlin.math.roundToInt
 import me.onebone.toolbar.CollapsingToolbarScaffoldState
 import me.onebone.toolbar.CollapsingToolbarScope
 import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
-import kotlin.math.roundToInt
 
 @Composable
 fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
     contentDetailState: StateWrapper<AnimeDetail>,
     toolbarScaffoldState: CollapsingToolbarScaffoldState = rememberCollapsingToolbarScaffoldState(),
-    navigateBack: () -> Boolean
+    navigateBack: () -> Boolean,
 ) {
     val isTitleVisible = toolbarScaffoldState.toolbarState.progress <= 0.2
     println("ZZ = ${toolbarScaffoldState.toolbarState.progress}")
     val blockerColorGradients = listOf(
         darkGrey.copy(alpha = 0.8F),
         darkGrey.copy(alpha = 0.9F),
-        darkGrey
+        darkGrey,
     )
 
-    if(!contentDetailState.isLoading && contentDetailState.data != null) {
+    if (!contentDetailState.isLoading && contentDetailState.data != null) {
         val data = contentDetailState.data
         Box(
             modifier = Modifier
@@ -74,7 +74,7 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
                 .parallax(0.5f)
                 .graphicsLayer {
                     alpha = toolbarScaffoldState.toolbarState.progress
-                }
+                },
         ) {
             Box {
                 SubcomposeAsyncImage(
@@ -88,20 +88,20 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
                     loading = {
                         CenterCircularProgressIndicator(
                             strokeWidth = 2.dp,
-                            size = 20.dp
+                            size = 20.dp,
                         )
                     },
                     imageLoader = ImageLoader.Builder(LocalContext.current).build(),
                     onError = {
                         println(it.result.throwable.message)
-                    }
+                    },
                 )
-                Box (
+                Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(
-                            brush = Brush.verticalGradient(colors = blockerColorGradients)
-                        )
+                            brush = Brush.verticalGradient(colors = blockerColorGradients),
+                        ),
                 )
             }
             Card(
@@ -110,7 +110,7 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
                 elevation = CardDefaults.elevatedCardElevation(
                     defaultElevation = 2.dp,
                 ),
-                shape = MaterialTheme.shapes.small
+                shape = MaterialTheme.shapes.small,
             ) {
                 SubcomposeAsyncImage(
                     modifier = Modifier
@@ -126,13 +126,13 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
                     loading = {
                         CenterCircularProgressIndicator(
                             strokeWidth = 2.dp,
-                            size = 20.dp
+                            size = 20.dp,
                         )
                     },
                     imageLoader = ImageLoader.Builder(LocalContext.current).build(),
                     onError = {
                         println(it.result.throwable.message)
-                    }
+                    },
                 )
             }
         }
@@ -140,12 +140,13 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
             modifier = Modifier
                 .fillMaxWidth()
                 .statusBarsPadding(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             IconButton(onClick = { navigateBack.invoke() }) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Back", tint = MaterialTheme.colorScheme.onBackground
+                    contentDescription = "Back",
+                    tint = MaterialTheme.colorScheme.onBackground,
                 )
             }
 
@@ -164,17 +165,17 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
                     animationSpec = tween(
                         durationMillis = 800,
                         delayMillis = 50,
-                        easing = FastOutSlowInEasing
-                    )
-                ) ,
+                        easing = FastOutSlowInEasing,
+                    ),
+                ),
                 exit = slideOutVertically(
                     targetOffsetY = { targetOffset },
                     animationSpec = tween(
                         durationMillis = 800,
                         delayMillis = 50,
-                        easing = LinearOutSlowInEasing
-                    )
-                ) + fadeOut()
+                        easing = LinearOutSlowInEasing,
+                    ),
+                ) + fadeOut(),
             ) {
                 Text(
                     text = data.title ?: "-",
@@ -183,16 +184,15 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
                     style = TextStyle(
                         color = MaterialTheme.colorScheme.onBackground,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
                     ),
                     modifier = Modifier
                         .weight(1f)
-                        .padding(start = 8.dp, end = 12.dp)
+                        .padding(start = 8.dp, end = 12.dp),
                 )
             }
         }
-    }
-    else {
+    } else {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -200,10 +200,8 @@ fun CollapsingToolbarScope.ContentDetailsScreenToolbar(
                 .parallax(0.5f)
                 .graphicsLayer {
                     alpha = toolbarScaffoldState.toolbarState.progress
-                }
+                },
         ) {
-
         }
     }
-
 }

@@ -5,7 +5,6 @@ import androidx.room.Query
 import androidx.room.Upsert
 import club.anifox.android.data.local.cache.entity.content.SearchHistoryEntity
 
-
 @Dao
 interface SearchHistoryDao {
 

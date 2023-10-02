@@ -17,10 +17,10 @@ fun rememberShimmerCustomBounds(): Shimmer {
 
 @Stable
 fun Modifier.onUpdateShimmerBounds(
-    shimmerInstance: Shimmer
+    shimmerInstance: Shimmer,
 ) = this.then(
     onGloballyPositioned { value: LayoutCoordinates ->
         val position = value.unclippedBoundsInWindow()
         shimmerInstance.updateBounds(position)
-    }
+    },
 )

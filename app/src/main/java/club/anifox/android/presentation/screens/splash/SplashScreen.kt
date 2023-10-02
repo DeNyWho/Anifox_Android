@@ -30,16 +30,16 @@ fun SplashScreen(navController: NavHostController) {
 }
 
 @Composable
-fun SplashUI(){
+fun SplashUI() {
     Box(
         modifier = Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().height(
-            (LocalConfiguration.current.screenHeightDp * 0.2f).dp
+            (LocalConfiguration.current.screenHeightDp * 0.2f).dp,
         ),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Image(
-            painter = painterResource(id = R.drawable.anifox_logo___text ),
-            contentDescription = "stringResource(R.string.logo)"
+            painter = painterResource(id = R.drawable.anifox_logo___text),
+            contentDescription = "stringResource(R.string.logo)",
         )
     }
 }

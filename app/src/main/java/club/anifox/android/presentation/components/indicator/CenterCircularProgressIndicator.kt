@@ -19,18 +19,18 @@ fun CenterCircularProgressIndicator(
     modifier: Modifier = Modifier,
     size: Dp = 20.dp,
     color: Color = MaterialTheme.colorScheme.primary,
-    strokeWidth: Dp = ProgressIndicatorDefaults.CircularStrokeWidth
+    strokeWidth: Dp = ProgressIndicatorDefaults.CircularStrokeWidth,
 ) {
     Row(
         modifier = modifier.fillMaxSize(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
     ) {
         CircularProgressIndicator(
             modifier = Modifier
                 .size(size),
             color = color,
-            strokeWidth = strokeWidth
+            strokeWidth = strokeWidth,
         )
     }
 }

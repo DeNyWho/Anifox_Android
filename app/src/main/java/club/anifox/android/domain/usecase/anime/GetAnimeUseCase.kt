@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class GetAnimeUseCase(private val service: AnimeService){
+class GetAnimeUseCase(private val service: AnimeService) {
     operator fun invoke(
         season: String? = null,
         ratingMpa: String? = null,
@@ -22,7 +22,7 @@ class GetAnimeUseCase(private val service: AnimeService){
         status: String? = null,
         genres: List<String>? = null,
         searchQuery: String? = null,
-        year: Int? = null
+        year: Int? = null,
     ): Flow<StateListWrapper<AnimeLight>> {
         return flow {
             emit(StateListWrapper.loading())
@@ -38,7 +38,7 @@ class GetAnimeUseCase(private val service: AnimeService){
                 ratingMpa = ratingMpa,
                 season = season,
                 type = type,
-                year = year
+                year = year,
             )
 
             val state = when (animeResult) {
@@ -55,7 +55,6 @@ class GetAnimeUseCase(private val service: AnimeService){
             }
 
             emit(state)
-
         }.flowOn(Dispatchers.IO)
     }
 }

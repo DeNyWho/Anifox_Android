@@ -8,5 +8,5 @@ data class RelatedInfoDto(
     @SerialName("type")
     val type: String,
     @SerialName("typeEn")
-    val typeEn: String
+    val typeEn: String,
 )

@@ -14,7 +14,7 @@ class GetAnimeDetailsUseCase(private val animeService: AnimeService) {
         return flow {
             emit(StateWrapper.loading())
 
-            val state = when(val result = animeService.getAnimeDetails(url)) {
+            val state = when (val result = animeService.getAnimeDetails(url)) {
                 is Resource.Success -> {
                     val data = result.data.toAnimeDetail()
                     StateWrapper(data)

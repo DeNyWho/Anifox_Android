@@ -1,9 +1,12 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.ktlint)
 }
 
 android {
@@ -28,7 +31,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -51,6 +54,18 @@ android {
             excludes += "META-INF/DEPENDENCIES"
             excludes += "META-INF/INDEX.LIST"
         }
+    }
+}
+
+tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
+ktlint {
+    android = true
+    ignoreFailures = false
+
+    reporters {
+        reporter(ReporterType.PLAIN)
+        reporter(ReporterType.CHECKSTYLE)
     }
 }
 

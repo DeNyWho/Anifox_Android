@@ -11,10 +11,12 @@
     <string name="have_not_account">У вас нет аккаунта?</string>
     <string name="have_account">У вас есть аккаунт?</string>
     <string name="sign_up_navigate">Зарегистрироваться</string>
-    <string name="hintPassword">Введите пароль</string>
-    <string name="hintLogin">Введите логин</string>
-    <string name="hintEmail">Введите почту</string>
-    <string name="hintLoginOrEmail">Введите логин или почту</string>
+    <string name="hint_password">Введите пароль</string>
+    <string name="hint_password_confirm">Введите пароль</string>
+    <string name="hint_login">Введите логин</string>
+    <string name="hint_nickname">Введите отображаемое имя</string>
+    <string name="hint_email">Введите почту</string>
+    <string name="hint_login_or_email">Введите логин или почту</string>
     <string name="sign_up">Регистрация</string>
     <string name="shikimori_auth">Продолжить с Shikimori</string>
     <string name="skip_auth">Пропустить</string>

@@ -40,7 +40,7 @@ fun ItemVertical(
     data: AnimeLight = AnimeLight(),
     textAlign: TextAlign = TextAlign.Start,
     onClick: (String) -> Unit = {},
-    preview: Boolean = false
+    preview: Boolean = false,
 ) {
     Column(
         modifier = modifier
@@ -48,21 +48,21 @@ fun ItemVertical(
             .clip(MaterialTheme.shapes.small)
             .clickable {
                 onClick.invoke(data.url)
-            }
+            },
     ) {
-        if(LocalInspectionMode.current) {
-            Card (
+        if (LocalInspectionMode.current) {
+            Card(
                 shape = MaterialTheme.shapes.small,
                 elevation = CardDefaults.elevatedCardElevation(
-                    defaultElevation = 12.dp
-                )
+                    defaultElevation = 12.dp,
+                ),
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(thumbnailHeight)
                         .clip(MaterialTheme.shapes.small)
-                        .background(MaterialTheme.colorScheme.onBackground)
+                        .background(MaterialTheme.colorScheme.onBackground),
                 )
             }
         } else {
@@ -75,9 +75,9 @@ fun ItemVertical(
                 elevation = CardDefaults.elevatedCardElevation(
                     defaultElevation = 2.dp,
                 ),
-                shape = MaterialTheme.shapes.small
+                shape = MaterialTheme.shapes.small,
             ) {
-                if(!preview) {
+                if (!preview) {
                     SubcomposeAsyncImage(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -89,13 +89,13 @@ fun ItemVertical(
                         loading = {
                             CenterCircularProgressIndicator(
                                 strokeWidth = 2.dp,
-                                size = 20.dp
+                                size = 20.dp,
                             )
                         },
                         imageLoader = ImageLoader.Builder(LocalContext.current).build(),
                         onError = {
                             println(it.result.throwable.message)
-                        }
+                        },
                     )
                 } else {
                     Image(
@@ -105,7 +105,7 @@ fun ItemVertical(
                             .clip(MaterialTheme.shapes.small),
                         painter = painterResource(R.drawable.anime_test),
                         contentDescription = "Test Image",
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
                     )
                 }
             }
@@ -120,9 +120,7 @@ fun ItemVertical(
             color = MaterialTheme.colorScheme.onBackground,
             textAlign = textAlign,
         )
-
     }
-    
 }
 
 @Preview(showBackground = true)

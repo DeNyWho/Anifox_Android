@@ -5,7 +5,7 @@ import club.anifox.android.data.local.cache.entity.content.AnimeLightEntity
 import club.anifox.android.data.repository.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
 
-class GetAnimePagingUseCase(private val remoteDataSource: RemoteDataSource){
+class GetAnimePagingUseCase(private val remoteDataSource: RemoteDataSource) {
     operator fun invoke(
         season: String? = null,
         ratingMpa: String? = null,
@@ -15,7 +15,7 @@ class GetAnimePagingUseCase(private val remoteDataSource: RemoteDataSource){
         status: String? = null,
         genres: List<String>? = null,
         searchQuery: String? = null,
-        year: Int? = null
+        year: Int? = null,
     ): Flow<PagingData<AnimeLightEntity>> {
         return remoteDataSource.getAnimeLights(
             season = season,
@@ -26,7 +26,7 @@ class GetAnimePagingUseCase(private val remoteDataSource: RemoteDataSource){
             status = status,
             searchQuery = searchQuery,
             year = year,
-            genres = genres
+            genres = genres,
         )
     }
 }

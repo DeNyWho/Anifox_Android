@@ -64,7 +64,7 @@ fun DetailScreen(
     url: String,
     navigateBack: () -> Boolean,
     onItemClick: (String) -> Unit,
-    viewModel: DetailViewModel = getViewModel ()
+    viewModel: DetailViewModel = getViewModel(),
 ) {
     LaunchedEffect(Unit) {
         val detailDeferred = async { viewModel.getDetail(url) }
@@ -78,7 +78,6 @@ fun DetailScreen(
         val relatedResult = relatedDeferred.await()
         val similarResult = similarDeferred.await()
         val usersStatus = usersStatusDeferred.await()
-
     }
 
     val toolbarScaffoldState = rememberCollapsingToolbarScaffoldState()
@@ -93,9 +92,9 @@ fun DetailScreen(
             ContentDetailsScreenToolbar(
                 contentDetailState = viewModel.detailAnime.value,
                 toolbarScaffoldState = toolbarScaffoldState,
-                navigateBack = navigateBack
+                navigateBack = navigateBack,
             )
-        }
+        },
     ) {
         Content(
             detailState = viewModel.detailAnime.value,
@@ -115,10 +114,9 @@ private fun Content(
     similarState: StateListWrapper<AnimeLight>,
     relatedState: StateListWrapper<AnimeRelated>,
     usersStatusState: StateWrapper<AnimeUsersStatus>,
-    onItemClick: (String) -> Unit
+    onItemClick: (String) -> Unit,
 ) {
-    if(detailState.isLoading || detailState.data == null) {
-
+    if (detailState.isLoading || detailState.data == null) {
     } else {
         val data = detailState.data
         var isDescriptionExpanded by remember { mutableStateOf(false) }
@@ -127,7 +125,7 @@ private fun Content(
             modifier = Modifier
                 .padding(horizontal = 20.dp, vertical = 12.dp)
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             item {
                 Text(
@@ -137,14 +135,14 @@ private fun Content(
                     modifier = Modifier
                         .fillMaxWidth(),
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
                 )
                 Button(
                     onClick = {},
                     shape = MaterialTheme.shapes.small,
                     colors = ButtonDefaults.textButtonColors(
                         containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onBackground
+                        contentColor = MaterialTheme.colorScheme.onBackground,
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -154,18 +152,18 @@ private fun Content(
                         defaultElevation = 4.dp,
                         pressedElevation = 4.dp,
                         disabledElevation = 0.dp,
-                    )
+                    ),
                 ) {
                     Icon(
                         imageVector = Icons.Default.PlayArrow,
                         contentDescription = null,
                         modifier = Modifier.padding(end = 8.dp),
-                        tint = Color.White
+                        tint = Color.White,
                     )
                     Text(
                         text = stringResource(R.string.watch_button_title),
                         color = Color.White,
-                        style = MaterialTheme.typography.titleLarge
+                        style = MaterialTheme.typography.titleLarge,
                     )
                 }
             }
@@ -176,7 +174,7 @@ private fun Content(
                 DetailDescription(
                     data = data,
                     isExpanded = isDescriptionExpanded,
-                    onExpandedChanged = { isDescriptionExpanded = it }
+                    onExpandedChanged = { isDescriptionExpanded = it },
                 )
             }
             item(key = ContentDetailsScreenSection.ContentChart) {
@@ -192,11 +190,11 @@ private fun Content(
                             AnimeLight(
                                 url = related.anime.url,
                                 title = related.anime.title,
-                                image = related.anime.image
+                                image = related.anime.image,
                             )
                         },
                         isLoading = relatedState.isLoading,
-                        error = relatedState.error
+                        error = relatedState.error,
                     ),
                     contentPadding = PaddingValues(horizontal = 0.dp),
                     contentArrangement = ItemVerticalModifier.HorizontalArrangement.Default,

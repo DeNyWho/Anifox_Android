@@ -9,5 +9,5 @@ data class AnimeLightEntity(
     val pk: String,
     val url: String,
     val title: String,
-    val image: String
+    val image: String,
 )

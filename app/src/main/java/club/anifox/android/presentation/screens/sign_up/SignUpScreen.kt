@@ -51,7 +51,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun SignUpScreen(
     navController: NavHostController,
-    viewModel: SignUpViewModel = getViewModel()
+    viewModel: SignUpViewModel = getViewModel(),
 ) {
     Content(
         onEmailChanged = { newEmail ->
@@ -59,6 +59,9 @@ fun SignUpScreen(
         },
         onLoginChanged = { newLogin ->
             viewModel.onLoginChanged(newLogin)
+        },
+        onNicknameChanged = { newLogin ->
+            viewModel.onNicknameChanged(newLogin)
         },
         onPasswordChanged = { newPassword ->
             viewModel.onPasswordChanged(newPassword)
@@ -68,13 +71,13 @@ fun SignUpScreen(
         },
         emailState = viewModel.email.value,
         loginState = viewModel.login.value,
+        nicknameState = viewModel.nickname.value,
         passwordState = viewModel.password.value,
         passwordConfirmState = viewModel.confirmPassword.value,
         navigateToSignIn = {
             navController.navigate(Screens.SignIn.route)
         },
     )
-
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -82,13 +85,15 @@ fun SignUpScreen(
 private fun Content(
     onEmailChanged: (String) -> Unit,
     onLoginChanged: (String) -> Unit,
+    onNicknameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     onPasswordConfirmChanged: (String) -> Unit,
     loginState: String,
+    nicknameState: String,
     emailState: String,
     passwordState: String,
     passwordConfirmState: String,
-    navigateToSignIn: () -> Unit
+    navigateToSignIn: () -> Unit,
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
     var passwordConfirmVisible by remember { mutableStateOf(false) }
@@ -99,18 +104,18 @@ private fun Content(
     Box(
         modifier = Modifier.clickable(
             interactionSource = interactionSource,
-            indication = null    // this gets rid of the ripple effect
+            indication = null, // this gets rid of the ripple effect
         ) {
             keyboardController?.hide()
             focusManager.clearFocus(true)
-        }
+        },
     ) {
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.background)
                 .padding(horizontal = 30.dp)
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceEvenly
+            verticalArrangement = Arrangement.SpaceEvenly,
         ) {
             Column {
                 Text(
@@ -120,50 +125,65 @@ private fun Content(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 36.dp)
-                        .align(Alignment.CenterHorizontally)
+                        .align(Alignment.CenterHorizontally),
                 )
 
                 Column(
-                    verticalArrangement =  Arrangement.spacedBy(12.dp)
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
                     OutlinedTextField(
                         value = emailState,
-                        onValueChange = { newEmail -> onEmailChanged(newEmail)},
+                        onValueChange = { newEmail -> onEmailChanged(newEmail) },
                         shape = RoundedCornerShape(10.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.CenterHorizontally)
                             .height(60.dp),
                         singleLine = true,
-                        label = { Text(stringResource(R.string.hintEmail), style = MaterialTheme.typography.titleMedium) },
+                        label = { Text(stringResource(R.string.hint_email), style = MaterialTheme.typography.titleMedium) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     )
 
                     OutlinedTextField(
                         value = loginState,
-                        onValueChange = { newLogin -> onLoginChanged(newLogin)},
+                        onValueChange = { newLogin -> onLoginChanged(newLogin) },
                         shape = RoundedCornerShape(10.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.CenterHorizontally)
                             .height(60.dp),
                         singleLine = true,
-                        label = { Text(stringResource(R.string.hintLogin), style = MaterialTheme.typography.titleMedium) },
+                        label = { Text(stringResource(R.string.hint_login), style = MaterialTheme.typography.titleMedium) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                    )
+
+                    OutlinedTextField(
+                        value = nicknameState,
+                        onValueChange = { newNickname -> onNicknameChanged(newNickname) },
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.CenterHorizontally)
+                            .height(60.dp),
+                        singleLine = true,
+                        label = { Text(stringResource(R.string.hint_nickname), style = MaterialTheme.typography.titleMedium) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     )
 
                     OutlinedTextField(
                         value = passwordState,
-                        onValueChange = { newPassword -> onPasswordChanged(newPassword)},
+                        onValueChange = { newPassword -> onPasswordChanged(newPassword) },
                         shape = RoundedCornerShape(10.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.CenterHorizontally)
                             .height(60.dp),
                         trailingIcon = {
-                            val image = if (passwordVisible)
+                            val image = if (passwordVisible) {
                                 Icons.Filled.Visibility
-                            else Icons.Filled.VisibilityOff
+                            } else {
+                                Icons.Filled.VisibilityOff
+                            }
 
                             val description = if (passwordVisible) "Hide password" else "Show password"
 
@@ -173,22 +193,24 @@ private fun Content(
                         },
                         singleLine = true,
                         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                        label = { Text(stringResource(R.string.hintPassword), style = MaterialTheme.typography.titleMedium) },
+                        label = { Text(stringResource(R.string.hint_password), style = MaterialTheme.typography.titleMedium) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     )
 
                     OutlinedTextField(
                         value = passwordConfirmState,
-                        onValueChange = { newPasswordConfirm -> onPasswordConfirmChanged(newPasswordConfirm)},
+                        onValueChange = { newPasswordConfirm -> onPasswordConfirmChanged(newPasswordConfirm) },
                         shape = RoundedCornerShape(10.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.CenterHorizontally)
                             .height(60.dp),
                         trailingIcon = {
-                            val image = if (passwordConfirmVisible)
+                            val image = if (passwordConfirmVisible) {
                                 Icons.Filled.Visibility
-                            else Icons.Filled.VisibilityOff
+                            } else {
+                                Icons.Filled.VisibilityOff
+                            }
 
                             val description = if (passwordConfirmVisible) "Hide password" else "Show password"
 
@@ -198,7 +220,7 @@ private fun Content(
                         },
                         singleLine = true,
                         visualTransformation = if (passwordConfirmVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                        label = { Text(stringResource(R.string.hintPassword), style = MaterialTheme.typography.titleMedium) },
+                        label = { Text(stringResource(R.string.hint_password_confirm), style = MaterialTheme.typography.titleMedium) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     )
                 }
@@ -209,7 +231,7 @@ private fun Content(
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.textButtonColors(
                         containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onBackground
+                        contentColor = MaterialTheme.colorScheme.onBackground,
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -219,37 +241,38 @@ private fun Content(
                         defaultElevation = 4.dp,
                         pressedElevation = 4.dp,
                         disabledElevation = 0.dp,
-                    )
+                    ),
                 ) {
                     Text(
                         text = stringResource(R.string.sign_up_button_auth),
                         color = Color.White,
-                        style = MaterialTheme.typography.titleLarge
+                        style = MaterialTheme.typography.titleLarge,
                     )
                 }
             }
 
-            Spacer(modifier = Modifier
-                .heightIn(min = 50.dp, max = 200.dp)
-                .weight(1f))
+            Spacer(
+                modifier = Modifier
+                    .heightIn(min = 50.dp, max = 200.dp)
+                    .weight(1f),
+            )
         }
 
-        Row (
+        Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .padding(horizontal = 30.dp, vertical = 12.dp),
             horizontalArrangement = Arrangement.spacedBy(
                 space = 4.dp,
-                alignment = Alignment.CenterHorizontally
+                alignment = Alignment.CenterHorizontally,
             ),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-
             Text(
                 text = stringResource(R.string.have_account),
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
             )
 
             Text(
@@ -258,7 +281,7 @@ private fun Content(
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.clickable {
                     navigateToSignIn.invoke()
-                }
+                },
             )
         }
     }
@@ -271,13 +294,15 @@ private fun LightPreview() {
         Content(
             onEmailChanged = {},
             onLoginChanged = {},
+            onNicknameChanged = {},
             onPasswordChanged = {},
             onPasswordConfirmChanged = {},
             emailState = "",
             loginState = "",
+            nicknameState = "",
             passwordState = "",
             passwordConfirmState = "",
-            navigateToSignIn = {}
+            navigateToSignIn = {},
         )
     }
 }
@@ -289,13 +314,15 @@ private fun DarkPreview() {
         Content(
             onEmailChanged = {},
             onLoginChanged = {},
+            onNicknameChanged = {},
             onPasswordChanged = {},
             onPasswordConfirmChanged = {},
             emailState = "",
             loginState = "",
+            nicknameState = "",
             passwordState = "",
             passwordConfirmState = "",
-            navigateToSignIn = {}
+            navigateToSignIn = {},
         )
     }
 }

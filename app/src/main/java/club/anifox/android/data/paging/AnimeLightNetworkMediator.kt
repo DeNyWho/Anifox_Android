@@ -15,7 +15,7 @@ import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.state.StateListWrapper
 
 @OptIn(ExperimentalPagingApi::class)
-class AnimeLightNetworkMediator (
+class AnimeLightNetworkMediator(
     private val animeService: AnimeService,
     private val anifoxLocal: AniFoxDataBase,
     private val season: String? = null,
@@ -27,15 +27,15 @@ class AnimeLightNetworkMediator (
     private val status: String? = null,
     private val genres: List<String>? = null,
     private val searchQuery: String? = null,
-    private val year: Int? = null
-): RemoteMediator<Int, AnimeLightEntity>() {
+    private val year: Int? = null,
+) : RemoteMediator<Int, AnimeLightEntity>() {
 
     private val animeLightDao = anifoxLocal.animeLightDao()
     private val animeLightRemoteKeyDao = anifoxLocal.animeLightRemoteKeyDao()
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, AnimeLightEntity>
+        state: PagingState<Int, AnimeLightEntity>,
     ): MediatorResult {
         return try {
             val currentPage = when (loadType) {
@@ -48,7 +48,7 @@ class AnimeLightNetworkMediator (
                     val remoteKeys = getRemoteKeyForFirstItem(state)
                     val prevPage = remoteKeys?.prevPage
                         ?: return MediatorResult.Success(
-                            endOfPaginationReached = remoteKeys != null
+                            endOfPaginationReached = remoteKeys != null,
                         )
                     prevPage
                 }
@@ -57,7 +57,7 @@ class AnimeLightNetworkMediator (
                     val remoteKeys = getRemoteKeyForLastItem(state)
                     val nextPage = remoteKeys?.nextPage
                         ?: return MediatorResult.Success(
-                            endOfPaginationReached = remoteKeys != null
+                            endOfPaginationReached = remoteKeys != null,
                         )
                     nextPage
                 }
@@ -74,7 +74,7 @@ class AnimeLightNetworkMediator (
                 ratingMpa = ratingMpa,
                 season = season,
                 type = type,
-                year = year
+                year = year,
             )
 
             val animeResult = when (animeResponse) {
@@ -94,11 +94,11 @@ class AnimeLightNetworkMediator (
 
             val endOfPaginationReached = animeResult.data?.isEmpty()
 
-            val prevPage = if(currentPage == 0) null else currentPage - 1
-            val nextPage = if(endOfPaginationReached == true) null else currentPage + 1
+            val prevPage = if (currentPage == 0) null else currentPage - 1
+            val nextPage = if (endOfPaginationReached == true) null else currentPage + 1
 
             anifoxLocal.withTransaction {
-                if(loadType == LoadType.REFRESH) {
+                if (loadType == LoadType.REFRESH) {
                     animeLightDao.clearAll()
                     animeLightRemoteKeyDao.deleteAllRemoteKeys()
                 }
@@ -107,14 +107,14 @@ class AnimeLightNetworkMediator (
                     AnimeLightRemoteKeyEntity(
                         url = animeLight.url,
                         prevPage = prevPage,
-                        nextPage = nextPage
+                        nextPage = nextPage,
                     )
                 }
 
                 if (keys != null) {
                     animeLightRemoteKeyDao.addAllRemoteKeys(remoteKeys = keys)
                 }
-                animeResult.data?.map { it.toAnimeLightEntity()}
+                animeResult.data?.map { it.toAnimeLightEntity() }
                     ?.let { animeLightDao.insertAll(animeLights = it) }
             }
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached == true)
@@ -124,7 +124,7 @@ class AnimeLightNetworkMediator (
     }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
-        state: PagingState<Int, AnimeLightEntity>
+        state: PagingState<Int, AnimeLightEntity>,
     ): AnimeLightRemoteKeyEntity? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.url?.let { url ->
@@ -134,7 +134,7 @@ class AnimeLightNetworkMediator (
     }
 
     private suspend fun getRemoteKeyForFirstItem(
-        state: PagingState<Int, AnimeLightEntity>
+        state: PagingState<Int, AnimeLightEntity>,
     ): AnimeLightRemoteKeyEntity? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { animeLightEntity ->
@@ -143,12 +143,11 @@ class AnimeLightNetworkMediator (
     }
 
     private suspend fun getRemoteKeyForLastItem(
-        state: PagingState<Int, AnimeLightEntity>
+        state: PagingState<Int, AnimeLightEntity>,
     ): AnimeLightRemoteKeyEntity? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { animeLightEntity ->
                 animeLightRemoteKeyDao.getRemoteKey(animeLightEntity.url)
             }
     }
-
 }

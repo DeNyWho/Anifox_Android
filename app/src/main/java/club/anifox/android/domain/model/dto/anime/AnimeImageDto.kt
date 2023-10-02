@@ -10,5 +10,5 @@ data class AnimeImageDto(
     @SerialName("medium")
     val medium: String = "",
     @SerialName("cover")
-    val cover: String? = null
+    val cover: String? = null,
 )

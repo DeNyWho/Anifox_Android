@@ -48,7 +48,7 @@ import org.koin.androidx.compose.getViewModel
 fun BrowseScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    viewModel: BrowseViewModel = getViewModel()
+    viewModel: BrowseViewModel = getViewModel(),
 ) {
     LaunchedEffect(viewModel) {
         viewModel.getOngoing(12, 0)
@@ -62,7 +62,7 @@ fun BrowseScreen(
         },
         onItemClick = { url ->
             navController.navigate("${Screens.Detail.route}/$url")
-        }
+        },
     )
 }
 
@@ -76,23 +76,23 @@ private fun Content(
     lazyColumnState: LazyListState = rememberLazyListState(),
     onGoingAnimeState: StateListWrapper<AnimeLight>,
     onSearchClick: () -> Unit,
-    onItemClick: (String) -> Unit
+    onItemClick: (String) -> Unit,
 ) {
     Column(
         modifier = modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize()
-            .padding(horizontal = 20.dp)
+            .padding(horizontal = 20.dp),
     ) {
         Row(
             modifier = Modifier
                 .padding(top = 20.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         ) {
             SearchBoxField(
                 modifier = Modifier
                     .clickable(
-                        onClick = { onSearchClick.invoke() }
+                        onClick = { onSearchClick.invoke() },
                     ),
                 isEnabled = false,
             )
@@ -103,7 +103,7 @@ private fun Content(
             columns = GridCells.Fixed(2),
             userScrollEnabled = false,
             verticalArrangement = Arrangement.spacedBy(8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(BrowseStateGrid.values()) { state ->
                 Card(
@@ -115,21 +115,21 @@ private fun Content(
                         .border(
                             width = 1.dp,
                             color = MaterialTheme.colorScheme.onBackground,
-                            shape = MaterialTheme.shapes.small
-                        )
+                            shape = MaterialTheme.shapes.small,
+                        ),
                 ) {
                     Row(
                         modifier = Modifier
                             .height(40.dp)
                             .padding(start = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                        horizontalArrangement = Arrangement.Center,
                     ) {
                         Icon(
                             modifier = Modifier.size(32.dp),
                             painter = painterResource(id = state.icon),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onBackground
+                            tint = MaterialTheme.colorScheme.onBackground,
                         )
                         Text(
                             modifier = Modifier
@@ -137,17 +137,17 @@ private fun Content(
                                 .align(Alignment.CenterVertically),
                             color = MaterialTheme.colorScheme.onBackground,
                             text = state.label,
-                            style = MaterialTheme.typography.titleMedium
+                            style = MaterialTheme.typography.titleMedium,
                         )
                     }
                 }
             }
         }
 
-        LazyColumn (
+        LazyColumn(
             modifier = Modifier.fillMaxWidth(),
             state = lazyColumnState,
-            horizontalAlignment = Alignment.Start
+            horizontalAlignment = Alignment.Start,
         ) {
             item(ContentScreenSections.ContentOngoing) {
                 ScrollableHorizontalContent(
@@ -162,11 +162,10 @@ private fun Content(
                     },
                     onItemClick = { url ->
                         onItemClick.invoke(url)
-                    }
+                    },
                 )
             }
         }
-
     }
 }
 
@@ -179,7 +178,7 @@ private fun LightPreview() {
             onGoingAnimeState = StateListWrapper(),
             onSearchClick = {},
             onItemClick = { url ->
-            }
+            },
         )
     }
 }
@@ -193,7 +192,7 @@ private fun DarkPreview() {
             onGoingAnimeState = StateListWrapper(),
             onSearchClick = {},
             onItemClick = { url ->
-            }
+            },
         )
     }
 }

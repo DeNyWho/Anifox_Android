@@ -15,11 +15,11 @@ import io.ktor.http.HttpStatusCode
 
 suspend inline fun <reified T : Any> safeApiCall(
     client: HttpClient,
-    request: HttpRequestBuilder
+    request: HttpRequestBuilder,
 ): Resource<T> {
     return try {
         val response: HttpResponse = client.request(request)
-        val cookies = client.cookies(Endpoints.domain)
+        val cookies = client.cookies("https://${Endpoints.domain}/")
 
         when (response.status) {
             HttpStatusCode.OK, HttpStatusCode.Created -> {
@@ -30,17 +30,17 @@ suspend inline fun <reified T : Any> safeApiCall(
                 Resource.Error(
                     ApiError(
                         HttpStatusCode.Unauthorized.value,
-                        HttpStatusCode.Unauthorized.description
-                    )
+                        HttpStatusCode.Unauthorized.description,
+                    ),
                 )
             }
 
-            HttpStatusCode.NotFound ->  {
+            HttpStatusCode.NotFound -> {
                 Resource.Error(
                     ApiError(
                         HttpStatusCode.NotFound.value,
-                        HttpStatusCode.NotFound.description
-                    )
+                        HttpStatusCode.NotFound.description,
+                    ),
                 )
             }
 
@@ -48,7 +48,6 @@ suspend inline fun <reified T : Any> safeApiCall(
                 Resource.Error(ApiError(response.status.value, response.bodyAsText()))
             }
         }
-
     } catch (e: Exception) {
         when (e) {
             is ClientRequestException -> {
@@ -56,7 +55,7 @@ suspend inline fun <reified T : Any> safeApiCall(
             }
 
             else -> {
-                Resource.Error(ApiError(500, "Unknown error"))
+                Resource.Error(ApiError(500, "${e.message}"))
             }
         }
     }

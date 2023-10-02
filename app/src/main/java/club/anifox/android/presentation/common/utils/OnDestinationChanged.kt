@@ -16,7 +16,6 @@ import club.anifox.android.domain.enums.ScreenOrientation
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-
 @Composable
 fun OnDestinationChanged(
     systemUiController: SystemUiController = rememberSystemUiController(),
@@ -35,7 +34,7 @@ fun OnDestinationChanged(
         systemUiController.setNavigationBarColor(navigationBarColor)
         WindowCompat.setDecorFitsSystemWindows(window, !drawOverStatusBar)
 
-        if(hideSystemBar) {
+        if (hideSystemBar) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 window.setDecorFitsSystemWindows(false)
                 window.insetsController?.let { controller ->
@@ -47,13 +46,13 @@ fun OnDestinationChanged(
                 window.setFlags(
                     WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN or
-                            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
-                            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                        WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
+                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 )
             }
         }
 
-        when(screenOrientation) {
+        when (screenOrientation) {
             ScreenOrientation.Portrait -> {
                 activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
             }
@@ -61,9 +60,7 @@ fun OnDestinationChanged(
                 activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             }
             else -> {
-
             }
         }
-
     }
 }

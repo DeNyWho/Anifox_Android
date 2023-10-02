@@ -10,7 +10,6 @@ object ItemVerticalModifier {
     val Small = 110.dp
     val ScreenShot = 150.dp
 
-
     val fillParentWidth = Modifier
         .fillMaxWidth()
 

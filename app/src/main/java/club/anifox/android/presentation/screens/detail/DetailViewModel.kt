@@ -23,8 +23,8 @@ class DetailViewModel(
     private val screenShotsUseCase: GetAnimeScreenShotsUseCase,
     private val relatedUseCase: GetAnimeRelatedUseCase,
     private val similarUseCase: GetAnimeSimilarUseCase,
-    private val usersStatusUseCase: GetAnimeUsersStatusUseCase
-): ViewModel() {
+    private val usersStatusUseCase: GetAnimeUsersStatusUseCase,
+) : ViewModel() {
 
     private val _detailAnime: MutableState<StateWrapper<AnimeDetail>> =
         mutableStateOf(StateWrapper())

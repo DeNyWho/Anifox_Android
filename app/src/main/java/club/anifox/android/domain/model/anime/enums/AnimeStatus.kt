@@ -6,7 +6,8 @@ import club.anifox.android.R
 
 enum class AnimeStatus(private val displayNameResId: Int) {
     Released(R.string.status_release),
-    Ongoing(R.string.status_ongoing);
+    Ongoing(R.string.status_ongoing),
+    ;
 
     @Composable
     fun getDisplayName(): String {

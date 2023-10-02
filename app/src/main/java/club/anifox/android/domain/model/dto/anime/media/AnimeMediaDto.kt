@@ -17,7 +17,7 @@ data class AnimeMediaDto(
     @SerialName("kind")
     val kind: String,
     @SerialName("hosting")
-    val hosting: String
+    val hosting: String,
 )
 
 fun AnimeMediaDto.toAnimeMedia(): AnimeMedia {
@@ -25,6 +25,6 @@ fun AnimeMediaDto.toAnimeMedia(): AnimeMedia {
         playerUrl = playerUrl,
         name = name,
         kind = kind,
-        hosting = hosting
+        hosting = hosting,
     )
 }

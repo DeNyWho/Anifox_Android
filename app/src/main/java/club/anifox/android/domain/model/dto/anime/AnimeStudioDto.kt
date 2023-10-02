@@ -9,12 +9,12 @@ data class AnimeStudioDto(
     @SerialName("id")
     val id: String,
     @SerialName("studio")
-    val studio: String
+    val studio: String,
 )
 
 fun AnimeStudioDto.toAnimeStudio(): AnimeStudio {
     return AnimeStudio(
         id = id,
-        studio = studio
+        studio = studio,
     )
 }

@@ -14,6 +14,6 @@ fun AnimeTranslationDto.toAnimeTranslation(): AnimeTranslation {
     return AnimeTranslation(
         id = id,
         title = title,
-        voice = voice
+        voice = voice,
     )
 }

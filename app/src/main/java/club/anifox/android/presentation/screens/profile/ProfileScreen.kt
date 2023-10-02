@@ -20,7 +20,7 @@ import org.koin.androidx.compose.getViewModel
 fun ProfileScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    viewModel: ProfileViewModel = getViewModel()
+    viewModel: ProfileViewModel = getViewModel(),
 ) {
     Content(modifier)
 }
@@ -31,13 +31,13 @@ private fun Content(modifier: Modifier) {
         modifier = modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceEvenly
+        verticalArrangement = Arrangement.SpaceEvenly,
     ) {
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally),
             text = stringResource(R.string.in_plan_screen_profile),
             style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onBackground,
         )
     }
 }

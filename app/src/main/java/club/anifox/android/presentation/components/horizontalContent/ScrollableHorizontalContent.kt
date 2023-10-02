@@ -42,35 +42,35 @@ fun ScrollableHorizontalContent(
         HorizontalContentHeader(
             modifier = headerModifier,
             title = headerTitle,
-            onButtonClick = if(contentState.data.size > limit) onIconClick else null
+            onButtonClick = if (contentState.data.size > limit) onIconClick else null,
         )
     }
 
     LazyRow(
         modifier = modifier.onUpdateShimmerBounds(shimmer),
         contentPadding = contentPadding,
-        horizontalArrangement = contentArrangement
+        horizontalArrangement = contentArrangement,
     ) {
-        if(contentState.isLoading) {
+        if (contentState.isLoading) {
             showItemVerticalShimmer(
                 modifier = itemModifier,
                 shimmerInstance = shimmer,
                 thumbnailHeight = thumbnailHeight,
-                count = limit
+                count = limit,
             )
-        } else if(contentState.data != null) {
+        } else if (contentState.data != null) {
             items(
-                items = contentState.data, key =  {it.url}
-            ) {data ->
+                items = contentState.data,
+                key = { it.url },
+            ) { data ->
                 ItemVertical(
                     modifier = itemModifier,
                     data = data,
                     thumbnailHeight = thumbnailHeight,
                     textAlign = textAlign,
-                    onClick = onItemClick
+                    onClick = onItemClick,
                 )
             }
         }
     }
-
 }

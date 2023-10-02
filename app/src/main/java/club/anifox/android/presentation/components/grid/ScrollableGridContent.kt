@@ -52,7 +52,7 @@ fun ScrollableGridContent(
         contentPadding = contentPadding,
         userScrollEnabled = userScrollEnabled,
         verticalArrangement = verticalArrangement,
-        horizontalArrangement = horizontalArrangement
+        horizontalArrangement = horizontalArrangement,
     ) {
         items(contentState.itemCount) { index ->
             contentState[index]?.let {
@@ -61,7 +61,7 @@ fun ScrollableGridContent(
                     data = it,
                     thumbnailHeight = thumbnailHeight,
                     textAlign = textAlign,
-                    onClick = onItemClick
+                    onClick = onItemClick,
                 )
             }
         }
@@ -71,9 +71,8 @@ fun ScrollableGridContent(
                 modifier = itemModifier,
                 shimmerInstance = shimmer,
                 thumbnailHeight = thumbnailHeight,
-                count = limit
+                count = limit,
             )
         }
     }
-
 }

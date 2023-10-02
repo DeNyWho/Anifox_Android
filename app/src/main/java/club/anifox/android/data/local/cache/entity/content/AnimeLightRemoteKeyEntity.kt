@@ -4,9 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "anime_remote_keys")
-data class AnimeLightRemoteKeyEntity (
+data class AnimeLightRemoteKeyEntity(
     @PrimaryKey(autoGenerate = false)
     val url: String = "",
     val prevPage: Int?,
-    val nextPage: Int?
+    val nextPage: Int?,
 )

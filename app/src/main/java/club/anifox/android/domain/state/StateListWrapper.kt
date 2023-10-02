@@ -5,7 +5,7 @@ import club.anifox.android.domain.model.common.ApiError
 data class StateListWrapper<T>(
     val data: List<T>? = null,
     val isLoading: Boolean = false,
-    val error: ApiError = ApiError()
+    val error: ApiError = ApiError(),
 ) {
     companion object {
         inline fun <reified T> loading(): StateListWrapper<T> {

@@ -1,10 +1,11 @@
 @file:UseSerializers(LocalDateSerializer::class, LocalDateTimeSerializer::class)
+
 package club.anifox.android.domain.model.dto.anime.detail
 
+import club.anifox.android.domain.model.anime.detail.AnimeDetail
 import club.anifox.android.domain.model.anime.enums.AnimeSeason
 import club.anifox.android.domain.model.anime.enums.AnimeStatus
 import club.anifox.android.domain.model.anime.enums.AnimeType
-import club.anifox.android.domain.model.anime.detail.AnimeDetail
 import club.anifox.android.domain.model.dto.anime.AnimeGenresDto
 import club.anifox.android.domain.model.dto.anime.AnimeImageDto
 import club.anifox.android.domain.model.dto.anime.AnimeStudioDto
@@ -14,11 +15,11 @@ import club.anifox.android.domain.model.dto.anime.toAnimeStudio
 import club.anifox.android.domain.model.dto.anime.toAnimeTranslation
 import club.anifox.android.serialization.LocalDateSerializer
 import club.anifox.android.serialization.LocalDateTimeSerializer
+import java.time.LocalDate
+import java.time.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import java.time.LocalDate
-import java.time.LocalDateTime
 
 @Serializable
 data class AnimeDetailDto(
@@ -74,7 +75,7 @@ fun AnimeDetailDto.toAnimeDetail(): AnimeDetail {
         largeImage = image.large,
         posterImage = image.cover ?: "",
         url = url,
-        type = when(type) {
+        type = when (type) {
             AnimeType.Tv.name -> AnimeType.Tv
             AnimeType.Movie.name -> AnimeType.Movie
             AnimeType.Ona.name -> AnimeType.Ona
@@ -91,13 +92,15 @@ fun AnimeDetailDto.toAnimeDetail(): AnimeDetail {
         status = when (status) {
             AnimeStatus.Ongoing.name -> AnimeStatus.Ongoing
             AnimeStatus.Released.name -> AnimeStatus.Released
-            else -> AnimeStatus.Ongoing },
+            else -> AnimeStatus.Ongoing
+        },
         season = when (season) {
             AnimeSeason.Winter.name -> AnimeSeason.Winter
             AnimeSeason.Spring.name -> AnimeSeason.Spring
             AnimeSeason.Summer.name -> AnimeSeason.Summer
             AnimeSeason.Fall.name -> AnimeSeason.Fall
-            else -> AnimeSeason.Summer },
+            else -> AnimeSeason.Summer
+        },
         episodes = episodes,
         episodesAired = episodesAired,
         nextEpisode = nextEpisode,

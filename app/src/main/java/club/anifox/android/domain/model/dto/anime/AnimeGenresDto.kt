@@ -9,12 +9,12 @@ data class AnimeGenresDto(
     @SerialName("id")
     val id: String,
     @SerialName("genre")
-    val genre: String
+    val genre: String,
 )
 
 fun AnimeGenresDto.toAnimeGenres(): AnimeGenres {
     return AnimeGenres(
         id = id,
-        genre = genre
+        genre = genre,
     )
 }

@@ -45,7 +45,7 @@ fun SearchBoxField(
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
+            disabledIndicatorColor = Color.Transparent,
         ),
         value = searchQuery,
         onValueChange = onSearchQueryChanged,
@@ -57,11 +57,10 @@ fun SearchBoxField(
             Icon(
                 painter = painterResource(MyIcons.TwoTone.search),
                 contentDescription = "Search Icon",
-                tint = MaterialTheme.colorScheme.onBackground
+                tint = MaterialTheme.colorScheme.onBackground,
             )
-        }
+        },
     )
-
 }
 
 @Preview(showBackground = true)

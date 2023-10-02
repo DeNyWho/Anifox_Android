@@ -38,7 +38,7 @@ import com.himanshoe.charty.pie.model.PieData
 
 @Composable
 fun DetailChart(data: StateWrapper<AnimeUsersStatus>) {
-    if(!data.isLoading && data.data != null) {
+    if (!data.isLoading && data.data != null) {
         val statuses = data.data
 
         Text(
@@ -48,26 +48,26 @@ fun DetailChart(data: StateWrapper<AnimeUsersStatus>) {
             style = TextStyle(
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
-            )
+                fontSize = 18.sp,
+            ),
         )
 
         Row(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.background)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         ) {
-            if(statuses.isAllZero()) {
+            if (statuses.isAllZero()) {
                 Column(
                     modifier = Modifier
-                        .align(Alignment.CenterVertically)
+                        .align(Alignment.CenterVertically),
                 ) {
                     StatusRow(stringResource(R.string.status_zero), lightGrey)
                 }
             } else {
                 Column(
                     modifier = Modifier
-                        .align(Alignment.CenterVertically)
+                        .align(Alignment.CenterVertically),
                 ) {
                     StatusRow(stringResource(R.string.status_watching), purple)
                     StatusRow(stringResource(R.string.status_in_plan), blueLight)
@@ -76,7 +76,7 @@ fun DetailChart(data: StateWrapper<AnimeUsersStatus>) {
                 }
                 Column(
                     modifier = Modifier
-                        .align(Alignment.CenterVertically)
+                        .align(Alignment.CenterVertically),
                 ) {
                     StatusRow("${statuses.watching}", null, needBox = false)
                     StatusRow("${statuses.inPlan}", null, needBox = false)
@@ -87,7 +87,7 @@ fun DetailChart(data: StateWrapper<AnimeUsersStatus>) {
             val chartData =
                 if (statuses.isAllZero()) {
                     listOf(
-                        PieData(1f, "", lightGrey)
+                        PieData(1f, "", lightGrey),
                     )
                 } else {
                     listOf(
@@ -105,8 +105,8 @@ fun DetailChart(data: StateWrapper<AnimeUsersStatus>) {
                 dataCollection = chartData.toChartDataCollection(),
                 pieChartConfig = PieChartConfig(
                     donut = true,
-                    showLabel = false
-                )
+                    showLabel = false,
+                ),
             )
         }
     }
@@ -117,29 +117,29 @@ private fun StatusRow(
     statusText: String,
     backgroundColor: Color?,
     needBox: Boolean = true,
-    textVisible: Boolean = true
+    textVisible: Boolean = true,
 ) {
     Row(
         modifier = Modifier
             .height(36.dp)
             .padding(vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        if(needBox) {
+        if (needBox) {
             Box(
                 modifier = Modifier
                     .size(24.dp)
                     .background(backgroundColor!!)
-                    .clip(MaterialTheme.shapes.small)
+                    .clip(MaterialTheme.shapes.small),
             )
         }
-        if(textVisible) {
+        if (textVisible) {
             Text(
                 modifier = Modifier
                     .padding(start = 8.dp),
                 text = statusText,
                 style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onBackground
+                color = MaterialTheme.colorScheme.onBackground,
             )
         }
     }
@@ -154,9 +154,9 @@ private fun DetailChartPreviewWithData() {
                 watching = 4,
                 inPlan = 1,
                 watched = 3,
-                postponed = 1
-            )
-        )
+                postponed = 1,
+            ),
+        ),
     )
 }
 
@@ -169,8 +169,8 @@ private fun DetailChartPreviewNoData() {
                 watching = 0,
                 inPlan = 0,
                 watched = 0,
-                postponed = 0
-            )
-        )
+                postponed = 0,
+            ),
+        ),
     )
 }

@@ -10,7 +10,8 @@ enum class AnimeType(private val displayNameResId: Int) {
     Ova(R.string.type_ova),
     Music(R.string.type_music),
     Special(R.string.type_special),
-    Tv(R.string.type_tv);
+    Tv(R.string.type_tv),
+    ;
 
     @Composable
     fun getDisplayName(): String {

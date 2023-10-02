@@ -39,19 +39,19 @@ import club.anifox.android.domain.model.anime.detail.AnimeDetail
 fun DetailDescription(
     data: AnimeDetail,
     isExpanded: Boolean,
-    onExpandedChanged: (Boolean) -> Unit
+    onExpandedChanged: (Boolean) -> Unit,
 ) {
     val descriptionGradient = Brush.verticalGradient(
         colors = listOf(
             MaterialTheme.colorScheme.background.copy(alpha = 0F),
             MaterialTheme.colorScheme.background.copy(alpha = 0.9F),
             MaterialTheme.colorScheme.background,
-        )
+        ),
     )
 
     val visible = data.description.length > 300
 
-    if(data.description.isNotEmpty())  {
+    if (data.description.isNotEmpty()) {
         Text(
             text = stringResource(R.string.description_title),
             color = MaterialTheme.colorScheme.onBackground,
@@ -59,8 +59,8 @@ fun DetailDescription(
             style = TextStyle(
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
-            )
+                fontSize = 18.sp,
+            ),
         )
     }
 
@@ -70,12 +70,15 @@ fun DetailDescription(
             transitionSpec = {
                 expandVertically(
                     animationSpec = tween(150, 150),
-                    initialHeight = { it }) togetherWith
-                        shrinkVertically(
-                            animationSpec = tween(150, 0),
-                            targetHeight = { it }) using
-                        SizeTransform(clip = true)
-            }, label = ""
+                    initialHeight = { it },
+                ) togetherWith
+                    shrinkVertically(
+                        animationSpec = tween(150, 0),
+                        targetHeight = { it },
+                    ) using
+                    SizeTransform(clip = true)
+            },
+            label = "",
         ) { targetExpanded ->
             Box(
                 modifier = Modifier
@@ -84,30 +87,30 @@ fun DetailDescription(
                     .clickable(
                         interactionSource = remember { MutableInteractionSource() },
                         indication = null,
-                        onClick = { onExpandedChanged(!isExpanded) }
-                    )
+                        onClick = { onExpandedChanged(!isExpanded) },
+                    ),
             ) {
                 if (targetExpanded) {
                     Text(
-                        text = data.description.replace("&quot;",34.toChar().toString()),
+                        text = data.description.replace("&quot;", 34.toChar().toString()),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onBackground,
-                        textAlign = TextAlign.Justify
+                        textAlign = TextAlign.Justify,
                     )
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowUp,
                         contentDescription = "Switch",
                         tint = MaterialTheme.colorScheme.onBackground,
-                        modifier = Modifier.align(Alignment.BottomCenter)
+                        modifier = Modifier.align(Alignment.BottomCenter),
                     )
                 } else {
                     Text(
-                        text = data.description.replace("&quot;",34.toChar().toString()),
+                        text = data.description.replace("&quot;", 34.toChar().toString()),
                         maxLines = 5,
                         overflow = TextOverflow.Ellipsis,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onBackground,
-                        textAlign = TextAlign.Justify
+                        textAlign = TextAlign.Justify,
                     )
                     Box(
                         modifier = Modifier
@@ -115,8 +118,8 @@ fun DetailDescription(
                             .fillMaxSize()
                             .align(Alignment.BottomCenter)
                             .background(
-                                brush = descriptionGradient
-                            )
+                                brush = descriptionGradient,
+                            ),
                     ) {
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowDown,
@@ -124,7 +127,7 @@ fun DetailDescription(
                             tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier
                                 .align(Alignment.BottomCenter)
-                                .zIndex(2F)
+                                .zIndex(2F),
                         )
                     }
                 }
@@ -132,11 +135,10 @@ fun DetailDescription(
         }
     } else {
         Text(
-            text = data.description.replace("&quot;",34.toChar().toString()),
+            text = data.description.replace("&quot;", 34.toChar().toString()),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onBackground,
-            textAlign = TextAlign.Justify
+            textAlign = TextAlign.Justify,
         )
     }
 }
-

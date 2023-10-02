@@ -29,14 +29,14 @@ import club.anifox.android.presentation.util.formatDateWithMonth
 
 @Composable
 fun DetailInformation(data: AnimeDetail) {
-    Column (
+    Column(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.background)
             .padding(top = 16.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 imageVector = Icons.Default.Info,
@@ -44,17 +44,17 @@ fun DetailInformation(data: AnimeDetail) {
                 modifier = Modifier
                     .padding(end = 4.dp)
                     .size(24.dp),
-                tint = MaterialTheme.colorScheme.onBackground
+                tint = MaterialTheme.colorScheme.onBackground,
             )
             Text(
                 text = data.type.getDisplayName(),
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
             )
         }
 
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 imageVector = Icons.Default.Movie,
@@ -62,17 +62,17 @@ fun DetailInformation(data: AnimeDetail) {
                 modifier = Modifier
                     .padding(end = 4.dp)
                     .size(24.dp),
-                tint = MaterialTheme.colorScheme.onBackground
+                tint = MaterialTheme.colorScheme.onBackground,
             )
             Text(
                 text = "${data.episodesAired}/${data.episodes}",
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
             )
         }
 
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 imageVector = Icons.Default.Block,
@@ -80,17 +80,17 @@ fun DetailInformation(data: AnimeDetail) {
                 modifier = Modifier
                     .padding(end = 4.dp)
                     .size(24.dp),
-                tint = MaterialTheme.colorScheme.onBackground
+                tint = MaterialTheme.colorScheme.onBackground,
             )
             Text(
                 text = "${data.minimalAge}+",
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
             )
         }
 
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 imageVector = Icons.Default.CalendarToday,
@@ -98,7 +98,7 @@ fun DetailInformation(data: AnimeDetail) {
                 modifier = Modifier
                     .padding(end = 4.dp)
                     .size(24.dp),
-                tint = MaterialTheme.colorScheme.onBackground
+                tint = MaterialTheme.colorScheme.onBackground,
             )
             Text(
                 text = buildString {
@@ -108,12 +108,12 @@ fun DetailInformation(data: AnimeDetail) {
                     }
                 },
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
             )
         }
 
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 imageVector = Icons.Outlined.Edit,
@@ -121,12 +121,12 @@ fun DetailInformation(data: AnimeDetail) {
                 modifier = Modifier
                     .padding(end = 4.dp)
                     .size(24.dp),
-                tint = MaterialTheme.colorScheme.onBackground
+                tint = MaterialTheme.colorScheme.onBackground,
             )
             Text(
                 text = data.studio.joinToString(separator = ", ") { it.studio },
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
             )
         }
     }
@@ -146,14 +146,14 @@ private fun LightPreview() {
                 studio = listOf(
                     AnimeStudio(
                         id = "1",
-                        studio = "Bones"
+                        studio = "Bones",
                     ),
                     AnimeStudio(
                         id = "2",
-                        studio = "White Fox"
+                        studio = "White Fox",
                     ),
-                )
-            )
+                ),
+            ),
         )
     }
 }
@@ -172,14 +172,14 @@ private fun DarkPreview() {
                 studio = listOf(
                     AnimeStudio(
                         id = "1",
-                        studio = "Bones"
+                        studio = "Bones",
                     ),
                     AnimeStudio(
                         id = "2",
-                        studio = "White Fox"
+                        studio = "White Fox",
                     ),
-                )
-            )
+                ),
+            ),
         )
     }
 }

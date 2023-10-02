@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AnimeRelated(
     val anime: AnimeLight,
-    val type: String
+    val type: String,
 )

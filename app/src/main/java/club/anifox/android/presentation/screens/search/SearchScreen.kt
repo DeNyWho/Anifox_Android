@@ -23,7 +23,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun SearchScreen(
     navController: NavHostController,
-    viewModel: SearchViewModel = getViewModel()
+    viewModel: SearchViewModel = getViewModel(),
 ) {
     LaunchedEffect(viewModel) {
         viewModel.searchAnime("а")
@@ -48,7 +48,7 @@ private fun Content(
         modifier = modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize()
-            .padding(horizontal = 20.dp, vertical = 20.dp)
+            .padding(horizontal = 20.dp, vertical = 20.dp),
     ) {
         SearchBoxField(
             modifier = Modifier.padding(bottom = 8.dp),
@@ -61,8 +61,7 @@ private fun Content(
             shimmer = rememberShimmerCustomBounds(),
             contentState = animeState,
             contentPadding = PaddingValues(top = 20.dp),
-            onItemClick = {}
+            onItemClick = {},
         )
     }
 }
-

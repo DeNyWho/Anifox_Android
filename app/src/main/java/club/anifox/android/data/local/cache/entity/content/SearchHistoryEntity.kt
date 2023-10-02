@@ -10,5 +10,5 @@ data class SearchHistoryEntity(
     val pk: String = UUID.randomUUID().toString(),
     val url: String,
     val title: String,
-    val image: String
+    val image: String,
 )

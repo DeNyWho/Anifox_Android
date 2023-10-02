@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class GetAnimeMediaUseCase(private val service: AnimeService){
+class GetAnimeMediaUseCase(private val service: AnimeService) {
     operator fun invoke(
-        url: String
+        url: String,
     ): Flow<StateListWrapper<AnimeMedia>> {
         return flow {
             emit(StateListWrapper.loading())
@@ -31,7 +31,6 @@ class GetAnimeMediaUseCase(private val service: AnimeService){
             }
 
             emit(state)
-
         }.flowOn(Dispatchers.IO)
     }
 }

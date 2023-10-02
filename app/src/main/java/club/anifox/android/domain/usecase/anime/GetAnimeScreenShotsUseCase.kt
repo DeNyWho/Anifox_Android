@@ -6,14 +6,13 @@ import club.anifox.android.domain.state.StateListWrapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-
 class GetAnimeScreenShotsUseCase(private val animeService: AnimeService) {
 
     operator fun invoke(url: String): Flow<StateListWrapper<String>> {
         return flow {
             emit(StateListWrapper.loading())
 
-            val state = when(val result = animeService.getAnimeScreenshots(url)) {
+            val state = when (val result = animeService.getAnimeScreenshots(url)) {
                 is Resource.Success -> {
                     val data = result.data
                     StateListWrapper(data)

@@ -17,8 +17,8 @@ import io.ktor.http.encodedPath
 import org.koin.core.component.KoinComponent
 
 class AnimeService(
-    private val client: HttpClient
-): KoinComponent {
+    private val client: HttpClient,
+) : KoinComponent {
 
     suspend fun getAnime(
         pageNum: Int,
@@ -31,7 +31,7 @@ class AnimeService(
         ratingMpa: String?,
         minimalAge: String?,
         type: String?,
-        year: Int?
+        year: Int?,
     ): Resource<List<AnimeLightDto>> {
         val request = HttpRequestBuilder().apply {
             method = HttpMethod.Get
@@ -41,15 +41,15 @@ class AnimeService(
                 encodedPath = "${Endpoints.api}${Endpoints.anime}"
                 parameter("pageNum", pageNum)
                 parameter("pageSize", pageSize)
-                if(order != null) parameter("order", order)
-                if(season != null) parameter("season", season)
-                if(ratingMpa != null) parameter("ratingMpa", ratingMpa)
-                if(minimalAge != null) parameter("minimalAge", minimalAge)
-                if(year != null) parameter("year", year)
-                if(type != null) parameter("type", type)
-                if(status != null) if(status.length > 4) parameter("status", status)
-                if(genres!= null) if(genres.isNotEmpty()) parameter("genres", genres)
-                if(searchQuery!= null) if(searchQuery.length > 1) parameter("searchQuery", searchQuery)
+                if (order != null) parameter("order", order)
+                if (season != null) parameter("season", season)
+                if (ratingMpa != null) parameter("ratingMpa", ratingMpa)
+                if (minimalAge != null) parameter("minimalAge", minimalAge)
+                if (year != null) parameter("year", year)
+                if (type != null) parameter("type", type)
+                if (status != null) if (status.length > 4) parameter("status", status)
+                if (genres != null) if (genres.isNotEmpty()) parameter("genres", genres)
+                if (searchQuery != null) if (searchQuery.length > 1) parameter("searchQuery", searchQuery)
             }
         }
 
@@ -114,7 +114,7 @@ class AnimeService(
             url {
                 protocol = URLProtocol.HTTPS
                 host = Endpoints.domain
-                encodedPath = "${Endpoints.api}${Endpoints.anime}${url}"
+                encodedPath = "${Endpoints.api}${Endpoints.anime}$url"
             }
         }
 
@@ -133,5 +133,4 @@ class AnimeService(
 
         return safeApiCall<List<AnimeMediaDto>>(client, request)
     }
-
 }

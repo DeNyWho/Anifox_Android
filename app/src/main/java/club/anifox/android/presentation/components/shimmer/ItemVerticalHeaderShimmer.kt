@@ -24,7 +24,7 @@ import com.valentinilk.shimmer.shimmer
 fun ItemVerticalHeaderShimmer(
     modifier: Modifier,
     shimmerInstance: Shimmer,
-    showButton: Boolean = true
+    showButton: Boolean = true,
 ) {
     Row(
         modifier = modifier
@@ -32,7 +32,7 @@ fun ItemVerticalHeaderShimmer(
             .heightIn(min = 32.dp)
             .shimmer(shimmerInstance),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
             modifier = Modifier
@@ -40,7 +40,7 @@ fun ItemVerticalHeaderShimmer(
                 .height(32.dp)
                 .padding(0.dp, 6.dp, 0.dp, 0.dp)
                 .clip(RoundedCornerShape(4.dp))
-                .background(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                .background(color = MaterialTheme.colorScheme.onSurfaceVariant),
         )
 
         if (showButton) {
@@ -49,7 +49,7 @@ fun ItemVerticalHeaderShimmer(
                     .size(32.dp)
                     .padding(0.dp, 6.dp, 0.dp, 0.dp)
                     .clip(RoundedCornerShape(4.dp))
-                    .background(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    .background(color = MaterialTheme.colorScheme.onSurfaceVariant),
             )
         }
     }

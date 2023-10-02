@@ -20,7 +20,7 @@ import org.koin.androidx.compose.getViewModel
 fun HomeScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    viewModel: HomeViewModel = getViewModel()
+    viewModel: HomeViewModel = getViewModel(),
 ) {
     Content(modifier)
 }
@@ -31,13 +31,13 @@ private fun Content(modifier: Modifier) {
         modifier = modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceEvenly
+        verticalArrangement = Arrangement.SpaceEvenly,
     ) {
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally),
             text = stringResource(R.string.in_plan_screen_home),
             style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onBackground,
         )
     }
 }

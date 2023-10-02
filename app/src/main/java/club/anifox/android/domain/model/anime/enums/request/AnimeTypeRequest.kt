@@ -6,5 +6,5 @@ enum class AnimeTypeRequest {
     Ova,
     Music,
     Special,
-    Tv
+    Tv,
 }

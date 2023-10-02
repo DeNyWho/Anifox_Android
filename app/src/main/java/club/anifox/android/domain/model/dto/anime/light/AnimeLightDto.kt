@@ -25,6 +25,6 @@ fun AnimeLightDto.toAnimeLight(): AnimeLight {
         image = image.medium,
         url = url,
         ratingMpa = ratingMpa,
-        minimalAge = minimalAge
+        minimalAge = minimalAge,
     )
 }

@@ -17,6 +17,6 @@ data class AnimeRelatedDto(
 fun AnimeRelatedDto.toAnimeRelated(): AnimeRelated {
     return AnimeRelated(
         anime = anime.toAnimeLight(),
-        type = related.type
+        type = related.type,
     )
 }

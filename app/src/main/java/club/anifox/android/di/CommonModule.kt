@@ -8,27 +8,29 @@ import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.cache.HttpCache
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.cookies.HttpCookies
+import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.ANDROID
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.request.header
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.serialization.json.Json
-import org.koin.dsl.module
 import java.io.InputStream
 import java.security.KeyStore
 import java.security.SecureRandom
 import java.security.cert.CertificateFactory
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManagerFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.serialization.json.Json
+import org.koin.dsl.module
 
 fun commonModule(enableNetworkLogging: Boolean, applicationContext: Context) = module {
     single { createJson() }
     single { createHttpClient(get(), enableNetworkLogging, applicationContext) }
-    single { CoroutineScope(Dispatchers.Default + SupervisorJob() ) }
+    single { CoroutineScope(Dispatchers.Default + SupervisorJob()) }
     single { PreferencesDataStore(applicationContext) }
 }
 
@@ -40,7 +42,6 @@ fun createJson() = Json {
 }
 
 fun getSSLContext(context: Context): SSLContext {
-
     val certificateFileName = "ConfigAniFox/config/certs/certificate.crt"
 
     // Загрузка сертификата из assets
@@ -71,15 +72,18 @@ fun createHttpClient(json: Json, enableNetworkLogging: Boolean, applicationConte
     install(ContentNegotiation) {
         json(json)
     }
+    defaultRequest {
+        header("Content-Type", "application/json")
+    }
     install(HttpCookies)
     install(HttpCache)
-    if(enableNetworkLogging) {
+    if (enableNetworkLogging) {
         install(Logging) {
             logger = Logger.ANDROID
             level = LogLevel.ALL
         }
     }
-    install(HttpTimeout){
+    install(HttpTimeout) {
         requestTimeoutMillis = 300000
     }
 }

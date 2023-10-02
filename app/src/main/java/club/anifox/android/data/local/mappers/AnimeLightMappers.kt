@@ -5,13 +5,12 @@ import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.model.dto.anime.light.AnimeLightDto
 import java.util.UUID
 
-
 fun AnimeLightDto.toAnimeLightEntity(): AnimeLightEntity {
     return AnimeLightEntity(
         pk = UUID.randomUUID().toString(),
         url = url,
         image = image.medium,
-        title = title
+        title = title,
     )
 }
 
@@ -20,16 +19,15 @@ fun AnimeLight.toAnimeLightEntity(): AnimeLightEntity {
         pk = UUID.randomUUID().toString(),
         url = url,
         image = image,
-        title = title
+        title = title,
     )
 }
-
 
 fun AnimeLightDto.toAnimeLight(): AnimeLight {
     return AnimeLight(
         url = url,
         title = title,
-        image = image.medium
+        image = image.medium,
     )
 }
 
@@ -37,6 +35,6 @@ fun AnimeLightEntity.toAnimeLight(): AnimeLight {
     return AnimeLight(
         url = url,
         title = title,
-        image = image
+        image = image,
     )
 }

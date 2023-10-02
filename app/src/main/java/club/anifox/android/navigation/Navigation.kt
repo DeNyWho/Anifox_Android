@@ -20,19 +20,17 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun Navigation(window: Window) {
-
     val systemUiController = rememberSystemUiController()
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screens.Browse.route) {
-
+    NavHost(navController = navController, startDestination = Screens.Splash.route) {
         composable(Screens.Splash.route) {
             OnDestinationChanged(
                 systemUiController = systemUiController,
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = true,
-                window = window
+                window = window,
             )
 
             SplashScreen(navController)
@@ -44,7 +42,7 @@ fun Navigation(window: Window) {
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = false,
-                window = window
+                window = window,
             )
 
             SignInScreen(navController = navController)
@@ -56,7 +54,7 @@ fun Navigation(window: Window) {
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = false,
-                window = window
+                window = window,
             )
 
             SignUpScreen(navController = navController)
@@ -68,28 +66,28 @@ fun Navigation(window: Window) {
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = false,
-                window = window
+                window = window,
             )
 
             SearchScreen(navController = navController)
         }
 
         composable(
-            "${Screens.Detail.route}/{url}"
+            "${Screens.Detail.route}/{url}",
         ) { backStack ->
             OnDestinationChanged(
                 systemUiController = systemUiController,
                 navigationBarColor = Color.Transparent,
                 statusBarColor = Color.Transparent,
                 drawOverStatusBar = true,
-                window = window
+                window = window,
             )
             DetailScreen(
                 url = backStack.arguments?.getString("url")!!,
                 navigateBack = { navController.popBackStack() },
                 onItemClick = { url ->
                     navController.navigate("${Screens.Detail.route}/$url")
-                }
+                },
             )
         }
 
@@ -99,7 +97,7 @@ fun Navigation(window: Window) {
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = false,
-                window = window
+                window = window,
             )
 
             BottomNavigation(tabs = remember { mutableStateOf(BottomNavTabs.Browse) }, navController = navController)
@@ -111,7 +109,7 @@ fun Navigation(window: Window) {
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = false,
-                window = window
+                window = window,
             )
 
             BottomNavigation(tabs = remember { mutableStateOf(BottomNavTabs.Home) }, navController = navController)
@@ -123,7 +121,7 @@ fun Navigation(window: Window) {
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = false,
-                window = window
+                window = window,
             )
 
             BottomNavigation(tabs = remember { mutableStateOf(BottomNavTabs.Favourite) }, navController = navController)
@@ -135,14 +133,10 @@ fun Navigation(window: Window) {
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
                 drawOverStatusBar = false,
-                window = window
+                window = window,
             )
 
             BottomNavigation(tabs = remember { mutableStateOf(BottomNavTabs.Profile) }, navController = navController)
         }
-
-
     }
-
-
 }

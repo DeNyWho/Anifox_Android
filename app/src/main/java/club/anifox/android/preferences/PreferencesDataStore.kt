@@ -8,16 +8,17 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import club.anifox.android.core.DataStoreConstants
 import club.anifox.android.domain.repository.IDataStoreRepository
+import io.ktor.http.Cookie
 import kotlinx.coroutines.flow.first
 
-class PreferencesDataStore(private val context: Context): IDataStoreRepository {
+class PreferencesDataStore(context: Context) : IDataStoreRepository {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("anifox_manager")
     private val dataStore = context.dataStore
 
-    override suspend fun updateSession(access: String, refresh: String) {
+    override suspend fun updateSession(access: Cookie, refresh: Cookie) {
         dataStore.edit { preferences ->
-            preferences[accessToken] = access
-            preferences[refreshToken] = refresh
+            preferences[accessToken] = access.value
+            preferences[refreshToken] = refresh.value
         }
     }
 
@@ -36,6 +37,4 @@ class PreferencesDataStore(private val context: Context): IDataStoreRepository {
         val accessToken = stringPreferencesKey(DataStoreConstants.ACCESS_TOKEN_KEY)
         val refreshToken = stringPreferencesKey(DataStoreConstants.REFRESH_TOKEN_KEY)
     }
-
-
 }

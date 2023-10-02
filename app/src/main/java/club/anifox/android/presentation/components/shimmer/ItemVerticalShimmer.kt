@@ -28,24 +28,24 @@ import com.valentinilk.shimmer.shimmer
 fun ItemVerticalShimmer(
     modifier: Modifier,
     shimmerInstance: Shimmer,
-    thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault
+    thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault,
 ) {
     Column(
         modifier = modifier
-            .shimmer(shimmerInstance)
+            .shimmer(shimmerInstance),
     ) {
-        Card (
+        Card(
             elevation = CardDefaults.elevatedCardElevation(
-                defaultElevation = 2.dp
+                defaultElevation = 2.dp,
             ),
-            shape = MaterialTheme.shapes.small
+            shape = MaterialTheme.shapes.small,
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(thumbnailHeight)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    .background(color = MaterialTheme.colorScheme.onSurfaceVariant),
             )
         }
         Box(
@@ -53,7 +53,7 @@ fun ItemVerticalShimmer(
                 .fillMaxWidth()
                 .height(18.dp)
                 .padding(0.dp, 6.dp, 0.dp, 0.dp)
-                .background(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                .background(color = MaterialTheme.colorScheme.onSurfaceVariant),
         )
 
         Box(
@@ -61,7 +61,7 @@ fun ItemVerticalShimmer(
                 .width(62.dp)
                 .height(18.dp)
                 .padding(0.dp, 6.dp, 0.dp, 0.dp)
-                .background(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                .background(color = MaterialTheme.colorScheme.onSurfaceVariant),
         )
     }
 }
@@ -70,13 +70,13 @@ fun LazyGridScope.showItemVerticalShimmer(
     modifier: Modifier = ItemVerticalModifier.fillParentWidth,
     shimmerInstance: Shimmer,
     count: Int = 11,
-    thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault
+    thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault,
 ) {
     items(count) {
         ItemVerticalShimmer(
             modifier = modifier,
             shimmerInstance = shimmerInstance,
-            thumbnailHeight = thumbnailHeight
+            thumbnailHeight = thumbnailHeight,
         )
     }
 }
@@ -85,13 +85,13 @@ fun LazyListScope.showItemVerticalShimmer(
     modifier: Modifier = ItemVerticalModifier.fillParentWidth,
     shimmerInstance: Shimmer,
     count: Int = 11,
-    thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault
+    thumbnailHeight: Dp = ItemVerticalModifier.ThumbnailHeightDefault,
 ) {
     items(count) {
         ItemVerticalShimmer(
             modifier = modifier,
             shimmerInstance = shimmerInstance,
-            thumbnailHeight = thumbnailHeight
+            thumbnailHeight = thumbnailHeight,
         )
     }
 }
@@ -102,7 +102,7 @@ private fun LightPreview() {
     Anifox_AndroidTheme(useDarkTheme = false) {
         ItemVerticalShimmer(
             Modifier.width(ItemVerticalModifier.Default),
-            rememberShimmerCustomBounds()
+            rememberShimmerCustomBounds(),
         )
     }
 }
@@ -113,7 +113,7 @@ private fun DarkPreview() {
     Anifox_AndroidTheme(useDarkTheme = true) {
         ItemVerticalShimmer(
             Modifier.width(ItemVerticalModifier.Default),
-            rememberShimmerCustomBounds()
+            rememberShimmerCustomBounds(),
         )
     }
 }

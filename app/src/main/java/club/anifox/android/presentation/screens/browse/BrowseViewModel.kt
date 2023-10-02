@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class BrowseViewModel(
-    private val animeUseCase: GetAnimeUseCase
-): ViewModel() {
+    private val animeUseCase: GetAnimeUseCase,
+) : ViewModel() {
     private val _onGoingAnime: MutableState<StateListWrapper<AnimeLight>> =
         mutableStateOf(StateListWrapper())
     val onGoingAnime: MutableState<StateListWrapper<AnimeLight>> = _onGoingAnime
@@ -23,6 +23,4 @@ class BrowseViewModel(
             _onGoingAnime.value = it
         }.launchIn(viewModelScope)
     }
-
-
 }

@@ -16,8 +16,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val animePagingUseCase: GetAnimePagingUseCase
-): ViewModel() {
+    private val animePagingUseCase: GetAnimePagingUseCase,
+) : ViewModel() {
     private val _anime: MutableStateFlow<PagingData<AnimeLight>> =
         MutableStateFlow(PagingData.empty())
     val anime: MutableStateFlow<PagingData<AnimeLight>> = _anime
@@ -27,11 +27,10 @@ class SearchViewModel(
     private val _searchQuery: MutableState<String> = mutableStateOf("")
     val searchQuery: MutableState<String> = _searchQuery
 
-
     fun onSearchEvent(event: SearchEvent) {
-        when(event) {
+        when (event) {
             is SearchEvent.OnSearchQueryChange -> {
-                if(searchQuery.value != event.query) {
+                if (searchQuery.value != event.query) {
                     updateSearchQuery(event.query)
                     searchJob?.cancel()
                     searchJob = viewModelScope.launch {
@@ -41,7 +40,6 @@ class SearchViewModel(
             }
 
             is SearchEvent.OnSortToggled -> {
-
             }
 
             is SearchEvent.OnSearchInitiated -> {
@@ -63,14 +61,14 @@ class SearchViewModel(
     }
 
     private fun clearSearch() {
-        viewModelScope.launch {  }
+        viewModelScope.launch { }
     }
 
     fun searchAnime(searchQuery: String) {
         if (searchQuery.isBlank()) return
         viewModelScope.launch {
             animePagingUseCase.invoke(
-                searchQuery = searchQuery
+                searchQuery = searchQuery,
             ).cachedIn(viewModelScope).map {
                 it.map { animeLightEntity ->
                     animeLightEntity.toAnimeLight()
@@ -80,6 +78,4 @@ class SearchViewModel(
             }
         }
     }
-
-
 }

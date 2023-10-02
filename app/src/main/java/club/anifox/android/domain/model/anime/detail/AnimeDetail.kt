@@ -1,18 +1,22 @@
-@file:UseSerializers(LocalDateSerializer::class, LocalDateTimeSerializer::class)
+@file:UseSerializers(
+    LocalDateSerializer::class,
+    LocalDateTimeSerializer::class,
+)
+
 package club.anifox.android.domain.model.anime.detail
 
-import club.anifox.android.domain.model.anime.enums.AnimeSeason
-import club.anifox.android.domain.model.anime.enums.AnimeStatus
-import club.anifox.android.domain.model.anime.enums.AnimeType
 import club.anifox.android.domain.model.anime.AnimeGenres
 import club.anifox.android.domain.model.anime.AnimeStudio
 import club.anifox.android.domain.model.anime.AnimeTranslation
+import club.anifox.android.domain.model.anime.enums.AnimeSeason
+import club.anifox.android.domain.model.anime.enums.AnimeStatus
+import club.anifox.android.domain.model.anime.enums.AnimeType
 import club.anifox.android.serialization.LocalDateSerializer
 import club.anifox.android.serialization.LocalDateTimeSerializer
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
 import java.time.LocalDate
 import java.time.LocalDateTime
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
 
 @Serializable
 data class AnimeDetail(

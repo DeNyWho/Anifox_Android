@@ -22,31 +22,32 @@ import androidx.compose.ui.unit.sp
 fun HorizontalContentHeader(
     modifier: Modifier = Modifier,
     title: String,
-    onButtonClick: (() -> Unit)? = null
+    onButtonClick: (() -> Unit)? = null,
 ) {
     Row(
         modifier = modifier
             .heightIn(min = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
             text = title,
             style = TextStyle(
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
-            )
+                fontSize = 18.sp,
+            ),
         )
         Spacer(modifier = Modifier.weight(1f))
 
         if (onButtonClick != null) {
-            IconButton(onClick = onButtonClick
+            IconButton(
+                onClick = onButtonClick,
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowForward,
                     contentDescription = "See all",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         }

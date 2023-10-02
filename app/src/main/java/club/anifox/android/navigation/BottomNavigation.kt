@@ -30,42 +30,41 @@ import club.anifox.android.presentation.screens.profile.ProfileScreen
 @Composable
 fun BottomNavigation(
     tabs: MutableState<BottomNavTabs>,
-    navController: NavHostController
-){
-    Scaffold (
-        bottomBar = { Content(tabs = tabs) }
+    navController: NavHostController,
+) {
+    Scaffold(
+        bottomBar = { Content(tabs = tabs) },
     ) {
         val modifier = Modifier.padding(it)
         when (tabs.value) {
             BottomNavTabs.Home -> HomeScreen(
                 modifier = modifier,
-                navController = navController
+                navController = navController,
             )
             BottomNavTabs.Browse -> BrowseScreen(
                 modifier = modifier,
-                navController = navController
+                navController = navController,
             )
             BottomNavTabs.Favourite -> FavouriteScreen(
                 modifier = modifier,
-                navController = navController
+                navController = navController,
             )
             BottomNavTabs.Profile -> ProfileScreen(
                 modifier = modifier,
-                navController = navController
+                navController = navController,
             )
         }
     }
 }
 
-
 @Composable
-private fun Content(tabs: MutableState<BottomNavTabs>){
-    NavigationBar (
+private fun Content(tabs: MutableState<BottomNavTabs>) {
+    NavigationBar(
         modifier = Modifier.height(72.dp),
         containerColor = MaterialTheme.colorScheme.background,
-        contentColor = MaterialTheme.colorScheme.onBackground
+        contentColor = MaterialTheme.colorScheme.onBackground,
     ) {
-        for(tab in BottomNavTabs.values()){
+        for (tab in BottomNavTabs.values()) {
             NavigationBarItem(
                 alwaysShowLabel = false,
                 modifier = Modifier
@@ -73,7 +72,7 @@ private fun Content(tabs: MutableState<BottomNavTabs>){
                     .weight(5f),
                 selected = tabs.value == tab,
                 onClick = {
-                    if(tabs.value == tab) return@NavigationBarItem
+                    if (tabs.value == tab) return@NavigationBarItem
                     tabs.value = tab
                 },
                 colors = NavigationBarItemDefaults.colors(
@@ -85,7 +84,7 @@ private fun Content(tabs: MutableState<BottomNavTabs>){
                 label = {
                     Text(
                         text = tab.label,
-                        style = MaterialTheme.typography.labelMedium
+                        style = MaterialTheme.typography.labelMedium,
                     )
                 },
                 icon = {
@@ -94,12 +93,11 @@ private fun Content(tabs: MutableState<BottomNavTabs>){
                         contentDescription = tab.label,
                         modifier = Modifier.size(25.dp),
                     )
-                }
+                },
             )
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
@@ -107,7 +105,7 @@ private fun LightPreview() {
     Anifox_AndroidTheme(useDarkTheme = false) {
         val selectedTab = remember { mutableStateOf(BottomNavTabs.Home) }
         Content(
-            selectedTab
+            selectedTab,
         )
     }
 }
@@ -118,7 +116,7 @@ private fun DarkPreview() {
     Anifox_AndroidTheme(useDarkTheme = true) {
         val selectedTab = remember { mutableStateOf(BottomNavTabs.Profile) }
         Content(
-            selectedTab
+            selectedTab,
         )
     }
 }

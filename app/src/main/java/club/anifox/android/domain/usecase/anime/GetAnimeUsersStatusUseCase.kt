@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class GetAnimeUsersStatusUseCase(private val service: AnimeService){
+class GetAnimeUsersStatusUseCase(private val service: AnimeService) {
     operator fun invoke(
-        url: String
+        url: String,
     ): Flow<StateWrapper<AnimeUsersStatus>> {
         return flow {
             emit(StateWrapper.loading())
@@ -31,7 +31,6 @@ class GetAnimeUsersStatusUseCase(private val service: AnimeService){
             }
 
             emit(state)
-
         }.flowOn(Dispatchers.IO)
     }
 }

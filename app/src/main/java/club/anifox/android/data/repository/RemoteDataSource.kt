@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flow
 
 class RemoteDataSource(
     private val aniFoxDataBase: AniFoxDataBase,
-    private val animeService: AnimeService
+    private val animeService: AnimeService,
 ) {
 
     fun clearSearch(): Flow<Resource<Boolean>> {
@@ -34,7 +34,7 @@ class RemoteDataSource(
         order: String?,
         genres: List<String>?,
         searchQuery: String?,
-        year: Int?
+        year: Int?,
     ): Flow<PagingData<AnimeLightEntity>> {
         return Pager(
             config = PagingConfig(pageSize = 20),
@@ -49,9 +49,9 @@ class RemoteDataSource(
                 order = order,
                 genres = genres,
                 searchQuery = searchQuery,
-                year = year
+                year = year,
             ),
-            pagingSourceFactory = { aniFoxDataBase.animeLightDao().getAnimeLights() }
+            pagingSourceFactory = { aniFoxDataBase.animeLightDao().getAnimeLights() },
         ).flow
     }
 }
