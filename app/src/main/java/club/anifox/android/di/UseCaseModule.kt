@@ -1,6 +1,8 @@
 package club.anifox.android.di
 
+import club.anifox.android.domain.usecase.account.ChangeUserNicknameUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimeDetailsUseCase
+import club.anifox.android.domain.usecase.anime.GetAnimeGenresUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimePagingUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimeRelatedUseCase
 import club.anifox.android.domain.usecase.anime.GetAnimeScreenShotsUseCase
@@ -20,6 +22,8 @@ internal val useCaseModule = module {
     singleOf(::GetAnimeUsersStatusUseCase)
     singleOf(::GetAnimeScreenShotsUseCase)
     singleOf(::GetAnimeScreenShotsUseCase)
+    singleOf(::GetAnimeGenresUseCase)
 
     singleOf(::AuthenticationUseCase)
+    singleOf(::ChangeUserNicknameUseCase)
 }

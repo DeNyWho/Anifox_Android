@@ -1,4 +1,4 @@
-package club.anifox.android.presentation.screens.sign_up
+package club.anifox.android.presentation.screens.registration
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

@@ -21,6 +21,16 @@
     <string name="shikimori_auth">Продолжить с Shikimori</string>
     <string name="skip_auth">Пропустить</string>
 
+    // Common
+    <string name="skip_btn">пропустить</string>
+
+    // Errors
+    <string name="tokens_not_found">Токены не найдены</string>
+
+    // Genre picker
+    <string name="pick_genre_main">Выберите любимые жанры</string>
+    <string name="pick_genre_info">Это поможет получать более точные и интересные рекомендации</string>
+
     // Detail
     <string name="watch_button_title">Смотреть</string>
     <string name="information_title">Информация</string>
@@ -30,7 +40,7 @@
     <string name="similar_section">Похожие</string>
 
 
-    //User statuses
+    // User statuses
     <string name="status_watching">Смотрю</string>
     <string name="status_in_plan">Запланировано</string>
     <string name="status_watched">Просмотрено</string>

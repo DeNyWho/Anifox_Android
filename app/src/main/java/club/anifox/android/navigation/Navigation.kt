@@ -11,10 +11,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import club.anifox.android.domain.enums.BottomNavTabs
 import club.anifox.android.presentation.common.utils.OnDestinationChanged
+import club.anifox.android.presentation.screens.authentication.SignInScreen
 import club.anifox.android.presentation.screens.detail.DetailScreen
+import club.anifox.android.presentation.screens.pickgenre.PickGenreScreen
+import club.anifox.android.presentation.screens.registration.SignUpScreen
 import club.anifox.android.presentation.screens.search.SearchScreen
-import club.anifox.android.presentation.screens.sign_in.SignInScreen
-import club.anifox.android.presentation.screens.sign_up.SignUpScreen
 import club.anifox.android.presentation.screens.splash.SplashScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -23,7 +24,7 @@ fun Navigation(window: Window) {
     val systemUiController = rememberSystemUiController()
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screens.Splash.route) {
+    NavHost(navController = navController, startDestination = Screens.SignIn.route) {
         composable(Screens.Splash.route) {
             OnDestinationChanged(
                 systemUiController = systemUiController,
@@ -58,6 +59,18 @@ fun Navigation(window: Window) {
             )
 
             SignUpScreen(navController = navController)
+        }
+
+        composable(Screens.PickGenre.route) {
+            OnDestinationChanged(
+                systemUiController = systemUiController,
+                navigationBarColor = MaterialTheme.colorScheme.background,
+                statusBarColor = MaterialTheme.colorScheme.background,
+                drawOverStatusBar = false,
+                window = window,
+            )
+
+            PickGenreScreen(navController = navController)
         }
 
         composable(Screens.Search.route) {

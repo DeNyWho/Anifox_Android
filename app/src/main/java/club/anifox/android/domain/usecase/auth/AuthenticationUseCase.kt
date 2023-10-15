@@ -28,7 +28,7 @@ class AuthenticationUseCase(
                     val refreshCookie = cookies?.find { it.name == "refresh_token" }
 
                     if (accessCookie != null && refreshCookie != null) {
-                        preferencesDataStore.updateSession(access = accessCookie, refresh = refreshCookie)
+                        preferencesDataStore.updateSession(access = accessCookie.value, refresh = refreshCookie.value)
                         StateWrapper(true)
                     } else {
                         StateWrapper(false)

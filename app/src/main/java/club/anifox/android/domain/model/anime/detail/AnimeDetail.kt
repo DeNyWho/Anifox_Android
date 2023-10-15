@@ -8,9 +8,9 @@ package club.anifox.android.domain.model.anime.detail
 import club.anifox.android.domain.model.anime.AnimeGenres
 import club.anifox.android.domain.model.anime.AnimeStudio
 import club.anifox.android.domain.model.anime.AnimeTranslation
-import club.anifox.android.domain.model.anime.enums.AnimeSeason
-import club.anifox.android.domain.model.anime.enums.AnimeStatus
-import club.anifox.android.domain.model.anime.enums.AnimeType
+import club.anifox.android.domain.model.anime.enums.anime.AnimeSeason
+import club.anifox.android.domain.model.anime.enums.anime.AnimeStatus
+import club.anifox.android.domain.model.anime.enums.anime.AnimeType
 import club.anifox.android.serialization.LocalDateSerializer
 import club.anifox.android.serialization.LocalDateTimeSerializer
 import java.time.LocalDate

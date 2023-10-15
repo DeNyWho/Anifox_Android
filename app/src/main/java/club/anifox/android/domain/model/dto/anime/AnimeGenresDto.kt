@@ -8,13 +8,13 @@ import kotlinx.serialization.Serializable
 data class AnimeGenresDto(
     @SerialName("id")
     val id: String,
-    @SerialName("genre")
-    val genre: String,
+    @SerialName("name")
+    val name: String,
 )
 
 fun AnimeGenresDto.toAnimeGenres(): AnimeGenres {
     return AnimeGenres(
         id = id,
-        genre = genre,
+        name = name,
     )
 }

@@ -3,6 +3,7 @@ package club.anifox.android.data.remote.anime
 import club.anifox.android.core.Endpoints
 import club.anifox.android.data.remote.safeApiCall
 import club.anifox.android.domain.model.common.Resource
+import club.anifox.android.domain.model.dto.anime.AnimeGenresDto
 import club.anifox.android.domain.model.dto.anime.AnimeUsersStatusDto
 import club.anifox.android.domain.model.dto.anime.detail.AnimeDetailDto
 import club.anifox.android.domain.model.dto.anime.light.AnimeLightDto
@@ -132,5 +133,18 @@ class AnimeService(
         }
 
         return safeApiCall<List<AnimeMediaDto>>(client, request)
+    }
+
+    suspend fun getAnimeGenres(): Resource<List<AnimeGenresDto>> {
+        val request = HttpRequestBuilder().apply {
+            method = HttpMethod.Get
+            url {
+                protocol = URLProtocol.HTTPS
+                host = Endpoints.domain
+                encodedPath = "${Endpoints.api}${Endpoints.anime}${Endpoints.genres}"
+            }
+        }
+
+        return safeApiCall<List<AnimeGenresDto>>(client, request)
     }
 }

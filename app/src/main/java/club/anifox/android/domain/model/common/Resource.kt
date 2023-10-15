@@ -13,6 +13,6 @@ sealed class Resource<out T> {
 }
 
 data class ApiError(
-    val statusCode: Int = 200,
+    val statusCode: Int = 404,
     val message: String = "",
 )

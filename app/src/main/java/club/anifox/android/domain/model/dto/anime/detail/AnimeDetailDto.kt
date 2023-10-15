@@ -3,9 +3,9 @@
 package club.anifox.android.domain.model.dto.anime.detail
 
 import club.anifox.android.domain.model.anime.detail.AnimeDetail
-import club.anifox.android.domain.model.anime.enums.AnimeSeason
-import club.anifox.android.domain.model.anime.enums.AnimeStatus
-import club.anifox.android.domain.model.anime.enums.AnimeType
+import club.anifox.android.domain.model.anime.enums.anime.AnimeSeason
+import club.anifox.android.domain.model.anime.enums.anime.AnimeStatus
+import club.anifox.android.domain.model.anime.enums.anime.AnimeType
 import club.anifox.android.domain.model.dto.anime.AnimeGenresDto
 import club.anifox.android.domain.model.dto.anime.AnimeImageDto
 import club.anifox.android.domain.model.dto.anime.AnimeStudioDto

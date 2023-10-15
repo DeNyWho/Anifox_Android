@@ -20,12 +20,10 @@ suspend inline fun <reified T : Any> safeApiCall(
     return try {
         val response: HttpResponse = client.request(request)
         val cookies = client.cookies("https://${Endpoints.domain}/")
-
         when (response.status) {
             HttpStatusCode.OK, HttpStatusCode.Created -> {
                 Resource.Success(data = response.body<T>(), cookies = cookies)
             }
-
             HttpStatusCode.Unauthorized -> {
                 Resource.Error(
                     ApiError(
@@ -34,7 +32,6 @@ suspend inline fun <reified T : Any> safeApiCall(
                     ),
                 )
             }
-
             HttpStatusCode.NotFound -> {
                 Resource.Error(
                     ApiError(
@@ -43,7 +40,6 @@ suspend inline fun <reified T : Any> safeApiCall(
                     ),
                 )
             }
-
             else -> {
                 Resource.Error(ApiError(response.status.value, response.bodyAsText()))
             }

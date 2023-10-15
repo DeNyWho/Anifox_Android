@@ -1,4 +1,4 @@
-package club.anifox.android.presentation.screens.sign_in
+package club.anifox.android.presentation.screens.authentication
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -58,6 +58,7 @@ fun SignInScreen(
     navController: NavHostController,
     viewModel: SignInViewModel = getViewModel(),
 ) {
+    viewModel.test()
     Content(
         onUserIdentifierChanged = { newLogin ->
             viewModel.onUserIdentifierChanged(newLogin)

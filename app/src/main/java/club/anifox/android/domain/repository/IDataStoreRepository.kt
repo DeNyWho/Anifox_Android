@@ -1,9 +1,9 @@
 package club.anifox.android.domain.repository
 
-import io.ktor.http.Cookie
+import club.anifox.android.domain.model.user.account.TokenPair
 
 interface IDataStoreRepository {
-    suspend fun getToken(): String?
+    suspend fun getToken(): TokenPair?
     suspend fun logout()
-    suspend fun updateSession(access: Cookie, refresh: Cookie)
+    suspend fun updateSession(access: String, refresh: String)
 }

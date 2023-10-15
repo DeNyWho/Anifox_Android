@@ -74,6 +74,7 @@ dependencies {
     // Ktor client
     implementation(libs.ktor.client.android)
     implementation(libs.ktor.client.apache)
+    implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.json)
     implementation(libs.ktor.client.serialization)
