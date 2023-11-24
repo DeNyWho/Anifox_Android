@@ -15,13 +15,18 @@ import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.header
+import io.ktor.http.URLProtocol
+import io.ktor.http.encodedPath
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
+import club.anifox.android.data.network.interceptors.AuthInterceptor
 
 fun networkModule(applicationContext: Context) = module {
+    singleOf(::AuthInterceptor)
     single { createJson() }
-    single { createHttpClient(get(), applicationContext) }
+    single { createHttpClient(get(), applicationContext, get()) }
 }
 
 fun createJson() = Json {
@@ -31,11 +36,11 @@ fun createJson() = Json {
     encodeDefaults = false
 }
 
-fun createHttpClient(json: Json, applicationContext: Context) = HttpClient(
+fun createHttpClient(json: Json, applicationContext: Context, authInterceptor: AuthInterceptor) = HttpClient(
     OkHttp
 ) {
     engine {
-//        addInterceptor(authInterceptor)
+        addInterceptor(authInterceptor)
         config {
             sslSocketFactory(SslSettings.getSslContext(applicationContext)!!.socketFactory, SslSettings.getTrustManager(applicationContext))
         }
@@ -45,6 +50,11 @@ fun createHttpClient(json: Json, applicationContext: Context) = HttpClient(
     }
     defaultRequest {
         header("Content-Type", "application/json")
+        url {
+            protocol = URLProtocol.HTTPS
+            host = BuildConfig.hostname
+            encodedPath = BuildConfig.api_path
+        }
     }
     install(HttpCookies)
     install(HttpCache)

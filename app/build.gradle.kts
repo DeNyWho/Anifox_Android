@@ -9,7 +9,8 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
-val hostnameApi: String = gradleLocalProperties(rootDir).getProperty("hostname_api")
+val hostname: String = gradleLocalProperties(rootDir).getProperty("host_name")
+val apiPath: String = gradleLocalProperties(rootDir).getProperty("api_path")
 val certPath: String = gradleLocalProperties(rootDir).getProperty("cert_path")
 val certAlias: String = gradleLocalProperties(rootDir).getProperty("cert_alias")
 
@@ -41,7 +42,8 @@ android {
         debug {
             buildConfigField("String", "cert_alias", "\"${certAlias}\"")
             buildConfigField("String", "cert_path", "\"${certPath}\"")
-            buildConfigField("String", "hostname_api", "\"${hostnameApi}\"")
+            buildConfigField("String", "hostname", "\"${hostname}\"")
+            buildConfigField("String", "api_path", "\"${apiPath}\"")
         }
     }
     compileOptions {
