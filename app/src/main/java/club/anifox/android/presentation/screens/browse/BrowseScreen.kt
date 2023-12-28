@@ -105,7 +105,7 @@ private fun Content(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            items(BrowseStateGrid.values()) { state ->
+            items(BrowseStateGrid.entries.toTypedArray()) { state ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()

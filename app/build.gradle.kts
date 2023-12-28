@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
@@ -8,6 +9,11 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktlint)
 }
+
+val hostname: String = gradleLocalProperties(rootDir).getProperty("host_name")
+val apiPath: String = gradleLocalProperties(rootDir).getProperty("api_path")
+val certPath: String = gradleLocalProperties(rootDir).getProperty("cert_path")
+val certAlias: String = gradleLocalProperties(rootDir).getProperty("cert_alias")
 
 android {
     namespace = "club.anifox.android"
@@ -34,6 +40,12 @@ android {
                 "proguard-rules.pro",
             )
         }
+        debug {
+            buildConfigField("String", "cert_alias", "\"${certAlias}\"")
+            buildConfigField("String", "cert_path", "\"${certPath}\"")
+            buildConfigField("String", "hostname", "\"${hostname}\"")
+            buildConfigField("String", "api_path", "\"${apiPath}\"")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -44,6 +56,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"

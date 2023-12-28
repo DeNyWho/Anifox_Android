@@ -20,9 +20,7 @@ class SignInViewModel(
     val password: MutableState<String> = _password
 
     fun test() {
-        println("WTFZXCSAD 1234")
-        changeUserNicknameUseCase.invoke("zxcasd").onEach { value ->
-            println("ZXCASD = $value")
+        changeUserNicknameUseCase.invoke("11").onEach { value ->
         }.launchIn(viewModelScope)
         println()
     }

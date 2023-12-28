@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.0-beta06"
+agp = "8.2.0-rc03"
 kotlin = "1.9.0"
 core-ktx = "1.12.0"
 junit = "4.13.2"
@@ -7,23 +7,25 @@ androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 lifecycle-runtime-ktx = "2.6.2"
 activity-compose = "1.8.0"
-compose-bom = "2023.10.00"
+compose-bom = "2023.10.01"
 koin-android="3.4.6"
 shimmer-commpose="1.0.5"
 coil = "2.4.0"
 datastore = "1.0.0"
 coroutines = "1.7.3"
-navigation = "2.7.4"
+navigation = "2.7.5"
 serialization-json = "1.6.0"
 ktor-client = "2.3.5"
 accompanist-systemuicontroller = "0.32.0"
 slf4j-simple = "2.0.7"
 paging = "3.2.1"
-room = "2.5.2"
+room = "2.6.0"
 ksp = "1.9.0-1.0.13"
 toolbar-compose = "2.2.0"
 charty = "2.0.0-alpha01"
 ktlint = "11.5.1"
+mobile-native-foundation-store="5.0.0"
+atomicfu="0.18.5"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -66,6 +68,8 @@ room-paging = { group = "androidx.room", name = "room-paging", version.ref = "ro
 room-complier = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 toolbar-compose = { group = "me.onebone", name = "toolbar-compose", version.ref = "toolbar-compose" }
 charty = { group = "com.himanshoe", name = "charty", version.ref = "charty" }
+mobile-native-foundation-store = { group = "org.mobilenativefoundation.store", name = "store5", version.ref = "mobile-native-foundation-store"}
+atomicfu = { group = "org.jetbrains.kotlinx", name = "atomicfu", version.ref = "atomicfu"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

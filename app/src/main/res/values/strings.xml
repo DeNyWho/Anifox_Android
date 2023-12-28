@@ -23,6 +23,7 @@
 
     // Common
     <string name="skip_btn">пропустить</string>
+    <string name="see_all">посмотреть ещё</string>
 
     // Errors
     <string name="tokens_not_found">Токены не найдены</string>
@@ -30,6 +31,10 @@
     // Genre picker
     <string name="pick_genre_main">Выберите любимые жанры</string>
     <string name="pick_genre_info">Это поможет получать более точные и интересные рекомендации</string>
+
+    // Home screen
+    <string name="home_popular_title">популярное</string>
+    <string name="home_new_title">премьера</string>
 
     // Detail
     <string name="watch_button_title">Смотреть</string>

@@ -1,8 +1,10 @@
 package club.anifox.android.core
 
+import club.anifox.android.BuildConfig
+
 object Endpoints {
-    const val domain = "anifox.club"
-    const val api = "/api"
+    const val domain = BuildConfig.hostname
+    const val api = BuildConfig.api_path
     const val anime = "/anime/"
     const val screenShots = "/screenshots"
     const val related = "/related"
