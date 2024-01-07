@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
-val hostname: String = gradleLocalProperties(rootDir).getProperty("host_name")
+val hostname: String = gradleLocalProperties(rootDir).getProperty("hostname")
 val apiPath: String = gradleLocalProperties(rootDir).getProperty("api_path")
 val certPath: String = gradleLocalProperties(rootDir).getProperty("cert_path")
 val certAlias: String = gradleLocalProperties(rootDir).getProperty("cert_alias")
@@ -110,6 +110,7 @@ dependencies {
     implementation(libs.charty)
     implementation(libs.navigation)
     implementation(libs.serialization.json)
+    implementation(libs.serialization.protobuf)
     implementation(libs.shimmer.compose)
     implementation(libs.coil)
     implementation(libs.coroutines)

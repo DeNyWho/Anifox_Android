@@ -7,13 +7,15 @@ import androidx.compose.ui.unit.dp
 
 object ItemVerticalModifier {
     val Default = 130.dp
+    val Carousel = 140.dp
     val Small = 110.dp
     val ScreenShot = 150.dp
 
     val fillParentWidth = Modifier
         .fillMaxWidth()
 
-    val ThumbnailHeightDefault = 190.dp
+    val ThumbnailHeightDefault = 180.dp
+    val ThumbnailHeightCarousel = 190.dp
     val ThumbnailHeightScreenShot = 100.dp
     val ThumbnailHeightGrid = 170.dp
     val ThumbnailHeightSmall = 140.dp

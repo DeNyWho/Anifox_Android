@@ -20,7 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import club.anifox.android.domain.model.anime.AnimeStudio
+import club.anifox.android.domain.model.anime.common.AnimeStudio
 import club.anifox.android.domain.model.anime.detail.AnimeDetail
 import club.anifox.android.domain.model.anime.enums.anime.AnimeStatus
 import club.anifox.android.domain.model.anime.enums.anime.AnimeType

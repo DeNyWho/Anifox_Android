@@ -41,6 +41,7 @@ fun ItemVertical(
     textAlign: TextAlign = TextAlign.Start,
     onClick: (String) -> Unit = {},
     preview: Boolean = false,
+    needTitle: Boolean = true,
 ) {
     Column(
         modifier = modifier
@@ -110,16 +111,18 @@ fun ItemVertical(
                 }
             }
         }
-        Text(
-            text = data.title,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 6.dp, bottom = 4.dp),
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis,
-            color = MaterialTheme.colorScheme.onBackground,
-            textAlign = textAlign,
-        )
+        if (needTitle) {
+            Text(
+                text = data.title,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 6.dp, bottom = 4.dp),
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onBackground,
+                textAlign = textAlign,
+            )
+        }
     }
 }
 

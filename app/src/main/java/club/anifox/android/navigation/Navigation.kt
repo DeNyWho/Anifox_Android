@@ -24,7 +24,7 @@ fun Navigation(window: Window) {
     val systemUiController = rememberSystemUiController()
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screens.SignIn.route) {
+    NavHost(navController = navController, startDestination = Screens.Home.route) {
         composable(Screens.Splash.route) {
             OnDestinationChanged(
                 systemUiController = systemUiController,

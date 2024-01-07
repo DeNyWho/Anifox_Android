@@ -13,8 +13,6 @@ object Endpoints {
     const val media = "/media"
     const val genres = "/genres"
 
-    const val users = "/users"
-
     const val account = "/account"
     const val nickname = "/nickname"
 

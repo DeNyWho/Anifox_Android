@@ -44,6 +44,10 @@ import club.anifox.android.presentation.components.item.ItemVerticalModifier
 import club.anifox.android.presentation.components.shimmer.rememberShimmerCustomBounds
 import org.koin.androidx.compose.getViewModel
 
+private object ContentScreenSections {
+    const val ContentOngoing = "content_ongoing"
+}
+
 @Composable
 fun BrowseScreen(
     modifier: Modifier = Modifier,
@@ -64,10 +68,6 @@ fun BrowseScreen(
             navController.navigate("${Screens.Detail.route}/$url")
         },
     )
-}
-
-private object ContentScreenSections {
-    const val ContentOngoing = "content_ongoing"
 }
 
 @Composable

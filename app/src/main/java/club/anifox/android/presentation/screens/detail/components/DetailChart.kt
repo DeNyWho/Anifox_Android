@@ -23,8 +23,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import club.anifox.android.R
-import club.anifox.android.domain.model.anime.AnimeUsersStatus
-import club.anifox.android.domain.model.anime.isAllZero
+import club.anifox.android.domain.model.anime.common.AnimeUsersStatus
+import club.anifox.android.domain.model.anime.common.isAllZero
 import club.anifox.android.domain.state.StateWrapper
 import club.anifox.android.presentation.common.ui.theme.blueLight
 import club.anifox.android.presentation.common.ui.theme.green

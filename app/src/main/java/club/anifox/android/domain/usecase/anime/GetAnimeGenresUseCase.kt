@@ -1,7 +1,7 @@
 package club.anifox.android.domain.usecase.anime
 
 import club.anifox.android.data.remote.anime.AnimeService
-import club.anifox.android.domain.model.anime.AnimeGenres
+import club.anifox.android.domain.model.anime.common.AnimeGenres
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.model.dto.anime.toAnimeGenres
 import club.anifox.android.domain.state.StateListWrapper

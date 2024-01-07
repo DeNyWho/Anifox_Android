@@ -13,6 +13,7 @@ import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.presentation.components.item.ItemVertical
 import club.anifox.android.presentation.components.item.ItemVerticalModifier
+import club.anifox.android.presentation.components.item.ItemVerticalMore
 import club.anifox.android.presentation.components.shimmer.ItemVerticalHeaderShimmer
 import club.anifox.android.presentation.components.shimmer.onUpdateShimmerBounds
 import club.anifox.android.presentation.components.shimmer.showItemVerticalShimmer
@@ -69,6 +70,13 @@ fun ScrollableHorizontalContent(
                     thumbnailHeight = thumbnailHeight,
                     textAlign = textAlign,
                     onClick = onItemClick,
+                )
+            }
+            item {
+                ItemVerticalMore(
+                    modifier = modifier,
+                    thumbnailHeight = thumbnailHeight,
+                    onClick = { },
                 )
             }
         }

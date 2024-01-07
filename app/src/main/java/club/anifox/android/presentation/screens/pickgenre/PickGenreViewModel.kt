@@ -4,7 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import club.anifox.android.domain.model.anime.AnimeGenres
+import club.anifox.android.domain.model.anime.common.AnimeGenres
 import club.anifox.android.domain.model.user.account.TokenPair
 import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.domain.state.StateWrapper

@@ -2,6 +2,7 @@ package club.anifox.android.domain.usecase.anime
 
 import club.anifox.android.data.local.mappers.toAnimeLight
 import club.anifox.android.data.remote.anime.AnimeService
+import club.anifox.android.domain.enums.search.FilterEnum
 import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.state.StateListWrapper
@@ -23,14 +24,15 @@ class GetAnimeUseCase(private val service: AnimeService) {
         genres: List<String>? = null,
         searchQuery: String? = null,
         year: Int? = null,
+        filter: FilterEnum? = null,
     ): Flow<StateListWrapper<AnimeLight>> {
         return flow {
             emit(StateListWrapper.loading())
 
             val animeResult = service.getAnime(
                 order = order,
-                pageNum = pageNum,
-                pageSize = pageSize,
+                page = pageNum,
+                limit = pageSize,
                 status = status,
                 genres = genres,
                 searchQuery = searchQuery,
@@ -39,6 +41,7 @@ class GetAnimeUseCase(private val service: AnimeService) {
                 season = season,
                 type = type,
                 year = year,
+                filter = filter,
             )
 
             val state = when (animeResult) {

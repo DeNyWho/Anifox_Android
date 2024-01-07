@@ -27,7 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import club.anifox.android.R
-import club.anifox.android.domain.model.anime.AnimeUsersStatus
+import club.anifox.android.domain.model.anime.common.AnimeUsersStatus
 import club.anifox.android.domain.model.anime.detail.AnimeDetail
 import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.model.anime.related.AnimeRelated

@@ -11,6 +11,7 @@ import club.anifox.android.data.local.database.AniFoxDataBase
 import club.anifox.android.data.local.mappers.toAnimeLight
 import club.anifox.android.data.local.mappers.toAnimeLightEntity
 import club.anifox.android.data.remote.anime.AnimeService
+import club.anifox.android.domain.enums.search.FilterEnum
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.state.StateListWrapper
 
@@ -28,6 +29,7 @@ class AnimeLightNetworkMediator(
     private val genres: List<String>? = null,
     private val searchQuery: String? = null,
     private val year: Int? = null,
+    private val filter: FilterEnum? = null,
 ) : RemoteMediator<Int, AnimeLightEntity>() {
 
     private val animeLightDao = anifoxLocal.animeLightDao()
@@ -65,8 +67,8 @@ class AnimeLightNetworkMediator(
 
             val animeResponse = animeService.getAnime(
                 order = order,
-                pageNum = currentPage,
-                pageSize = pageSize,
+                page = currentPage,
+                limit = pageSize,
                 status = status,
                 genres = genres,
                 searchQuery = searchQuery,
@@ -75,6 +77,7 @@ class AnimeLightNetworkMediator(
                 season = season,
                 type = type,
                 year = year,
+                filter = filter,
             )
 
             val animeResult = when (animeResponse) {

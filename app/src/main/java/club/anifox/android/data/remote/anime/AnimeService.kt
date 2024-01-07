@@ -2,6 +2,7 @@ package club.anifox.android.data.remote.anime
 
 import club.anifox.android.core.Endpoints
 import club.anifox.android.data.remote.safeApiCall
+import club.anifox.android.domain.enums.search.FilterEnum
 import club.anifox.android.domain.model.common.Resource
 import club.anifox.android.domain.model.dto.anime.AnimeGenresDto
 import club.anifox.android.domain.model.dto.anime.AnimeUsersStatusDto
@@ -22,8 +23,8 @@ class AnimeService(
 ) : KoinComponent {
 
     suspend fun getAnime(
-        pageNum: Int,
-        pageSize: Int,
+        page: Int,
+        limit: Int,
         order: String?,
         status: String?,
         genres: List<String>?,
@@ -33,6 +34,7 @@ class AnimeService(
         minimalAge: String?,
         type: String?,
         year: Int?,
+        filter: FilterEnum?,
     ): Resource<List<AnimeLightDto>> {
         val request = HttpRequestBuilder().apply {
             method = HttpMethod.Get
@@ -40,8 +42,8 @@ class AnimeService(
                 protocol = URLProtocol.HTTPS
                 host = Endpoints.domain
                 encodedPath = "${Endpoints.api}${Endpoints.anime}"
-                parameter("pageNum", pageNum)
-                parameter("pageSize", pageSize)
+                parameter("page", page)
+                parameter("limit", limit)
                 if (order != null) parameter("order", order)
                 if (season != null) parameter("season", season)
                 if (ratingMpa != null) parameter("ratingMpa", ratingMpa)
@@ -51,6 +53,7 @@ class AnimeService(
                 if (status != null) if (status.length > 4) parameter("status", status)
                 if (genres != null) if (genres.isNotEmpty()) parameter("genres", genres)
                 if (searchQuery != null) if (searchQuery.length > 1) parameter("searchQuery", searchQuery)
+                if (filter != null) parameter("filter", filter.name)
             }
         }
 

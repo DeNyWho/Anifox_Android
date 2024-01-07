@@ -4,7 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import club.anifox.android.domain.model.anime.AnimeUsersStatus
+import club.anifox.android.domain.model.anime.common.AnimeUsersStatus
 import club.anifox.android.domain.model.anime.detail.AnimeDetail
 import club.anifox.android.domain.model.anime.light.AnimeLight
 import club.anifox.android.domain.model.anime.related.AnimeRelated

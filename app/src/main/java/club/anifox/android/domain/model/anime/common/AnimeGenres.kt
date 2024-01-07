@@ -1,4 +1,4 @@
-package club.anifox.android.domain.model.anime
+package club.anifox.android.domain.model.anime.common
 
 import kotlinx.serialization.Serializable
 

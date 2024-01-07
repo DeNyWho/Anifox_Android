@@ -1,6 +1,6 @@
 package club.anifox.android.domain.model.dto.anime
 
-import club.anifox.android.domain.model.anime.AnimeUsersStatus
+import club.anifox.android.domain.model.anime.common.AnimeUsersStatus
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

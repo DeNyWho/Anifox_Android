@@ -1,6 +1,6 @@
 package club.anifox.android.domain.model.dto.anime
 
-import club.anifox.android.domain.model.anime.AnimeGenres
+import club.anifox.android.domain.model.anime.common.AnimeGenres
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
