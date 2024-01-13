@@ -10,13 +10,13 @@ import club.anifox.android.data.local.entity.anime.AnimeEntity
 interface AnimeDao {
 
     @Query("SELECT * FROM anime WHERE :animeUrl = url")
-    suspend fun findById(animeUrl: String): AnimeEntity?
+    suspend fun findByUrl(animeUrl: String): AnimeEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(anime: AnimeEntity)
 
     @Query("DELETE FROM anime WHERE :animeUrl = url")
-    suspend fun delete(animeUrl: Int)
+    suspend fun delete(animeUrl: String)
 
     @Query("DELETE FROM anime")
     suspend fun deleteAll()

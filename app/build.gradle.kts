@@ -88,12 +88,6 @@ dependencies {
     implementation(libs.room)
     ksp(libs.room.complier)
 
-    implementation(libs.mobile.native.foundation.store)
-    implementation(libs.atomicfu)
-
-    // Aaccompanist
-    implementation(libs.accompanist.systemuicontroller)
-
     implementation(libs.paging)
 
     implementation(libs.toolbar.compose)

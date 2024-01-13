@@ -1,6 +1,6 @@
-package club.anifox.android.domain.anime
+package club.anifox.android.domain.model.anime
 
-import club.anifox.android.domain.anime.image.AnimeImage
+import club.anifox.android.domain.model.anime.image.AnimeImage
 
 data class AnimeLight(
     val title: String,

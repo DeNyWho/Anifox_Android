@@ -1,4 +1,4 @@
-package club.anifox.android.domain.anime.translations
+package club.anifox.android.domain.model.anime.translations
 
 data class AnimeTranslations(
     val id: Int,

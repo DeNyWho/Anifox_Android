@@ -1,4 +1,4 @@
-package club.anifox.android.domain.user
+package club.anifox.android.domain.model.user
 
 import kotlinx.serialization.Serializable
 

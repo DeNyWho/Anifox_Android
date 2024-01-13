@@ -1,8 +1,8 @@
 package club.anifox.android.data.datastore
 
 import androidx.datastore.core.DataStore
-import club.anifox.android.domain.user.UserAccount
-import club.anifox.android.domain.user.UserSession
+import club.anifox.android.domain.model.user.UserAccount
+import club.anifox.android.domain.model.user.UserSession
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

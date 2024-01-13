@@ -16,7 +16,7 @@ coroutines = "1.7.3"
 navigation = "2.7.5"
 serialization-json = "1.6.0"
 ktor-client = "2.3.5"
-accompanist-systemuicontroller = "0.32.0"
+accompanist = "0.32.0"
 slf4j-simple = "2.0.7"
 paging = "3.2.1"
 room = "2.6.0"
@@ -26,6 +26,7 @@ charty = "2.0.0-alpha01"
 ktlint = "11.5.1"
 mobile-native-foundation-store="5.0.0"
 atomicfu="0.19.0"
+
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -60,7 +61,6 @@ ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serializati
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor-client" }
 ktor-client-apache = { group = "io.ktor", name = "ktor-client-apache5", version.ref = "ktor-client" }
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor-client" }
-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist-systemuicontroller" }
 slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j-simple" }
 paging = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
 room = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
@@ -68,14 +68,11 @@ room-paging = { group = "androidx.room", name = "room-paging", version.ref = "ro
 room-complier = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 toolbar-compose = { group = "me.onebone", name = "toolbar-compose", version.ref = "toolbar-compose" }
 charty = { group = "com.himanshoe", name = "charty", version.ref = "charty" }
-mobile-native-foundation-store = { group = "org.mobilenativefoundation.store", name = "store5", version.ref = "mobile-native-foundation-store"}
-atomicfu = { group = "org.jetbrains.kotlinx", name = "atomicfu", version.ref = "atomicfu"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 

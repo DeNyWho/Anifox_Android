@@ -1,7 +1,7 @@
 package club.anifox.android.data.datastore.repository
 
 import club.anifox.android.data.datastore.UserDataSource
-import club.anifox.android.domain.user.UserSession
+import club.anifox.android.domain.model.user.UserSession
 import kotlinx.coroutines.flow.Flow
 
 class UserDataRepository(

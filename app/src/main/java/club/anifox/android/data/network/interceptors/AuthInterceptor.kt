@@ -5,7 +5,7 @@ import club.anifox.android.BuildConfig
 import club.anifox.android.core.Endpoints
 import club.anifox.android.core.SslSettings
 import club.anifox.android.data.datastore.repository.UserDataRepository
-import club.anifox.android.domain.user.UserSession
+import club.anifox.android.domain.model.user.UserSession
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor

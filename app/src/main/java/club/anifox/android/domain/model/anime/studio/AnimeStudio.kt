@@ -1,4 +1,4 @@
-package club.anifox.android.domain.anime.studio
+package club.anifox.android.domain.model.anime.studio
 
 data class AnimeStudio(
     val id: String,

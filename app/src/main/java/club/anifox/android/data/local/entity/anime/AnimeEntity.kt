@@ -1,55 +1,56 @@
 package club.anifox.android.data.local.entity.anime
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Junction
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 import club.anifox.android.data.local.entity.anime.genres.AnimeGenresCrossRef
-import club.anifox.android.data.local.entity.anime.image.AnimeImageEntity
 import club.anifox.android.data.local.entity.anime.genres.AnimeGenresEntity
-import club.anifox.android.data.local.entity.anime.studio.AnimeStudioCrossRef
-import club.anifox.android.data.local.entity.anime.studio.AnimeStudioEntity
-import club.anifox.android.data.local.entity.anime.translations.AnimeTranslationsCrossRef
-import club.anifox.android.data.local.entity.anime.translations.AnimeTranslationsEntity
-import club.anifox.android.domain.anime.AnimeSeason
-import club.anifox.android.domain.anime.AnimeStatus
-import club.anifox.android.domain.anime.AnimeType
+import club.anifox.android.domain.model.anime.FilmSeason
+import club.anifox.android.domain.model.anime.FilmStatus
+import club.anifox.android.domain.model.anime.FilmType
 
-@Entity(tableName = "anime")
+@Entity(tableName = "film")
 data class AnimeEntity(
     @PrimaryKey val url: String,
     val title: String,
-    @Embedded
-    val image: AnimeImageEntity,
-    val type: AnimeType,
-    val rating: Double?,
-    val minimalAge: Int,
-    val year: Int,
-    val status: AnimeStatus,
-    val season: AnimeSeason,
-    val episodesCount: Int,
-    val episodesAired: Int,
+    val type: FilmType = FilmType.Movie,
+    val rating: Double? = 0.0,
+    val minimalAge: Int = 0,
+    val year: Int = 0,
+    val status: FilmStatus = FilmStatus.Ongoing,
+    val season: FilmSeason = FilmSeason.Fall,
+    val episodesCount: Int = 0,
+    val episodesAired: Int = 0,
+    val nextEpisode: String = "",
+    val releasedOn: String = "",
+    val airedOn: String = "",
+    val description: String = "",
     @Relation(
         parentColumn = "url",
-        entityColumn = "animeUrl",
+        entityColumn = "genreId",
         associateBy = Junction(AnimeGenresCrossRef::class)
     )
-    val genres: List<AnimeGenresEntity>,
-    @Relation(
-        parentColumn = "url",
-        entityColumn = "animeUrl",
-        associateBy = Junction(AnimeStudioCrossRef::class)
-    )
-    val studios: List<AnimeStudioEntity>,
-    val nextEpisode: String,
-    val releasedOn: String,
-    val airedOn: String,
-    val description: String,
-    @Relation(
-        parentColumn = "url",
-        entityColumn = "animeUrl",
-        associateBy = Junction(AnimeTranslationsCrossRef::class)
-    )
-    val translations: List<AnimeTranslationsEntity>,
+    val genres: List<AnimeGenresEntity>
 )
+
+//fun AnimeEntity.asAnime() = Anime(
+//    url = url,
+//    title = title,
+//    image = image.asImage(),
+//    type = type,
+//    rating = rating,
+//    minimalAge = minimalAge,
+//    year = year,
+//    status = status,
+//    season = season,
+//    episodesCount = episodesCount,
+//    episodesAired = episodesAired,
+//    genres = genres.map { it.asGenre() },
+//    studios = studios.map { it.asStudio() },
+//    nextEpisode = nextEpisode,
+//    releasedOn = releasedOn,
+//    airedOn = airedOn,
+//    description = description,
+//    translations = translations.map { it.asTranslation() }
+//)
