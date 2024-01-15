@@ -10,7 +10,7 @@ import club.anifox.android.domain.model.anime.FilmSeason
 import club.anifox.android.domain.model.anime.FilmStatus
 import club.anifox.android.domain.model.anime.FilmType
 
-@Entity(tableName = "film")
+@Entity(tableName = "anime")
 data class AnimeEntity(
     @PrimaryKey val url: String,
     val title: String,
@@ -25,32 +25,5 @@ data class AnimeEntity(
     val nextEpisode: String = "",
     val releasedOn: String = "",
     val airedOn: String = "",
-    val description: String = "",
-    @Relation(
-        parentColumn = "url",
-        entityColumn = "genreId",
-        associateBy = Junction(AnimeGenresCrossRef::class)
-    )
-    val genres: List<AnimeGenresEntity>
+    val description: String = ""
 )
-
-//fun AnimeEntity.asAnime() = Anime(
-//    url = url,
-//    title = title,
-//    image = image.asImage(),
-//    type = type,
-//    rating = rating,
-//    minimalAge = minimalAge,
-//    year = year,
-//    status = status,
-//    season = season,
-//    episodesCount = episodesCount,
-//    episodesAired = episodesAired,
-//    genres = genres.map { it.asGenre() },
-//    studios = studios.map { it.asStudio() },
-//    nextEpisode = nextEpisode,
-//    releasedOn = releasedOn,
-//    airedOn = airedOn,
-//    description = description,
-//    translations = translations.map { it.asTranslation() }
-//)

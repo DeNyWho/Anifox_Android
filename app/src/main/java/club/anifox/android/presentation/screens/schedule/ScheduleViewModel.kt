@@ -1,4 +1,6 @@
 package club.anifox.android.presentation.screens.schedule
 
-class ScheduleViewModel {
+import androidx.lifecycle.ViewModel
+
+class ScheduleViewModel: ViewModel()  {
 }

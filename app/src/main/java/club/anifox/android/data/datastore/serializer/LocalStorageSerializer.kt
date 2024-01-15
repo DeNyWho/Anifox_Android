@@ -1,14 +1,14 @@
 package club.anifox.android.data.datastore.serializer
 
 import androidx.datastore.core.Serializer
-import club.anifox.android.domain.model.user.account.UserAccount
-import java.io.InputStream
-import java.io.OutputStream
+import club.anifox.android.domain.model.user.UserAccount
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
 import kotlinx.serialization.protobuf.ProtoBuf
+import java.io.InputStream
+import java.io.OutputStream
 
 class LocalStorageSerializer : Serializer<UserAccount> {
 

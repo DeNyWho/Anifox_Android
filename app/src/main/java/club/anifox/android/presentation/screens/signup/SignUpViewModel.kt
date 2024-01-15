@@ -1,4 +1,6 @@
 package club.anifox.android.presentation.screens.signup
 
-class SignUpViewModel {
+import androidx.lifecycle.ViewModel
+
+class SignUpViewModel: ViewModel() {
 }

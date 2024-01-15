@@ -10,22 +10,19 @@ activity-compose = "1.8.1"
 compose-bom = "2023.10.01"
 koin-android="3.4.6"
 shimmer-commpose="1.0.5"
-coil = "2.4.0"
+coil = "2.5.0"
 datastore = "1.0.0"
 coroutines = "1.7.3"
-navigation = "2.7.5"
+navigation = "2.7.6"
 serialization-json = "1.6.0"
 ktor-client = "2.3.5"
-accompanist = "0.32.0"
 slf4j-simple = "2.0.7"
 paging = "3.2.1"
-room = "2.6.0"
+room = "2.6.1"
 ksp = "1.9.0-1.0.13"
 toolbar-compose = "2.2.0"
 charty = "2.0.0-alpha01"
 ktlint = "11.5.1"
-mobile-native-foundation-store="5.0.0"
-atomicfu="0.19.0"
 
 
 [libraries]
@@ -52,6 +49,7 @@ datastore-preferences = { group = "androidx.datastore", name = "datastore-prefer
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization-json" }
+serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "serialization-json" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor-client" }
 ktor-client-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor-client" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor-client" }

@@ -1,4 +1,6 @@
 package club.anifox.android.presentation.screens.search
 
-class SearchViewModel {
+import androidx.lifecycle.ViewModel
+
+class SearchViewModel: ViewModel()  {
 }

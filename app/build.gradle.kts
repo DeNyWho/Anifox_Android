@@ -94,6 +94,7 @@ dependencies {
     implementation(libs.charty)
     implementation(libs.navigation)
     implementation(libs.serialization.json)
+    implementation(libs.serialization.protobuf)
     implementation(libs.shimmer.compose)
     implementation(libs.coil)
     implementation(libs.coroutines)

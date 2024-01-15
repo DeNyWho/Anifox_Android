@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import club.anifox.android.R
-import club.anifox.android.ui.theme.AnifoxAndroidTheme
+import club.anifox.android.presentation.common.ui.theme.AnifoxAndroidTheme
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.getViewModel
 
@@ -31,7 +31,6 @@ fun SplashScreen(
     }
     SplashUI()
 }
-
 
 @Composable
 private fun SplashUI() {

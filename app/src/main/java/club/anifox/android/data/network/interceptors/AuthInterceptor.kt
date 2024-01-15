@@ -14,7 +14,6 @@ import okhttp3.Request
 import okhttp3.Response
 import org.apache.hc.core5.http.HttpHeaders
 
-
 class AuthInterceptor(
     private val userDataRepository: UserDataRepository,
     private val applicationContext: Context,
