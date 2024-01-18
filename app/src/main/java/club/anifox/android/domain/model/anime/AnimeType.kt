@@ -1,6 +1,6 @@
 package club.anifox.android.domain.model.anime
 
-enum class FilmType {
+enum class AnimeType {
     Movie,
     Ona,
     Ova,
