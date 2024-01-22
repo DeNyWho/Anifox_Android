@@ -3,7 +3,7 @@ package club.anifox.android.presentation.screens.splash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import club.anifox.android.domain.model.user.UserSession
-import club.anifox.android.domain.usecase.TokenUseCase
+import club.anifox.android.domain.usecase.user.TokenUseCase
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 

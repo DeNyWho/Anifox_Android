@@ -1,4 +1,4 @@
-package club.anifox.android.domain.usecase
+package club.anifox.android.domain.usecase.user
 
 import club.anifox.android.data.datastore.repository.UserDataRepository
 import club.anifox.android.domain.model.user.UserSession

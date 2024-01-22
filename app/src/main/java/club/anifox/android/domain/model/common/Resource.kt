@@ -1,7 +1,5 @@
 package club.anifox.android.domain.model.common
 
-import io.ktor.http.Cookie
-
 
 sealed class Resource<out T> {
     data object Loading : Resource<Nothing>()

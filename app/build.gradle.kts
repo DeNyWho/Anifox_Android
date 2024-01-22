@@ -1,4 +1,5 @@
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
@@ -66,6 +67,21 @@ android {
             excludes += "META-INF/DEPENDENCIES"
             excludes += "META-INF/INDEX.LIST"
         }
+    }
+}
+
+configurations {
+    ktlint
+}
+
+//tasks.getByPath("compileKotlin").dependsOn("ktlintFormat")
+
+ktlint {
+    android = true
+    ignoreFailures = false
+
+    reporters {
+        reporter(ReporterType.PLAIN)
     }
 }
 

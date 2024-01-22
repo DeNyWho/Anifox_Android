@@ -12,7 +12,6 @@ import club.anifox.android.data.local.dao.anime.TranslationDao
 import club.anifox.android.data.local.entity.anime.AnimeEntity
 import club.anifox.android.data.local.entity.anime.genres.AnimeGenresEntity
 import club.anifox.android.data.local.entity.anime.image.AnimeImageEntity
-import club.anifox.android.data.local.entity.anime.relation.AnimeAndImage
 import club.anifox.android.data.local.entity.anime.studio.AnimeStudioEntity
 import club.anifox.android.data.local.entity.anime.translations.AnimeTranslationsEntity
 
@@ -22,8 +21,10 @@ import club.anifox.android.data.local.entity.anime.translations.AnimeTranslation
     AnimeImageEntity::class,
     AnimeStudioEntity::class,
     AnimeTranslationsEntity::class,
-    AnimeAndImage::class,
-], version = 1)
+],
+    version = 1,
+    exportSchema = false,
+)
 abstract class AnifoxDatabase: RoomDatabase() {
 
     abstract fun animeDao(): AnimeDao
