@@ -8,6 +8,9 @@ import androidx.room.Transaction
 import club.anifox.android.data.local.entity.anime.AnimeEntity
 import club.anifox.android.data.local.entity.anime.image.AnimeImageEntity
 import club.anifox.android.data.local.entity.anime.relation.AnimeAndImage
+import club.anifox.android.domain.model.anime.AnimeSeason
+import club.anifox.android.domain.model.anime.AnimeStatus
+import club.anifox.android.domain.model.anime.AnimeType
 
 @Dao
 interface AnimeDao {
@@ -22,8 +25,15 @@ interface AnimeDao {
     suspend fun insertImage(image: AnimeImageEntity)
 
     @Transaction
-    @Query("SELECT * FROM anime where :animeUrl = url")
-    suspend fun getAnime(animeUrl: String): AnimeAndImage
+    @Query("SELECT * FROM anime a where " +
+        "(:status is null or :status = a.status) and" +
+        "(:season is null or :season = a.season) and" +
+        "(:type is null or :type = a.type)")
+    suspend fun getAnime(status: AnimeStatus?, season: AnimeSeason?, type: AnimeType?): List<AnimeAndImage>
+
+    @Transaction
+    @Query("SELECT * FROM anime a where a.url = :url")
+    suspend fun getAnimeDetails(url: String): AnimeAndImage?
 
     @Query("DELETE FROM anime WHERE :animeUrl = url")
     suspend fun delete(animeUrl: String)

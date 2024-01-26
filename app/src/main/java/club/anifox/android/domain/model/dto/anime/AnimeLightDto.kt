@@ -1,6 +1,8 @@
 package club.anifox.android.domain.model.dto.anime
 
+import club.anifox.android.domain.model.anime.AnimeLight
 import club.anifox.android.domain.model.dto.anime.image.AnimeImageDto
+import club.anifox.android.domain.model.dto.anime.image.toImage
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,6 +14,6 @@ data class AnimeLightDto(
     val image: AnimeImageDto = AnimeImageDto(),
     @SerialName("url")
     val url: String = "",
-    @SerialName("minimal_age")
-    val minimalAge: Int = 0,
 )
+
+fun AnimeLightDto.toLight(): AnimeLight = AnimeLight(title, image.toImage(), url)

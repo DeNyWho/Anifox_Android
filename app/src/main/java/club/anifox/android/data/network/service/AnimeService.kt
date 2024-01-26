@@ -8,6 +8,7 @@ import club.anifox.android.domain.model.anime.AnimeStatus
 import club.anifox.android.domain.model.anime.AnimeType
 import club.anifox.android.domain.model.anime.request.FilterEnum
 import club.anifox.android.domain.model.common.Resource
+import club.anifox.android.domain.model.dto.anime.AnimeDetailsDto
 import club.anifox.android.domain.model.dto.anime.AnimeLightDto
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
@@ -58,4 +59,18 @@ class AnimeService(
 
         return safeApiCall<List<AnimeLightDto>>(client, request)
     }
+
+    suspend fun getAnimeDetails(url: String): Resource<AnimeDetailsDto> {
+        val request = HttpRequestBuilder().apply {
+            method = HttpMethod.Get
+            url {
+                protocol = URLProtocol.HTTPS
+                host = BuildConfig.hostname
+                encodedPath = "${BuildConfig.api_path}${Endpoints.anime}$url"
+            }
+        }
+
+        return safeApiCall<AnimeDetailsDto>(client, request)
+    }
+
 }

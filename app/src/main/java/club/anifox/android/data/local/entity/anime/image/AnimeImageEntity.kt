@@ -11,7 +11,7 @@ data class AnimeImageEntity(
     val medium: String = "",
 )
 
-fun AnimeImageEntity.asImage() = AnimeImage(
+fun AnimeImageEntity.toImage() = AnimeImage(
     large = large,
     medium = medium,
 )
