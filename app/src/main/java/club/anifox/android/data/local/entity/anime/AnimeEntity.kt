@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 import club.anifox.android.domain.model.anime.AnimeSeason
 import club.anifox.android.domain.model.anime.AnimeStatus
 import club.anifox.android.domain.model.anime.AnimeType
+import java.time.LocalDate
 
 @Entity(tableName = "anime")
 data class AnimeEntity(
@@ -19,7 +20,7 @@ data class AnimeEntity(
     val episodesCount: Int = 0,
     val episodesAired: Int = 0,
     val nextEpisode: String = "",
-    val releasedOn: String = "",
-    val airedOn: String = "",
+    val releasedOn: LocalDate = LocalDate.now(),
+    val airedOn: LocalDate = LocalDate.now(),
     val description: String = ""
 )

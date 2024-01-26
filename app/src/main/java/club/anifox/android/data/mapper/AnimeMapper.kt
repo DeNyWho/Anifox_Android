@@ -7,7 +7,7 @@ import club.anifox.android.domain.model.anime.AnimeLight
 
 fun AnimeAndImage.toAnimeLight(): AnimeLight = AnimeLight(
     title = anime.title,
-    image = image.toImage(),
+    image = image.toImage().medium,
     url = anime.url,
 )
 
@@ -23,7 +23,7 @@ fun AnimeAndImage.toAnimeDetails(): AnimeDetails = AnimeDetails(
     season = anime.season,
     episodes = anime.episodesCount,
     episodesAired = anime.episodesAired,
-    nextEpisode = anime.nextEpisode,
+//    nextEpisode = anime.nextEpisode,
     releasedOn = anime.releasedOn,
     airedOn = anime.airedOn,
     description = anime.description,

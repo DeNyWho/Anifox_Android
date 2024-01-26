@@ -16,4 +16,4 @@ data class AnimeLightDto(
     val url: String = "",
 )
 
-fun AnimeLightDto.toLight(): AnimeLight = AnimeLight(title, image.toImage(), url)
+fun AnimeLightDto.toLight(): AnimeLight = AnimeLight(title, image.toImage().medium, url)
