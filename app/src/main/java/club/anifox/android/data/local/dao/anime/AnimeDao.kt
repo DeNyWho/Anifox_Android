@@ -25,11 +25,23 @@ interface AnimeDao {
     suspend fun insertImage(image: AnimeImageEntity)
 
     @Transaction
-    @Query("SELECT * FROM anime a where " +
+    @Query(
+        "SELECT * FROM anime a where " +
         "(:status is null or :status = a.status) and" +
         "(:season is null or :season = a.season) and" +
-        "(:type is null or :type = a.type)")
-    suspend fun getAnime(status: AnimeStatus?, season: AnimeSeason?, type: AnimeType?): List<AnimeAndImage>
+        "(:type is null or :type = a.type) and" +
+        "(:ratingMpa is null or :ratingMpa = a.rating) and" +
+        "(:minimalAge is null or :minimalAge = a.minimalAge) and" +
+        "(:year is null or :year = a.year)"
+    )
+    suspend fun getAnime(
+        status: AnimeStatus?,
+        season: AnimeSeason?,
+        type: AnimeType?,
+        ratingMpa: String?,
+        minimalAge: Int?,
+        year: Int?,
+    ): List<AnimeAndImage>
 
     @Transaction
     @Query("SELECT * FROM anime a where a.url = :url")

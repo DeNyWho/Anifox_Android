@@ -77,8 +77,7 @@ fun CardThumbnailPortrait(
 
 @Preview
 @Composable
-
-private fun Preview_ItemVerticalAnime_Default(
+private fun PreviewCardThumbnailPortraitDefault(
     @PreviewParameter(CardAnimeProvider::class) param: CardAnimePreviewParam,
 ) {
     AnifoxAndroidTheme(darkTheme = false) {

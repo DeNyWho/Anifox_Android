@@ -5,15 +5,20 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorScheme = darkColorScheme(
     background = light_background,
     onBackground = light_onBackground,
+    surfaceVariant = light_surfaceVariant,
+    onSurfaceVariant = light_onSurfaceVariant,
 )
 
 private val LightColorScheme = lightColorScheme(
     background = dark_background,
     onBackground = dark_onBackground,
+    surfaceVariant = dark_surfaceVariant,
+    onSurfaceVariant = dark_onSurfaceVariant,
 )
 
 @Composable

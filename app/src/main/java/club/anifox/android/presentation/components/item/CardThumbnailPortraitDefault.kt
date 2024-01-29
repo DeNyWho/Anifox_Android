@@ -7,7 +7,7 @@ object CardThumbnailPortraitDefault {
     object Width {
         val Large = 180
         val Default = 140.dp
-        val Small = 100.dp
+        val Small = 120.dp
     }
 
     object Height {

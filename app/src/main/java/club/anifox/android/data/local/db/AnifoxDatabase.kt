@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import club.anifox.android.data.local.converter.LocalDateConverter
+import club.anifox.android.data.local.converter.LocalDateTimeConverter
 import club.anifox.android.data.local.dao.anime.AnimeDao
 import club.anifox.android.data.local.dao.anime.GenreDao
 import club.anifox.android.data.local.dao.anime.ImageDao
@@ -27,7 +28,7 @@ import club.anifox.android.data.local.entity.anime.translations.AnimeTranslation
     version = 1,
     exportSchema = false,
 )
-@TypeConverters(LocalDateConverter::class)
+@TypeConverters(LocalDateConverter::class, LocalDateTimeConverter::class)
 abstract class AnifoxDatabase: RoomDatabase() {
 
     abstract fun animeDao(): AnimeDao
