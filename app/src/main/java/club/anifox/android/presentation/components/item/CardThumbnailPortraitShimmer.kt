@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import club.anifox.android.presentation.common.ui.theme.AnifoxAndroidTheme
@@ -26,12 +27,13 @@ import com.valentinilk.shimmer.shimmer
 
 @Composable
 fun CardThumbnailPortraitShimmer(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     shimmerInstance: Shimmer,
     thumbnailHeight: Dp = CardThumbnailPortraitDefault.Height.Default,
 ) {
     Column(
         modifier = modifier
+            .padding(bottom = 8.dp)
             .shimmer(shimmerInstance),
     ) {
         Card(
@@ -51,7 +53,7 @@ fun CardThumbnailPortraitShimmer(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(18.dp)
+                .height(24.dp)
                 .padding(0.dp, 6.dp, 0.dp, 0.dp)
                 .background(color = MaterialTheme.colorScheme.onSurfaceVariant),
         )
@@ -59,7 +61,7 @@ fun CardThumbnailPortraitShimmer(
         Box(
             modifier = Modifier
                 .width(62.dp)
-                .height(18.dp)
+                .height(24.dp)
                 .padding(0.dp, 6.dp, 0.dp, 0.dp)
                 .background(color = MaterialTheme.colorScheme.onSurfaceVariant),
         )
@@ -67,14 +69,12 @@ fun CardThumbnailPortraitShimmer(
 }
 
 fun LazyGridScope.showCardThumbnailPortraitShimmer(
-    modifier: Modifier = Modifier.fillMaxWidth(),
     shimmerInstance: Shimmer,
     count: Int = 11,
     thumbnailHeight: Dp = CardThumbnailPortraitDefault.Height.Default,
 ) {
     items(count) {
         CardThumbnailPortraitShimmer(
-            modifier = modifier,
             shimmerInstance = shimmerInstance,
             thumbnailHeight = thumbnailHeight,
         )
@@ -82,7 +82,7 @@ fun LazyGridScope.showCardThumbnailPortraitShimmer(
 }
 
 fun LazyListScope.showCardThumbnailPortraitShimmer(
-    modifier: Modifier = Modifier.fillMaxWidth(),
+    modifier: Modifier,
     shimmerInstance: Shimmer,
     count: Int = 11,
     thumbnailHeight: Dp = CardThumbnailPortraitDefault.Height.Default,
@@ -96,21 +96,10 @@ fun LazyListScope.showCardThumbnailPortraitShimmer(
     }
 }
 
-@Preview(showBackground = true)
+@PreviewLightDark
 @Composable
-private fun LightPreview() {
-    AnifoxAndroidTheme(darkTheme = false) {
-        CardThumbnailPortraitShimmer(
-            Modifier.width(CardThumbnailPortraitDefault.Width.Default),
-            rememberShimmerCustomBounds(),
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun DarkPreview() {
-    AnifoxAndroidTheme(darkTheme = true) {
+private fun PreviewCardThumbnailPortraitShimmer() {
+    AnifoxAndroidTheme {
         CardThumbnailPortraitShimmer(
             Modifier.width(CardThumbnailPortraitDefault.Width.Default),
             rememberShimmerCustomBounds(),

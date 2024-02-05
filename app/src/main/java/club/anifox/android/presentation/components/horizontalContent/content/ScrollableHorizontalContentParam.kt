@@ -13,18 +13,21 @@ import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.presentation.components.horizontalContent.header.HorizontalContentHeaderDefaults
 import club.anifox.android.presentation.components.item.CardAnimePreviewParam
 import club.anifox.android.presentation.components.item.CardThumbnailPortraitDefault
+import com.valentinilk.shimmer.Shimmer
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.rememberShimmer
 
 data class ScrollableHorizontalContentParam(
-    val headerTitle: String = "Title",
-    val contentState: StateListWrapper<AnimeLight>,
-    val contentPadding: PaddingValues = PaddingValues(horizontal = 12.dp),
-    val contentArrangement: Arrangement.Horizontal,
     val modifier: Modifier = Modifier,
     val headerModifier: Modifier = HorizontalContentHeaderDefaults.Default,
     val itemModifier: Modifier = Modifier.width(CardThumbnailPortraitDefault.Width.Default),
     val thumbnailHeight: Dp = CardThumbnailPortraitDefault.Height.Default,
+    val headerTitle: String = "Title",
+    val contentState: StateListWrapper<AnimeLight>,
+    val contentPadding: PaddingValues = PaddingValues(horizontal = 12.dp),
+    val contentArrangement: Arrangement.Horizontal,
     val textAlign: TextAlign = TextAlign.Start,
-    val onIconClick: () -> Unit = { },
+    val onHeaderClick: () -> Unit = { },
     val onItemClick: () -> Unit = { },
 )
 
@@ -43,16 +46,18 @@ class ScrollableHorizontalContentProvider: PreviewParameterProvider<ScrollableHo
         get() = listOf(
             ScrollableHorizontalContentParam(
                 modifier = Modifier,
+                headerModifier = ScrollableHorizontalContentDefault.Default,
                 headerTitle = "Scrollable Default",
                 contentArrangement = CardThumbnailPortraitDefault.HorizontalArrangement.Default,
                 contentState = StateListWrapper.loading()
             ),
             ScrollableHorizontalContentParam(
                 modifier = Modifier,
-                headerTitle = "",
+                headerModifier = ScrollableHorizontalContentDefault.Default,
+                headerTitle = "Scrollable Default",
                 contentArrangement = CardThumbnailPortraitDefault.HorizontalArrangement.Default,
-                contentState = StateListWrapper(data = DataSet)
-            ),
+                contentState = StateListWrapper(data = DataSet, isLoading = false)
+            )
         ).asSequence()
 }
 

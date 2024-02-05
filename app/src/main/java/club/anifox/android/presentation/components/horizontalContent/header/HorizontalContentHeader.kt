@@ -3,7 +3,9 @@ package club.anifox.android.presentation.components.horizontalContent.header
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Icon
@@ -26,6 +28,7 @@ fun HorizontalContentHeader(
 ) {
     Row (
         modifier = modifier
+            .fillMaxWidth()
             .heightIn(24.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -40,8 +43,12 @@ fun HorizontalContentHeader(
         )
         Spacer(modifier = Modifier.weight(1f))
 
-        IconButton(onClick = onButtonClick) {
+        IconButton(
+            modifier = Modifier.size(24.dp),
+            onClick = onButtonClick
+        ) {
             Icon(
+                modifier = Modifier.size(24.dp),
                 imageVector = Icons.Default.ArrowForward,
                 contentDescription = "see all",
                 tint = MaterialTheme.colorScheme.onBackground,

@@ -5,7 +5,6 @@ import androidx.compose.ui.unit.dp
 
 object CardThumbnailPortraitDefault {
     object Width {
-        val Large = 180
         val Default = 140.dp
         val Small = 120.dp
     }
