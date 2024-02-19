@@ -18,7 +18,7 @@ class SplashViewModel (
     )
 
     fun redirect(navigateToHome: () -> Unit, navigateToSignIn: () -> Unit) {
-        if(token.value.refreshToken.isEmpty()) {
+        if(token.value.refreshToken.isNotEmpty()) {
             navigateToSignIn.invoke()
         } else {
             navigateToHome.invoke()

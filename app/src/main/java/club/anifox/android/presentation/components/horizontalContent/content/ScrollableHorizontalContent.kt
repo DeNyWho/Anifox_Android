@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import club.anifox.android.domain.model.anime.AnimeLight
 import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.presentation.common.ui.theme.AnifoxAndroidTheme
@@ -37,8 +38,8 @@ fun ScrollableHorizontalContent(
     thumbnailHeight: Dp = CardThumbnailPortraitDefault.Height.Default,
     headerTitle: String,
     contentState: StateListWrapper<AnimeLight>,
-    contentPadding: PaddingValues,
-    contentArrangement: Arrangement.Horizontal,
+    contentPadding: PaddingValues = PaddingValues(horizontal = 12.dp),
+    contentArrangement: Arrangement.Horizontal = CardThumbnailPortraitDefault.HorizontalArrangement.Default,
     textAlign: TextAlign = TextAlign.Start,
     onHeaderClick: () -> Unit,
     onItemClick: () -> Unit,

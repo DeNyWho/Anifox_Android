@@ -35,11 +35,8 @@ fun HorizontalContentHeader(
     ) {
         Text(
             text = title,
-            style = TextStyle(
-                color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.Bold,
-                fontSize = 16.sp,
-            ),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground
         )
         Spacer(modifier = Modifier.weight(1f))
 

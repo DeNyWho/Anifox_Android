@@ -70,6 +70,7 @@ fun CardThumbnailPortrait(
             overflow = TextOverflow.Ellipsis,
             color = MaterialTheme.colorScheme.onBackground,
             textAlign = textAlign,
+            style = MaterialTheme.typography.titleMedium
         )
     }
 

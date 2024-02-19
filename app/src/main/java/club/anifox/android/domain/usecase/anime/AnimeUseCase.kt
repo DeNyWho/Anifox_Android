@@ -84,18 +84,18 @@ import kotlinx.coroutines.flow.flowOn
 
 class AnimeUseCase (private val service: AnimeService) {
     operator fun invoke(
-        page: Int,
-        limit: Int,
-        status: AnimeStatus?,
-        genres: List<String>?,
-        searchQuery: String?,
-        season: AnimeSeason?,
-        ratingMpa: String?,
-        minimalAge: String?,
-        type: AnimeType?,
-        year: Int?,
-        studio: String?,
-        filter: FilterEnum?,
+        page: Int = 0,
+        limit: Int = 12,
+        status: AnimeStatus? = null,
+        genres: List<String>? = null,
+        searchQuery: String? = null,
+        season: AnimeSeason? = null,
+        ratingMpa: String? = null,
+        minimalAge: String? = null,
+        type: AnimeType? = null,
+        year: Int? = null,
+        studio: String? = null,
+        filter: FilterEnum? = null,
     ): Flow<StateListWrapper<AnimeLight>> {
         return flow {
             emit(StateListWrapper.loading())
