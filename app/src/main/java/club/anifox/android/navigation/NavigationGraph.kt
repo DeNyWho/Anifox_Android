@@ -33,12 +33,11 @@ fun NavigationGraph(
         exitTransition = { slideOutHorizontally { -it / 4 } },
         popEnterTransition = { slideInHorizontally { -it / 4 } },
         popExitTransition = { slideOutHorizontally { it } }
-        ) {
+    ) {
         composable(Screens.Splash.route) {
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 
@@ -52,7 +51,6 @@ fun NavigationGraph(
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 
@@ -63,7 +61,6 @@ fun NavigationGraph(
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 
@@ -74,7 +71,6 @@ fun NavigationGraph(
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 
@@ -85,7 +81,6 @@ fun NavigationGraph(
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 
@@ -96,7 +91,6 @@ fun NavigationGraph(
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 
@@ -107,7 +101,6 @@ fun NavigationGraph(
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 
@@ -118,7 +111,6 @@ fun NavigationGraph(
             OnDestinationChanged(
                 navigationBarColor = MaterialTheme.colorScheme.background,
                 statusBarColor = MaterialTheme.colorScheme.background,
-                drawOverStatusBar = true,
                 window = window,
             )
 

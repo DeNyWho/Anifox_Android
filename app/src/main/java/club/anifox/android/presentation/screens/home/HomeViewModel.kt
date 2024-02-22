@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import club.anifox.android.domain.model.anime.AnimeLight
+import club.anifox.android.domain.model.anime.AnimeSeason
 import club.anifox.android.domain.model.anime.AnimeStatus
 import club.anifox.android.domain.model.anime.request.FilterEnum
 import club.anifox.android.domain.state.StateListWrapper
@@ -28,8 +29,8 @@ class HomeViewModel(
         }.launchIn(viewModelScope)
     }
 
-    fun getOngoing(page: Int, limit: Int) {
-        animeUseCase.invoke(page = page, limit = limit, status = AnimeStatus.Ongoing).onEach {
+    fun getOngoing(page: Int, limit: Int, currentSeason: AnimeSeason, year: Int) {
+        animeUseCase.invoke(page = page, limit = limit, status = AnimeStatus.Ongoing, filter = FilterEnum.ShikimoriRating, season = currentSeason, year = year).onEach {
             _onOngoingAnime.value = it
         }.launchIn(viewModelScope)
     }

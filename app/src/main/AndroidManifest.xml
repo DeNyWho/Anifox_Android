@@ -10,6 +10,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/main_icon"
         android:label="@string/app_name"
+        android:fitsSystemWindows="false"
         android:roundIcon="@drawable/main_icon"
         android:supportsRtl="true"
         android:name=".Application"

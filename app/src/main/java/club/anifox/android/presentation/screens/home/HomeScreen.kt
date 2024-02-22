@@ -3,6 +3,7 @@ package club.anifox.android.presentation.screens.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -16,15 +17,18 @@ import club.anifox.android.domain.model.anime.AnimeLight
 import club.anifox.android.domain.state.StateListWrapper
 import club.anifox.android.presentation.common.ui.theme.AnifoxAndroidTheme
 import club.anifox.android.presentation.components.horizontalContent.content.ScrollableHorizontalContent
+import club.anifox.android.presentation.util.takeCurrentSeason
 import org.koin.androidx.compose.getViewModel
+import java.time.LocalDateTime
 
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = getViewModel(),
 ) {
+
     LaunchedEffect(viewModel) {
         viewModel.getPopular(0,12)
-        viewModel.getOngoing(0,12)
+        viewModel.getOngoing(0,12, LocalDateTime.now().takeCurrentSeason(), LocalDateTime.now().year)
     }
 
     HomeUI(popularAnimeState = viewModel.onPopularAnime.value, ongoingAnimeState = viewModel.onOngoingAnime.value)

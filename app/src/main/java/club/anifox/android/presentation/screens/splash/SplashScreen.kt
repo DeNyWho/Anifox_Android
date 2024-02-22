@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import club.anifox.android.R
@@ -45,7 +46,7 @@ private fun SplashUI() {
     ) {
         Image(
             painter = painterResource(id = R.drawable.anifox_logo___text),
-            contentDescription = "stringResource(R.string.logo)",
+            contentDescription = stringResource(R.string.logo),
         )
     }
 }
